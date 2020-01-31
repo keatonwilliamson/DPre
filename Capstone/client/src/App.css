@@ -3,25 +3,39 @@
 }
 
 .header {
-  background-color: #282c34;
+  background-color: black;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
   font-size: calc(10px + 1vmin);
   color: rgba(255, 255, 255, .8);
-  padding: 0 20px;;
+  padding: 0 20px;
 }
 
 .nav-items {
+  margin: 8px;
   list-style: none;
   display: flex;
   flex-direction: row;
 }
+.moog-header-logo {
+  height: 40px;
+  margin-right: auto;
+}
 
 .nav-item {
-  padding: 0 10px;
+  color: #ACACAC;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  font-weight: 900;
+  /* padding: 8px 10px; */
   cursor: pointer;
+}
+
+.log-in {
+  padding: 8px 10px;
 }
 
 .nav-item a {
@@ -35,4 +49,49 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.landing-background {
+  background-image: url('./Assets/space-clouds.jpg'); /* The image used */
+  background-size: cover;
+  height: 100vh;
+  -webkit-filter: contrast(0.8);
+  /* background-position: center;
+  height: 150vh;
+  width: auto; */
+}
+
+.landing-minimoog {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 600px;
+  filter: drop-shadow(5px 5px 2px cyan) drop-shadow(-5px -5px 2px magenta);
+}
+
+.sign-up {
+  color: black;
+  cursor: pointer;
+  /* font-family: 'Sonorous', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: .08rem; */
+  /* margin: 1.8rem .8rem; */
+  padding: 0rem 1.4rem;
+  line-height: 40px;
+  /* padding: 1rem 2rem; */
+  transition: all .4s;
+  background-color: white;
+  /* border: 3px solid var(--header); */
+  /* z-index: 9;
+  position: absolute;
+  bottom: 90px; */
+  border-radius: 100px;
+  /* text-shadow: 1px 1px 2px var(--header); */
+}
+.sign-up:hover {
+  color: black;
+}
+
+html, body {
+  overflow-x:hidden;
+  overflow-y:hidden;
 }

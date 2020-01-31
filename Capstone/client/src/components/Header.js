@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 function Header(props) {
   return (
     <nav className="header">
+      <img className="moog-header-logo" src={require('../Assets/moog-logo.png')} alt="img" />
       <ul className="nav-items">
+
         {
           props.user ? (
             <>
@@ -13,11 +15,11 @@ function Header(props) {
             </>
           ) : (
               <>
-                <li className="nav-item">
-                  <Link to="/login">Login</Link>
+                <li className="nav-item log-in">
+                  <Link to="/login">Log in</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/register">Register</Link>
+                <li className="nav-item sign-up">
+                  <Link to="/register">Sign up</Link>
                 </li>
               </>
             )

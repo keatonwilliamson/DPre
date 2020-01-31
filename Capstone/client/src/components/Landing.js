@@ -20,7 +20,11 @@ class Landing extends Component {
   render() {
     return (
       <>
-        <h1>Landing Page WOOOOOO</h1>
+        {/* <h1>Landing Page WOOOOOO</h1> */}
+        
+        <div className="landing-background"> 
+        <img className="landing-minimoog" src={require('../Assets/minimoog-transparent-landing.png')} alt="img" />
+        </div>
         <ul>
           {/* {
             this.state.values.map(value => <li>{value}</li>)
