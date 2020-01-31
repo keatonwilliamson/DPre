@@ -7,6 +7,19 @@ class Landing extends Component {
   }
 
   componentDidMount() {
+
+    let root = document.documentElement;
+    root.addEventListener("mousemove", e => {
+      const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      const xOffset = Math.floor(15 * ((vw/2) - e.clientX)/(vw/2))
+      const yOffset = Math.floor(15 * ((vh/2) - e.clientY)/(vh/2))
+      console.log(xOffset, yOffset)
+      root.style.setProperty('--cyan-x', -xOffset + "px");
+      root.style.setProperty('--cyan-y', -yOffset + "px");
+      root.style.setProperty('--magenta-x', xOffset + "px");
+      root.style.setProperty('--magenta-y', yOffset + "px");
+    });
     // const authHeader = createAuthHeaders();
     // fetch('/api/v1/values', {
     //   headers: authHeader
@@ -21,9 +34,9 @@ class Landing extends Component {
     return (
       <>
         {/* <h1>Landing Page WOOOOOO</h1> */}
-        
-        <div className="landing-background"> 
-        <img className="landing-minimoog" src={require('../Assets/minimoog-transparent-landing.png')} alt="img" />
+
+        <div className="landing-background">
+          <img className="landing-minimoog" src={require('../Assets/minimoog-transparent-landing.png')} alt="img" />
         </div>
         <ul>
           {/* {

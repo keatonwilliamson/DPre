@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 function Header(props) {
   return (
     <nav className="header">
+      <div className="left-nav-items">
       <img className="moog-header-logo" src={require('../Assets/moog-logo.png')} alt="img" />
+      <p className="d-patch">DPatch</p>
+      </div>
       <ul className="nav-items">
 
         {

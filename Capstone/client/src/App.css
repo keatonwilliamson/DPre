@@ -19,9 +19,16 @@
   display: flex;
   flex-direction: row;
 }
+
+.left-nav-items{
+  margin: 8px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin-right: auto;
+}
 .moog-header-logo {
   height: 40px;
-  margin-right: auto;
 }
 
 .nav-item {
@@ -65,7 +72,7 @@
   max-width: 100%;
   max-height: 100%;
   min-width: 600px;
-  filter: drop-shadow(5px 5px 2px cyan) drop-shadow(-5px -5px 2px magenta);
+  filter: drop-shadow(var(--cyan-x) var(--cyan-y) 15px cyan) drop-shadow(var(--magenta-x) var(--magenta-y) 15px magenta);
 }
 
 .sign-up {
@@ -90,6 +97,20 @@
 .sign-up:hover {
   color: black;
 }
+.d-patch {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  margin: 8px 16px;
+}
+
+:root {
+  --cyan-x: 0px;
+  --cyan-y: 0px;
+  --magenta-x: 0px;
+  --magenta-y: 0px;
+}
+
 
 html, body {
   overflow-x:hidden;
