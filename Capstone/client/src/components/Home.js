@@ -25,6 +25,9 @@ class Home extends Component {
         <div className="home-wrapper">
           <Video width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
           </Video>
+          <div className="jumbotron-wrapper">
+             <p className="jumbotron">Something here</p>
+          </div>
         </div>
         {/* <ul>
           {

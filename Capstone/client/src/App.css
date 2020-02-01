@@ -120,8 +120,7 @@
 
 #example-player {
   min-width: 100vw;
-  filter: hue-rotate(300deg);
-  -webkit-filter: contrast(0.8);
+  -webkit-filter: grayscale(var(--wave-greyscale)) opacity(var(--wave-opacity)) hue-rotate(var(--wave-hue)) contrast(0.8);
 }
 @media screen and (max-width: 600px) {
  #example-player {
@@ -132,7 +131,8 @@
 .home-wrapper {
   background-color: #191919;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  /* align items makes the video have a higher z index than the navbar. no bueno */
   justify-content: center;
   height: 100vh;
 }
@@ -142,6 +142,10 @@
   --cyan-y: 0px;
   --magenta-x: 0px;
   --magenta-y: 0px;
+
+  --wave-greyscale: 100%;
+  --wave-opacity: 0.5;
+  --wave-hue: 0deg;
 }
 
 
