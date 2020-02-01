@@ -36,6 +36,9 @@ class Landing extends Component {
         {/* <h1>Landing Page WOOOOOO</h1> */}
 
         <div className="landing-background">
+          <div className="jumbotron-wrapper">
+             <p className="jumbotron">save your minimoog patches.</p>
+          </div>
           <img className="landing-minimoog" src={require('../Assets/minimoog-transparent-landing.png')} alt="img" />
         </div>
         <ul>

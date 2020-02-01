@@ -10,7 +10,7 @@
   justify-content: flex-end;
   font-size: calc(10px + 1vmin);
   color: rgba(255, 255, 255, .8);
-  padding: 0 20px;
+  padding: 0 16px 0px 8px;
 }
 
 .nav-items {
@@ -72,7 +72,9 @@
   max-width: 100%;
   max-height: 100%;
   min-width: 600px;
+  min-height: 600px;
   filter: drop-shadow(var(--cyan-x) var(--cyan-y) 15px cyan) drop-shadow(var(--magenta-x) var(--magenta-y) 15px magenta);
+  transform: translate(0px, 24px);
 }
 
 .sign-up {
@@ -102,6 +104,18 @@
   font-size: 24px;
   color: white;
   margin: 8px 16px;
+}
+
+.jumbotron-wrapper {
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  margin-top: 65px;
+}
+.jumbotron {
+  color: white;
+  font-size: 30px;
+  text-align: center;
 }
 
 :root {
