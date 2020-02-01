@@ -12,8 +12,8 @@ class Landing extends Component {
     root.addEventListener("mousemove", e => {
       const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-      const xOffset = Math.floor(15 * ((vw/2) - e.clientX)/(vw/2))
-      const yOffset = Math.floor(15 * ((vh/2) - e.clientY)/(vh/2))
+      const xOffset = Math.floor(20 * ((vw/2) - e.clientX)/(vw/2))
+      const yOffset = Math.floor(20 * ((vh/2) - e.clientY)/(vh/2))
       console.log(xOffset, yOffset)
       root.style.setProperty('--cyan-x', -xOffset + "px");
       root.style.setProperty('--cyan-y', -yOffset + "px");

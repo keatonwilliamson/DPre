@@ -73,7 +73,7 @@
   max-height: 100%;
   min-width: 600px;
   min-height: 600px;
-  filter: drop-shadow(var(--cyan-x) var(--cyan-y) 15px cyan) drop-shadow(var(--magenta-x) var(--magenta-y) 15px magenta);
+  filter: drop-shadow(2px 2px 3px black) drop-shadow(-2px -2px 3px black) drop-shadow(var(--cyan-x) var(--cyan-y) 0px rgb(109, 186, 216)) drop-shadow(var(--magenta-x) var(--magenta-y) 0px rgb(255, 123, 0));
   transform: translate(0px, 24px);
 }
 
