@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+// import cloudinary from 'cloudinary';
 
 class Home extends Component {
   state = {
@@ -20,12 +22,15 @@ class Home extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to my app</h1>
-        <ul>
+        <div className="home-wrapper">
+          <Video width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
+          </Video>
+        </div>
+        {/* <ul>
           {
             this.state.values.map(value => <li>{value}</li>)
           }
-        </ul>
+        </ul> */}
       </>
     )
   }

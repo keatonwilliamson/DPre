@@ -118,6 +118,25 @@
   text-align: center;
 }
 
+#example-player {
+  min-width: 100vw;
+  filter: hue-rotate(300deg);
+  -webkit-filter: contrast(0.8);
+}
+@media screen and (max-width: 600px) {
+ #example-player {
+  min-width: 600px;
+ }
+}
+
+.home-wrapper {
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 :root {
   --cyan-x: 0px;
   --cyan-y: 0px;
