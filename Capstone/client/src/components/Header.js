@@ -7,7 +7,7 @@ function Header(props) {
 
   function styleWaveVideo(hueRotateDegrees) {
     root.style.setProperty('--wave-greyscale', "0%");
-    root.style.setProperty('--wave-opacity', "1");
+    root.style.setProperty('--wave-opacity', "0.8");
     root.style.setProperty('--wave-hue', `${hueRotateDegrees}deg`);
     console.log("stlye")
   }
@@ -24,22 +24,43 @@ function Header(props) {
     <nav className="header">
       <div className="left-nav-items">
         <img className="moog-header-logo" src={require('../Assets/moog-logo.png')} alt="img" />
-        <p className="d-patch">DPatch</p>
+        <Link className="d-patch" to="/">DPatch</Link>
+        {/* <p className="d-patch">DPatch</p> */}
+        {
+        props.user ? (
+          <>
+            <ul className="center-nav-items">
+              <li className="nav-item center-nav-item"
+                onMouseEnter={() => styleWaveVideo(280)}
+                onMouseLeave={resetStyleWaveVideo}>
+                <Link to="/">Explore</Link>
+              </li>
+              <li className="nav-item center-nav-item"
+              onMouseEnter={() => styleWaveVideo(280)}
+              onMouseLeave={resetStyleWaveVideo}>
+                <Link to="/">Bank</Link>
+              </li>
+              <li className="nav-item center-nav-item"
+              onMouseEnter={() => styleWaveVideo(80)}
+              onMouseLeave={resetStyleWaveVideo}>
+                <Link to="/">Design</Link>
+              </li>
+            </ul>
+          </>
+        ) : (
+            <>
+            </>
+          )
+      }
       </div>
+
       <ul className="nav-items">
 
         {
           props.user ? (
             <>
               <li className="nav-item">Hello {props.user.username}</li>
-              <li className="nav-item" onClick={() => {
-                props.logout()
-                resetStyleWaveVideo()
-              }}
-                onMouseEnter={() => styleWaveVideo(180)}
-                onMouseLeave={resetStyleWaveVideo}>
-                Log out
-                   </li>
+              <li className="nav-item" onClick={props.logout}>Log out</li>
             </>
           ) : (
               <>

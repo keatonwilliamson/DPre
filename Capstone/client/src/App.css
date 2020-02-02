@@ -20,6 +20,13 @@
   flex-direction: row;
 }
 
+.center-nav-items {
+  margin: 8px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
 .left-nav-items{
   margin: 8px;
   list-style: none;
@@ -39,6 +46,10 @@
   font-weight: 900;
   /* padding: 8px 10px; */
   cursor: pointer;
+}
+
+.center-nav-item {
+  margin: 0px 16px;
 }
 
 .log-in {
@@ -104,6 +115,7 @@
   font-size: 24px;
   color: white;
   margin: 8px 16px;
+  text-decoration: none;
 }
 
 .jumbotron-wrapper {
@@ -121,6 +133,7 @@
 #example-player {
   min-width: 100vw;
   -webkit-filter: grayscale(var(--wave-greyscale)) opacity(var(--wave-opacity)) hue-rotate(var(--wave-hue)) contrast(0.8);
+  transform: translate(0px, 60px);
 }
 @media screen and (max-width: 600px) {
  #example-player {
