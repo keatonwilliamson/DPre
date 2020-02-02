@@ -49,6 +49,20 @@
   cursor: pointer;
 }
 
+.active-nav-item {
+  content: "ya";
+  display: block;
+  position: absolute;
+  bottom: .65em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 30%;
+  height: 4px;
+  border-radius: 4px;
+  background: #03f;
+}
+
 .center-nav-item {
   margin: 0px 16px;
 }
@@ -135,6 +149,7 @@
   min-width: 100vw;
   -webkit-filter: grayscale(var(--wave-greyscale)) opacity(var(--wave-opacity)) hue-rotate(var(--wave-hue)) contrast(0.8);
   transform: translate(0px, 60px);
+  -webkit-transition: 0.1s -webkit-filter linear;
 }
 @media screen and (max-width: 600px) {
  #example-player {

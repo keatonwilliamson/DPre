@@ -28,11 +28,20 @@ class App extends Component {
           <Route exact path="/register" render={() => (
             <Register onLogin={(user) => this.setState({ user })} />
           )} />
-          <Route exact path="/" render={() => (
+          <Route exact path="/" render={(props) => (
             <>
-            <Header user={this.state.user} logout={this.logout} />
-            {this.state.user ? ( <Home /> ) : <Landing />}
+            <Header user={this.state.user} logout={this.logout} {...props} />
+              <Landing />
+              {/* <Header user={this.state.user} logout={this.logout} {...props} />
+            {this.state.user ? ( <Home /> ) : <Landing />} */}
             </>
+          )} />
+
+          <Route path={["/home", "/explore", "/bank", "/design"]} render={(props) => (
+            <Header user={this.state.user} logout={this.logout} {...props} />
+          )} />
+          <Route exact path="/home" render={() => (
+            <Home />
           )} />
         </Router>
       </div>

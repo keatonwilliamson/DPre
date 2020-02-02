@@ -17,6 +17,7 @@ function Header(props) {
     root.style.setProperty('--wave-opacity', "0.5");
     root.style.setProperty('--wave-hue', `0deg`);
     console.log("un-stlye")
+    console.log(props.match)
   }
 
 
@@ -24,34 +25,35 @@ function Header(props) {
     <nav className="header">
       <div className="left-nav-items">
         <img className="moog-header-logo" src={require('../Assets/moog-logo.png')} alt="img" />
-        <Link className="d-patch" to="/">DPatch</Link>
+        <Link className="d-patch" to="/home">DPatch</Link>
         {/* <p className="d-patch">DPatch</p> */}
         {
-        props.user ? (
-          <>
-            <ul className="center-nav-items">
-              <li className="nav-item center-nav-item"
-                onMouseEnter={() => styleWaveVideo(280)}
-                onMouseLeave={resetStyleWaveVideo}>
-                <Link to="/">Explore</Link>
-              </li>
-              <li className="nav-item center-nav-item"
-              onMouseEnter={() => styleWaveVideo(280)}
-              onMouseLeave={resetStyleWaveVideo}>
-                <Link to="/">Bank</Link>
-              </li>
-              <li className="nav-item center-nav-item"
-              onMouseEnter={() => styleWaveVideo(80)}
-              onMouseLeave={resetStyleWaveVideo}>
-                <Link to="/">Design</Link>
-              </li>
-            </ul>
-          </>
-        ) : (
+          props.user ? (
             <>
+              <ul className="center-nav-items">
+                <li className="nav-item center-nav-item"
+                // onMouseEnter={() => styleWaveVideo(280)}
+                // onMouseLeave={resetStyleWaveVideo}
+                >
+                  <Link to="/Explore">Explore</Link>
+                </li>
+                <li className="nav-item center-nav-item"
+                  onMouseEnter={() => styleWaveVideo(280)}
+                  onMouseLeave={resetStyleWaveVideo}>
+                  <Link to="/Bank">Bank</Link>
+                </li>
+                <li className="nav-item center-nav-item"
+                  onMouseEnter={() => styleWaveVideo(80)}
+                  onMouseLeave={resetStyleWaveVideo}>
+                  <Link to="/Design">Design</Link>
+                </li>
+              </ul>
             </>
-          )
-      }
+          ) : (
+              <>
+              </>
+            )
+        }
       </div>
 
       <ul className="nav-items">
@@ -60,7 +62,10 @@ function Header(props) {
           props.user ? (
             <>
               <li className="nav-item">Hello {props.user.username}</li>
-              <li className="nav-item" onClick={props.logout}>Log out</li>
+              <li className="nav-item" onClick={() => {
+                props.logout()
+                props.history.push('/')
+              }}>Log out</li>
             </>
           ) : (
               <>
