@@ -25,6 +25,7 @@
   list-style: none;
   display: flex;
   flex-direction: row;
+  padding: 4px 0px;
 }
 
 .left-nav-items{
