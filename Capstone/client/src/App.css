@@ -271,6 +271,12 @@
 .mixer-label {
   left: 1204px;
 }
+.modifiers-label {
+  left: 1764px;
+}
+.output-label {
+  left: 2208px;
+}
 
 
 :root {

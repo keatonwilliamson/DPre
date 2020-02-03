@@ -36,7 +36,10 @@ class Design extends Component {
               <p className="section-label mixer-label">MIXER</p>
               <div className="divider mixer-divider"></div>
 
+              <p className="section-label modifiers-label">MODIFIERS</p>
               <div className="divider modifiers-divider"></div>
+
+              <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
             </div>
             <div></div>
