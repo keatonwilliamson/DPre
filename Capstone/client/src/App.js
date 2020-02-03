@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Landing from './components/Landing';
 import Register from './components/Register';
 import Home from './components/Home';
+import Design from './components/Design';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
 
@@ -42,6 +43,9 @@ class App extends Component {
           )} />
           <Route exact path="/home" render={() => (
             <Home />
+          )} />
+          <Route path="/design" render={() => (
+            <Design />
           )} />
         </Router>
       </div>

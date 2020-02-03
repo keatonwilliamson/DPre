@@ -166,6 +166,17 @@
   height: 100vh;
 }
 
+.design-background {
+  background-image: url('./Assets/vinyl.jpg');
+  background-size: cover;
+  height: 100vh;
+  -webkit-filter: contrast(0.8) brightness(0.5);
+  /* background-position: center;
+  height: 150vh;
+  width: auto; */
+}
+
+
 :root {
   --cyan-x: 0px;
   --cyan-y: 0px;
