@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
+
+  useEffect(() => {
+    if (!props.user) props.history.push('/');
+  }, [])
 
   let root = document.documentElement;
 
@@ -9,15 +13,12 @@ function Header(props) {
     root.style.setProperty('--wave-greyscale', "0%");
     root.style.setProperty('--wave-opacity', "0.8");
     root.style.setProperty('--wave-hue', `${hueRotateDegrees}deg`);
-    console.log("stlye")
   }
 
   function resetStyleWaveVideo() {
     root.style.setProperty('--wave-greyscale', "100%");
     root.style.setProperty('--wave-opacity', "0.5");
     root.style.setProperty('--wave-hue', `0deg`);
-    console.log("un-stlye")
-    console.log(props.match)
   }
 
 

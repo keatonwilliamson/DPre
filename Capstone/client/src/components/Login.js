@@ -9,6 +9,10 @@ class Login extends Component {
     errors: [],
   }
 
+  componentDidMount() {
+    if (this.props.user) this.props.history.push('/home');
+  }
+  
   submit = (event) => {
     event.preventDefault();
     login({

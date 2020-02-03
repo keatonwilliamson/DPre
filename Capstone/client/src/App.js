@@ -22,16 +22,16 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Route exact path="/login" render={() => (
-            <Login onLogin={(user) => this.setState({ user })} />
+          <Route exact path="/login" render={(props) => (
+            <Login user={this.state.user} onLogin={(user) => this.setState({ user })} {...props}/>
           )} />
-          <Route exact path="/register" render={() => (
-            <Register onLogin={(user) => this.setState({ user })} />
+          <Route exact path="/register" render={(props) => (
+            <Register user={this.state.user} onLogin={(user) => this.setState({ user })} {...props} />
           )} />
           <Route exact path="/" render={(props) => (
             <>
             <Header user={this.state.user} logout={this.logout} {...props} />
-              <Landing />
+              <Landing user={this.state.user} {...props}/>
               {/* <Header user={this.state.user} logout={this.logout} {...props} />
             {this.state.user ? ( <Home /> ) : <Landing />} */}
             </>

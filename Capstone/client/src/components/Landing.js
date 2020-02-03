@@ -7,7 +7,7 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-
+    if (this.props.user) this.props.history.push('/home');
     let root = document.documentElement;
     root.addEventListener("mousemove", e => {
       const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
