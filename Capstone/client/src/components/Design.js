@@ -21,8 +21,26 @@ class Design extends Component {
   render() {
     return (
       <>
-        <div className="design-background">
+        <div className="design-background"></div>
+        <div className="design-view">
+          <div className="sliding-grid">
+            <div></div>
+            <div className="panel">
 
+              <p className="section-label controllers-label">CONTROLLERS</p>
+              <div className="divider controllers-divider"></div>
+
+              <p className="section-label oscillator-label">OSCILLATOR BANK</p>
+              <div className="divider oscillator-divider"></div>
+
+              <p className="section-label mixer-label">MIXER</p>
+              <div className="divider mixer-divider"></div>
+
+              <div className="divider modifiers-divider"></div>
+              <div className="divider output-divider"></div>
+            </div>
+            <div></div>
+          </div>
         </div>
       </>
     )

@@ -167,13 +167,109 @@
 }
 
 .design-background {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  position: fixed;
   background-image: url('./Assets/vinyl.jpg');
   background-size: cover;
   height: 100vh;
+  width: 100%;
+  filter: contrast(0.8) brightness(0.5);
   -webkit-filter: contrast(0.8) brightness(0.5);
+  /* overflow-x: scroll;
+  padding-bottom: 62px; */
   /* background-position: center;
   height: 150vh;
   width: auto; */
+}
+
+.design-view {
+  /* grid-template-rows: minmax(150px, 1fr); */
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  height: calc(100vh - 62px);
+  width: 100%;
+  /* border: 7px solid pink; */
+  box-sizing: border-box;
+}
+
+.sliding-grid {
+  box-sizing: border-box;
+  height: 100%;
+  width: 2612px;
+  /* border: 3px solid red; */
+  border-radius: 8px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 20px 2544px 20px;
+  align-items: center;
+  /* margin: 0px 40px; */
+  /* position: absolute; 
+  top: 50%;
+  transform: translate(0px, calc(-50%)); */
+}
+
+.panel {
+  position: relative;
+  grid-column: 2 / 3;
+  height: 638px;
+  width: 2544px;
+  border: 3px solid white;
+  border-radius: 8px;
+  /* margin: 0px 40px; */
+  /* position: absolute; 
+  top: 50%;
+  transform: translate(0px, calc(-50%));  */
+}
+/* 
+.panel::before,
+.panel::after {
+  content: ‘’;
+} */
+
+.divider {
+  position: absolute;
+  height: 638px;
+  border-left: 3px solid white;
+}
+
+.controllers-divider {
+  left: 348px;
+}
+.oscillator-divider {
+  left: 912px;
+}
+.mixer-divider {
+  left: 1620px;
+}
+.modifiers-divider {
+  left: 2137px;
+}
+.output-divider {
+  left: 2449px;
+}
+
+.section-label {
+  position: absolute;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 46px;
+  margin: 0px;
+    /* adjusted  down from 516px to compensate for line height*/
+  top: 536px;
+}
+
+.controllers-label {
+  left: 22px;
+}
+.oscillator-label {
+  left: 418px;
+  word-spacing: 30px;
+}
+.mixer-label {
+  left: 1204px;
 }
 
 
