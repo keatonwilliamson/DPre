@@ -78,7 +78,11 @@ class Knob extends React.Component {
 
   render() {
     let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
-    if(this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 10px rgb(109, 186, 216)"
+    if(this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 5px white"
+    // let oStyle = { ...iStyle }
+    // delete oStyle.transform;
+    // oStyle.filter = "drop-shadow(-0px -0px 1px white"
+    // delete iStyle.filter;
     let metalStyle = this.dcpy({ transform: "rotate(" + -this.state.deg + "deg)" });
     return (
       <div className="knob outer" onMouseDown={this.startDrag}>
