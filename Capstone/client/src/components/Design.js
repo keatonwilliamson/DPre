@@ -37,6 +37,7 @@ class Design extends Component {
 
               <Knob
                 parameter="masterTuneValue"
+                currentValue={this.state.masterTuneValue}
                 degrees={260}
                 min={1}
                 max={10}
