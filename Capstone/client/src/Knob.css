@@ -2,8 +2,8 @@
   position: absolute;
   display: flex;
   position: relative;
-  height: 88px;
-  width: 88px;
+  height: 90px;
+  width: 90px;
 }
 /* .knob .ticks {
   position: absolute;
@@ -20,8 +20,8 @@
 } */
 .knob.outer {
   position: absolute;
-  height: 96px;
-  width: 96px;
+  height: 98px;
+  width: 98px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@
   position: absolute;
   width: 7%;
   height: 7%;
-  bottom: 10%;
+  bottom: 11%;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
@@ -76,8 +76,8 @@
 .metal {
   border-radius: 100%;
   /* border: 7px solid pink; */
-  height: 60px;
-  width: 60px;
+  height: 62px;
+  width: 62px;
   background-image: url('./Assets/metal-circle-transparent.png');
   background-position: center;
   background-size: cover;
