@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-
+import Knob from '../Knob'
 class Design extends Component {
   state = {
     values: [],
+    masterTuneValue: 0
   }
+
+  handleChange = (parameter, newValue) => {
+    console.log(`${parameter} is set at ${newValue}`)
+    this.setState({
+      masterTuneValue: newValue
+    });
+  };
 
   componentDidMount() {
     const authHeader = createAuthHeaders();
@@ -27,6 +35,14 @@ class Design extends Component {
             <div></div>
             <div className="panel">
 
+              <Knob
+                parameter="masterTuneValue"
+                degrees={260}
+                min={1}
+                max={10}
+                value={80}
+                onChange={this.handleChange}
+              />
               <p className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider"></div>
 

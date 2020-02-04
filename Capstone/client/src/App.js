@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Design from './components/Design';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
+import './Knob.css';
 
 class App extends Component {
   state = {
