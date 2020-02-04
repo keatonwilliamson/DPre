@@ -1,0 +1,27 @@
+.horizontal-rocker-box {
+  position: absolute;
+  height: 44px;
+  width: 100px;
+  border: 5px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  box-sizing: border-box;
+}
+
+.oscillator-modulation-rocker {
+  top: 196px;
+  left: 298px;
+}
+.horizontal-rocker-left-flat-facade {
+  position: absolute;
+  left: 20px;
+}
+.horizontal-rocker-right-flat-facade {
+
+}
+.horizontal-rocker-right-round-facade {
+  
+}
+.horizontal-rocker-right-flat-facade {
+
+}

@@ -9,6 +9,7 @@ import Design from './components/Design';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
 import './Knob.css';
+import './Rocker.css';
 
 class App extends Component {
   state = {

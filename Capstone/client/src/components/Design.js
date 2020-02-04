@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
 import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
-import Knob from '../Knob'
+import Knob from './Knob'
+import HorizontalRocker from './HorizontalRocker';
 class Design extends Component {
   state = {
     values: [],
@@ -35,15 +36,7 @@ class Design extends Component {
             <div></div>
             <div className="panel">
 
-              <Knob
-                parameter="masterTuneValue"
-                currentValue={this.state.masterTuneValue}
-                degrees={260}
-                min={1}
-                max={10}
-                value={80}
-                onChange={this.handleChange}
-              />
+              {/* SECTION LABELS */}
               <p className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider"></div>
 
@@ -58,6 +51,20 @@ class Design extends Component {
 
               <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
+
+              {/* KNOBS */}
+              <Knob
+                parameter="masterTuneValue"
+                currentValue={this.state.masterTuneValue}
+                degrees={260}
+                min={1}
+                max={10}
+                value={80}
+                onChange={this.handleChange}
+              />
+
+              {/* Rockers */}
+              <HorizontalRocker color={"orange"}/>
             </div>
             <div></div>
           </div>
