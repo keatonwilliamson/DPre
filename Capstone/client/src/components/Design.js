@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import Knob from './Knob'
 import HorizontalRocker from './HorizontalRocker';
+import OnLabel from './OnLabel';
 class Design extends Component {
   state = {
     values: [],
-    masterTuneValue: 0
+    settings: {
+      masterTuneValue: 0,
+      oscillatorModulationValue: false,
+      filterModulationValue: false
+    }
   }
 
   handleChange = (parameter, newValue) => {
-    console.log(`${parameter} is set at ${newValue}`)
     this.setState({
-      masterTuneValue: newValue
+      settings: {...this.state.settings, [parameter]: newValue }  
     });
+    // console.log(`state settings: ${JSON.stringify(this.state.settings)}`)
   };
 
   componentDidMount() {
@@ -37,7 +41,7 @@ class Design extends Component {
             <div className="panel">
 
               {/* SECTION LABELS */}
-              <p className="section-label controllers-label">CONTROLLERS</p>
+              <p onMouseDown={() => console.log("yeahhh boi", this.state.settings)} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider"></div>
 
               <p className="section-label oscillator-label">OSCILLATOR BANK</p>
@@ -55,7 +59,7 @@ class Design extends Component {
               {/* KNOBS */}
               <Knob
                 parameter="masterTuneValue"
-                currentValue={this.state.masterTuneValue}
+                currentValue={this.state.settings.masterTuneValue}
                 degrees={260}
                 min={1}
                 max={10}
@@ -64,7 +68,9 @@ class Design extends Component {
               />
 
               {/* Rockers */}
-              <HorizontalRocker color={"orange"}/>
+              <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
+              <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"}/>
+              <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
             </div>
             <div></div>
           </div>

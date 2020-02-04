@@ -12,6 +12,16 @@
   top: 196px;
   left: 298px;
 }
+.oscillator-modulation-on-label {
+  top: 240px;
+  left: 377px;
+}
+
+.filter-modulation-rocker {
+  top: 196px;
+  left: 700px;
+  transform: rotate(-90deg);
+}
 .horizontal-rocker-left-flat-facade {
   position: absolute;
   left: 20px;
@@ -24,4 +34,13 @@
 }
 .horizontal-rocker-right-flat-facade {
 
+}
+
+.on-label {
+  position: absolute;
+  margin: 0px;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 13px;
+  transition: all 0.34s ease-out;
 }

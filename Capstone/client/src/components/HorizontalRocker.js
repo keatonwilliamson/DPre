@@ -40,6 +40,7 @@ class HorizontalRocker extends React.Component {
     }
 
     toggleRocker = () => {
+        this.props.onChange(this.props.parameter, !this.state.on);
         this.setState({ on: !this.state.on });
     }
 
@@ -142,7 +143,7 @@ class HorizontalRocker extends React.Component {
         // delete iStyle.filter;
         // let metalStyle = this.dcpy({ transform: "rotate(" + -this.state.deg + "deg)" });
         return (
-            <div className="horizontal-rocker-box oscillator-modulation-rocker" onMouseDown={this.toggleRocker}>
+            <div className={`horizontal-rocker-box ${this.props.uniqueClass}`} onMouseDown={this.toggleRocker}>
                 <div className="horizontal-rocker-left-round-facade" style={leftRoundStyle}></div>
                 <div className="horizontal-rocker-right-round-facade" style={rightRoundStyle}></div>
 

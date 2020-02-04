@@ -78,7 +78,7 @@ class Knob extends React.Component {
 
     render() {
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
-        if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 5px white"
+        if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 3px white"
         // let oStyle = { ...iStyle }
         // delete oStyle.transform;
         // oStyle.filter = "drop-shadow(-0px -0px 1px white"
@@ -91,6 +91,7 @@ class Knob extends React.Component {
                         <p className="knob-value" style={this.state.glow ? {visibility: "visible"} : {visibility: "hidden"}}>{this.props.currentValue}</p>
                     </div>
                     <div className="grip" />
+                    <div className="grip outer-grip" />
                 </div>
             </div>
         );
