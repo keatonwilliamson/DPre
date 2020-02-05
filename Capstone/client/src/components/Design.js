@@ -31,8 +31,7 @@ class Design extends Component {
   };
 
   modulationMixLabelFadeAmount = () => {
-    return this.state.settings.modulationMixValue - 5
-    // console.log(`state settings: ${JSON.stringify(this.state.settings)}`)
+    return ((this.state.settings.modulationMixValue[1] - 180) / 188)
   };
 
   componentDidMount() {
@@ -122,6 +121,12 @@ class Design extends Component {
 
               {/* Labels */}
               <LabelGroup />
+              <p style={{ filter: `opacity(${1 - this.modulationMixLabelFadeAmount()})` }} className="modulation-mix-sub-label modulation-mix-knob-label-osc-3">OSC. 3/</p>
+              <p style={{ filter: `opacity(${1 - this.modulationMixLabelFadeAmount()})` }} className="modulation-mix-sub-label modulation-mix-knob-label-filter-eg">FILTER EG</p>
+              <p style={{ filter: `opacity(${1 + this.modulationMixLabelFadeAmount()})` }} className="modulation-mix-sub-label modulation-mix-knob-label-noise">NOISE /</p>
+              <p style={{ filter: `opacity(${1 + this.modulationMixLabelFadeAmount()})` }} className="modulation-mix-sub-label modulation-mix-knob-label-lfo">LFO</p>
+
+
               <p style={{ filter: `opacity(${this.state.settings.modulationSourceA ? 0.2 : 1})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-osc-3">OSC. 3</p>
               <p style={{ filter: `opacity(${this.state.settings.modulationSourceA ? 1 : 0.2})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-filter-eg">FILTER EG</p>
               <p style={{ filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>

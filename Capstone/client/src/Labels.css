@@ -34,19 +34,23 @@
 .modulation-mix-knob-label-osc-3{
     top: 432px;
     left: 191px;
+    transition: none;
 }
 .modulation-mix-knob-label-filter-eg{
     word-spacing: 2px;
     top: 450px;
     left: 186px;
+    transition: none;
 }
 .modulation-mix-knob-label-noise{
     top: 432px;
     left: 266px;
+    transition: none;
 }
 .modulation-mix-knob-label-lfo{
     top: 450px;
     left: 279px;
+    transition: none;
 }
 
 .modulation-mix-rocker-label-osc-3{
