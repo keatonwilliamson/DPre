@@ -11,6 +11,9 @@ class Design extends Component {
     settings: {
       masterTuneValue: 0,
       glideValue: 0,
+      modulationMixValue: 10,
+      modulationSourceA: false,
+      modulationSourceB: false,
       oscillatorModulationValue: false,
       filterModulationValue: false
     }
@@ -18,7 +21,7 @@ class Design extends Component {
 
   handleChange = (parameter, newValue) => {
     this.setState({
-      settings: {...this.state.settings, [parameter]: newValue }  
+      settings: { ...this.state.settings, [parameter]: newValue }
     });
     // console.log(`state settings: ${JSON.stringify(this.state.settings)}`)
   };
@@ -59,8 +62,10 @@ class Design extends Component {
               <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
 
-              <Dial zeroCentered={true} multiplier={1} uniqueClass={"master-tune-dial"}/>
-              <Dial uniqueClass={"glide-dial"}/>
+              {/* DIALS */}
+              <Dial zeroCentered={true} multiplier={1} uniqueClass={"master-tune-dial"} />
+              <Dial uniqueClass={"glide-dial"} />
+              <Dial modulationMix={true} uniqueClass={"modulation-mix-dial"} />
 
               {/* KNOBS */}
               <Knob
@@ -84,21 +89,31 @@ class Design extends Component {
                 value={80}
                 onChange={this.handleChange}
               />
+              <Knob
+                uniqueClass={"modulation-mix-knob"}
+                parameter="modulationMixValue"
+                currentValue={this.state.settings.modulationMixValue}
+                degrees={300}
+                min={1}
+                max={10}
+                value={80}
+                onChange={this.handleChange}
+              />
 
               {/* Rockers */}
-              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-b-rocker"} color={"orange"} onChange={this.handleChange}/>
-              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-a-rocker"} color={"orange"} onChange={this.handleChange}/>
+              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"orange"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"orange"} onChange={this.handleChange} />
 
-              <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
-              <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"}/>
+              <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange} />
+              <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"} />
 
 
-              <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
+              <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange} />
 
               {/* Labels */}
               <LabelGroup />
 
-            <div className="measuring-tape"></div>
+              <div className="measuring-tape"></div>
             </div>
             <div></div>
           </div>

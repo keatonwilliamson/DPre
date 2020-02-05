@@ -13,5 +13,54 @@
 }
 .glide-knob-label {
     top: 279px;
-    left: 55px;
+    left: 62px;
+}
+.modulation-mix-label {
+    top: 279px;
+    left: 177px;
+}
+
+.modulation-mix-sub-label {
+    position: absolute;
+    margin: 0px;
+    font-family: 'Alata', sans-serif;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.modulation-mix-knob-label-osc-3{
+    top: 432px;
+    left: 191px;
+}
+.modulation-mix-knob-label-filter-eg{
+    word-spacing: 2px;
+    top: 450px;
+    left: 186px;
+}
+.modulation-mix-knob-label-noise{
+    top: 432px;
+    left: 266px;
+}
+.modulation-mix-knob-label-lfo{
+    top: 450px;
+    left: 279px;
+}
+
+.modulation-mix-rocker-label-osc-3{
+    top: 517px;
+    left: 21px;
+}
+.modulation-mix-rocker-label-filter-eg{
+    word-spacing: 2px;
+    top: 517px;
+    left: 88px;
+}
+.modulation-mix-rocker-label-noise{
+    top: 517px;
+    left: 188px;
+}
+.modulation-mix-rocker-label-lfo{
+    top: 517px;
+    left: 296px;
 }

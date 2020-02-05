@@ -119,12 +119,22 @@
 
 .glide-dial {
   top: 293px;
-  left: -8px;
+  left: -1px;
 }
 
 .glide-knob {
   top: 328px;
-  left: 29px;
+  left: 36px;
+}
+
+.modulation-mix-dial {
+  top: 293px;
+  left: 169px;
+}
+
+.modulation-mix-knob {
+  top: 328px;
+  left: 206px;
 }
 
 
