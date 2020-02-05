@@ -15,7 +15,7 @@ class Design extends Component {
       modulationSourceA: false,
       modulationSourceB: false,
       oscillatorModulationValue: false,
-      filterModulationValue: false
+      oscillator3ControlValue: false,
     }
   }
 
@@ -48,7 +48,8 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => console.log("yeahhh boi", this.state.settings)} className="section-label controllers-label">CONTROLLERS</p>
-              <div className="divider controllers-divider"></div>
+              <div className="divider controllers-divider-top"></div>
+              <div className="divider controllers-divider-bottom"></div>
 
               <p className="section-label oscillator-label">OSCILLATOR BANK</p>
               <div className="divider oscillator-divider"></div>
@@ -101,14 +102,14 @@ class Design extends Component {
               />
 
               {/* Rockers */}
-              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"orange"} onChange={this.handleChange} />
-              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"orange"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleChange} />
 
               <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange} />
               <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"} />
 
 
-              <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="oscillator3ControlValue" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleChange} />
 
               {/* Labels */}
               <LabelGroup />

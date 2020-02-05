@@ -26,11 +26,12 @@
   left: 204px;
 }
 
-.filter-modulation-rocker {
-  top: 196px;
-  left: 700px;
+.oscillator-3-control-rocker {
+  top: 451px;
+  left: 338px;
   transform: rotate(-90deg);
 }
+
 .horizontal-rocker-left-flat-facade {
   position: absolute;
   left: 20px;

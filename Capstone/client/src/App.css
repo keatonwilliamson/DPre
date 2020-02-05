@@ -232,12 +232,21 @@
 .divider {
   position: absolute;
   height: 638px;
-  border-left: 3px solid white;
+  border-left: 2px solid white;
 }
 
-.controllers-divider {
+.controllers-divider-top {
+  top: 0px;
   left: 348px;
+  height: 156px;
 }
+
+.controllers-divider-bottom {
+  left: 348px;
+  height: 407px;
+  top: 231px;
+}
+
 .oscillator-divider {
   left: 912px;
 }

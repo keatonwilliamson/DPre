@@ -34,7 +34,25 @@ class HorizontalRocker extends React.Component {
                 leftRoundGradient: "linear-gradient(to right, rgb(74, 31, 7), rgb(158, 58, 0))",
                 rightRoundGradient: "linear-gradient(to right, rgb(204, 75, 0), rgb(153, 56, 0))",
                 rightFlatBorderLeft: "1px solid rgb(158, 58, 0)",
-                rightFlatBorderRight: "1px solid rgb(204, 75, 0)"
+                rightFlatBorderRight: "1px solid rgb(204, 75, 0)",
+                leftFlatBorderLeft: "1px solid rgb(204, 75, 0)",
+            },
+            black: {
+                on: {
+                    leftFlat: "rgb(43, 43, 43)",
+                    rightFlat: "black"
+
+                },
+                off: {
+                    leftFlat: "black",
+                    rightFlat: "rgb(43, 43, 43)"
+
+                },
+                leftRoundGradient: "linear-gradient(to right, black, rgb(50, 50, 50))",
+                rightRoundGradient: "linear-gradient(to right, rgb(73, 73, 73), black)",
+                rightFlatBorderLeft: "1px solid rgb(73, 73, 73)",
+                rightFlatBorderRight: "1px solid rgb(73, 73, 73)",
+                leftFlatBorderLeft: "1px solid rgb(73, 73, 73)",
             }
         }
     }
@@ -119,9 +137,10 @@ class HorizontalRocker extends React.Component {
         // flats
         let leftFlatStyle = this.dcpy({
             height: "34px",
-            width: `${this.state.on ? 24 : 32}px`,
+            width: `${this.state.on ? 24 : 31}px`,
             backgroundColor: `${this.state.on ? this.colors[this.props.color].on.leftFlat : this.colors[this.props.color].off.leftFlat}`,
             left: `${this.state.on ? 29 : 5}px`,
+            borderLeft: this.colors[this.props.color].leftFlatBorderLeft,
             position: "absolute",
             transition: "all 0.3s ease-out"
         });
