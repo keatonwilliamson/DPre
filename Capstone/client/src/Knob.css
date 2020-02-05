@@ -99,6 +99,14 @@
   width: 168px
 }
 
+.dial-number-label {
+  position: absolute;
+  margin: 0px;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 13px;
+}
+
 /* add 35px to top and 37px to left of dial coordinates to get knob position */
 .master-tune-dial {
   top: 125px;

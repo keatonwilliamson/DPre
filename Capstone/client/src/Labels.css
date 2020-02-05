@@ -1,0 +1,13 @@
+.knob-label {
+    position: absolute;
+    margin: 0px;
+    font-family: 'Alata', sans-serif;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.master-tune-label {
+    top: 104px;
+    left: 146px;
+}

@@ -4,6 +4,7 @@ import Knob from './Knob'
 import HorizontalRocker from './HorizontalRocker';
 import OnLabel from './OnLabel';
 import Dial from './Dial';
+import LabelGroup from './LabelGroup';
 class Design extends Component {
   state = {
     values: [],
@@ -41,7 +42,7 @@ class Design extends Component {
             <div></div>
             <div className="panel">
 
-              {/* SECTION LABELS */}
+              {/* SECTIONS */}
               <p onMouseDown={() => console.log("yeahhh boi", this.state.settings)} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider"></div>
 
@@ -57,11 +58,12 @@ class Design extends Component {
               <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
 
-              <Dial uniqueClass={"master-tune-dial"}/>
+              <Dial zeroCentered={true} multiplier={1} uniqueClass={"master-tune-dial"}/>
               <Dial uniqueClass={"glide-dial"}/>
 
               {/* KNOBS */}
               <Knob
+                masterTune={true}
                 uniqueClass={"master-tune-knob"}
                 parameter="masterTuneValue"
                 currentValue={this.state.settings.masterTuneValue}
@@ -77,6 +79,8 @@ class Design extends Component {
               <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"}/>
               <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
 
+              {/* Labels */}
+              <LabelGroup />
 
             <div className="measuring-tape"></div>
             </div>

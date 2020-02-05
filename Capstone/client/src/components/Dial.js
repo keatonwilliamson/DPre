@@ -25,6 +25,18 @@ function Dial(props) {
                 />
             ))
             }
+            { props.zeroCentered ?
+                (<>
+                <p style={{top: 113, left: 12 }} className="dial-number-label">{-2 * props.multiplier}</p>
+                <p style={{top: 37, left: 12 }} className="dial-number-label">{-1 * props.multiplier}</p>
+                <p style={{top: 3, left: 81 }} className="dial-number-label">{-0 * props.multiplier}</p>
+                <p style={{top: 37, left: 144 }} className="dial-number-label">{1 * props.multiplier}</p>
+                <p style={{top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p>
+                </>
+                ) : (
+                 <p>hey</p>   
+                )
+            }
         </div>
     )
 }

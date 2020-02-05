@@ -18,7 +18,7 @@ class Knob extends React.Component {
 
         this.state = {
             deg: this.currentDeg,
-            glow: false
+            clicked: false
         };
     }
 
@@ -29,7 +29,7 @@ class Knob extends React.Component {
             x: knob.left + knob.width / 2,
             y: knob.top + knob.height / 2
         };
-        this.setState({ glow: true });
+        this.setState({ clicked: true });
         const moveHandler = e => {
             this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
             if (this.currentDeg === this.startAngle) this.currentDeg--;
@@ -42,12 +42,13 @@ class Knob extends React.Component {
                     this.currentDeg
                 )
             );
+            if(this.props.masterTune) newValue = ((newValue - 5)/2)
             this.setState({ deg: this.currentDeg });
             this.props.onChange(this.props.parameter, newValue);
         };
         document.addEventListener("mousemove", moveHandler);
         document.addEventListener("mouseup", e => {
-            this.setState({ glow: false });
+            this.setState({ clicked: false });
             document.removeEventListener("mousemove", moveHandler);
         });
     };
@@ -77,7 +78,13 @@ class Knob extends React.Component {
     };
 
     render() {
+        if (this.props.masterTune) console.log("heyyyy tune")
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
+        let knobValueStyle = this.dcpy({visibility: this.state.clicked ? "visible" : "hidden"});
+        if (this.props.masterTune) {
+            knobValueStyle.marginTop = "12px";
+            knobValueStyle.fontSize = "24px"
+        }
         // if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 3px white"
         // let oStyle = { ...iStyle }
         // delete oStyle.transform;
@@ -88,7 +95,7 @@ class Knob extends React.Component {
             <div className={`knob outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
                 <div className="knob inner" style={iStyle}>
                     <div className="metal" style={metalStyle}>
-                        <p className="knob-value" style={this.state.glow ? {visibility: "visible"} : {visibility: "hidden"}}>{this.props.currentValue}</p>
+                        <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
                     </div>
                     <div className="grip" />
                     <div className="grip outer-grip" />
