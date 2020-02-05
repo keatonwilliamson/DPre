@@ -3,6 +3,7 @@ import { createAuthHeaders } from '../API/userManager';
 import Knob from './Knob'
 import HorizontalRocker from './HorizontalRocker';
 import OnLabel from './OnLabel';
+import Dial from './Dial';
 class Design extends Component {
   state = {
     values: [],
@@ -56,11 +57,15 @@ class Design extends Component {
               <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
 
+              <Dial uniqueClass={"master-tune-dial"}/>
+              <Dial uniqueClass={"glide-dial"}/>
+
               {/* KNOBS */}
               <Knob
+                uniqueClass={"master-tune-knob"}
                 parameter="masterTuneValue"
                 currentValue={this.state.settings.masterTuneValue}
-                degrees={260}
+                degrees={300}
                 min={1}
                 max={10}
                 value={80}
@@ -71,6 +76,9 @@ class Design extends Component {
               <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
               <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"}/>
               <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
+
+
+            <div className="measuring-tape"></div>
             </div>
             <div></div>
           </div>

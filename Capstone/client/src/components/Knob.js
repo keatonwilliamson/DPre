@@ -78,14 +78,14 @@ class Knob extends React.Component {
 
     render() {
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
-        if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 3px white"
+        // if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 3px white"
         // let oStyle = { ...iStyle }
         // delete oStyle.transform;
         // oStyle.filter = "drop-shadow(-0px -0px 1px white"
         // delete iStyle.filter;
         let metalStyle = this.dcpy({ transform: "rotate(" + -this.state.deg + "deg)" });
         return (
-            <div className="knob outer" onMouseDown={this.startDrag}>
+            <div className={`knob outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
                 <div className="knob inner" style={iStyle}>
                     <div className="metal" style={metalStyle}>
                         <p className="knob-value" style={this.state.glow ? {visibility: "visible"} : {visibility: "hidden"}}>{this.props.currentValue}</p>

@@ -251,6 +251,14 @@
   left: 2449px;
 }
 
+.measuring-tape {
+  position: absolute;
+  height: 20px;
+  border-left: 3px solid yellow;
+  top:0px;
+  left: 20px
+}
+
 .section-label {
   position: absolute;
   font-family: 'Alata', sans-serif;

@@ -89,3 +89,39 @@
   font-weight: bold;
   margin: 0px;
 }
+
+
+/* DIAL */
+
+.dial-container{
+  position: absolute;
+  height: 168px;
+  width: 168px
+}
+
+/* add 35px to top and 37px to left of dial coordinates to get knob position */
+.master-tune-dial {
+  top: 125px;
+  left: 82px;
+} 
+.master-tune-knob {
+  top: 160px;
+  left: 119px;
+}
+
+.glide-dial {
+  top: 293px;
+  left: -8px;
+}
+
+
+.tick {
+  width: 3px;
+  height: 60px;
+  left: 84px;
+  top: 84px;
+  position: absolute;
+  background-color: white;
+}
+
+
