@@ -9,9 +9,9 @@ class Design extends Component {
   state = {
     values: [],
     settings: {
-      masterTuneValue: 0,
-      glideValue: 0,
-      modulationMixValue: 10,
+      masterTuneValue: [0, 30],
+      glideValue: [0, 30],
+      modulationMixValue: [10, 330],
       modulationSourceA: false,
       modulationSourceB: false,
       oscillatorModulationValue: false,
@@ -19,10 +19,20 @@ class Design extends Component {
     }
   }
 
-  handleChange = (parameter, newValue) => {
+  handleRockerChange = (parameter, newValue) => {
     this.setState({
       settings: { ...this.state.settings, [parameter]: newValue }
     });
+  };
+  handleKnobChange = (parameter, newValue, currentDegrees) => {
+    this.setState({
+      settings: { ...this.state.settings, [parameter]: newValue }
+    });
+    console.log(currentDegrees)
+  };
+
+  modulationMixLabelFadeAmount = () => {
+    return this.state.settings.modulationMixValue - 5
     // console.log(`state settings: ${JSON.stringify(this.state.settings)}`)
   };
 
@@ -73,43 +83,43 @@ class Design extends Component {
                 masterTune={true}
                 uniqueClass={"master-tune-knob"}
                 parameter="masterTuneValue"
-                currentValue={this.state.settings.masterTuneValue}
+                // currentValue={this.state.settings.masterTuneValue}
                 degrees={300}
                 min={1}
                 max={10}
-                value={80}
-                onChange={this.handleChange}
+                value={this.state.settings.masterTuneValue[1]}
+                onChange={this.handleKnobChange}
               />
               <Knob
                 uniqueClass={"glide-knob"}
                 parameter="glideValue"
-                currentValue={this.state.settings.glideValue}
+                // currentValue={this.state.settings.glideValue}
                 degrees={300}
                 min={1}
                 max={10}
-                value={80}
-                onChange={this.handleChange}
+                value={this.state.settings.glideValue[1]}
+                onChange={this.handleKnobChange}
               />
               <Knob
                 uniqueClass={"modulation-mix-knob"}
                 parameter="modulationMixValue"
-                currentValue={this.state.settings.modulationMixValue}
+                // currentValue={this.state.settings.modulationMixValue}
                 degrees={300}
                 min={1}
                 max={10}
-                value={80}
-                onChange={this.handleChange}
+                value={this.state.settings.modulationMixValue[1]}
+                onChange={this.handleKnobChange}
               />
 
               {/* Rockers */}
-              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleChange} />
-              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleRockerChange} />
+              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleRockerChange} />
 
-              <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"} />
 
 
-              <HorizontalRocker parameter="oscillator3ControlValue" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleChange} />
+              <HorizontalRocker parameter="oscillator3ControlValue" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleRockerChange} />
 
               {/* Labels */}
               <LabelGroup />
@@ -117,6 +127,8 @@ class Design extends Component {
               <p style={{filter: `opacity(${this.state.settings.modulationSourceA ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-filter-eg">FILTER EG</p>
               <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>
               <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-lfo">LFO</p>
+
+
 
               <div className="measuring-tape"></div>
             </div>

@@ -6,15 +6,16 @@ class Knob extends React.Component {
         this.fullAngle = props.degrees;
         this.startAngle = (360 - props.degrees) / 2;
         this.endAngle = this.startAngle + props.degrees;
-        this.currentDeg = Math.floor(
-            this.convertRange(
-                props.min,
-                props.max,
-                this.startAngle,
-                this.endAngle,
-                props.value
-            )
-        );
+        // this.currentDeg = Math.floor(
+        //     this.convertRange(
+        //         props.min,
+        //         props.max,
+        //         this.startAngle,
+        //         this.endAngle,
+        //         props.value
+        //     )
+        // );
+        this.currentDeg = props.value;
 
         this.state = {
             deg: this.currentDeg,
@@ -44,7 +45,7 @@ class Knob extends React.Component {
             );
             if(this.props.masterTune) newValue = ((newValue - 5)/2)
             this.setState({ deg: this.currentDeg });
-            this.props.onChange(this.props.parameter, newValue);
+            this.props.onChange(this.props.parameter, newValue, Math.floor(this.currentDeg));
         };
         document.addEventListener("mousemove", moveHandler);
         document.addEventListener("mouseup", e => {
