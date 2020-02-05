@@ -28,7 +28,6 @@ class Design extends Component {
     this.setState({
       settings: { ...this.state.settings, [parameter]: [newValue, currentDegrees] }
     });
-    console.log(currentDegrees)
   };
 
   modulationMixLabelFadeAmount = () => {
@@ -123,10 +122,13 @@ class Design extends Component {
 
               {/* Labels */}
               <LabelGroup />
-              <p style={{filter: `opacity(${this.state.settings.modulationSourceA ? 0.2 : 1})`}} className="modulation-mix-sub-label modulation-mix-rocker-label-osc-3">OSC. 3</p>
-              <p style={{filter: `opacity(${this.state.settings.modulationSourceA ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-filter-eg">FILTER EG</p>
-              <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>
-              <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-lfo">LFO</p>
+              <p style={{ filter: `opacity(${this.state.settings.modulationSourceA ? 0.2 : 1})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-osc-3">OSC. 3</p>
+              <p style={{ filter: `opacity(${this.state.settings.modulationSourceA ? 1 : 0.2})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-filter-eg">FILTER EG</p>
+              <p style={{ filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>
+              <p style={{ filter: `opacity(${this.state.settings.modulationSourceB ? 1 : 0.2})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-lfo">LFO</p>
+
+              <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
+              <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
 
 
 

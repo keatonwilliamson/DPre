@@ -11,9 +11,6 @@ function LabelGroup() {
         <p className="modulation-mix-sub-label modulation-mix-knob-label-noise">NOISE /</p>
         <p className="modulation-mix-sub-label modulation-mix-knob-label-lfo">LFO</p>
 
-        <p className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
-        <p className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
-
         <p className="knob-label oscillator-modulation-label-oscillator">OSCILLATOR</p>
         <p className="knob-label oscillator-modulation-label-modulation">MODULATION</p>
 
