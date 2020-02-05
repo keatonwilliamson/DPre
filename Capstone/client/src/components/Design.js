@@ -113,6 +113,10 @@ class Design extends Component {
 
               {/* Labels */}
               <LabelGroup />
+              <p style={{filter: `opacity(${this.state.settings.modulationSourceA ? 0.2 : 1})`}} className="modulation-mix-sub-label modulation-mix-rocker-label-osc-3">OSC. 3</p>
+              <p style={{filter: `opacity(${this.state.settings.modulationSourceA ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-filter-eg">FILTER EG</p>
+              <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>
+              <p style={{filter: `opacity(${this.state.settings.modulationSourceB ? 1 : 0.2})`}}className="modulation-mix-sub-label modulation-mix-rocker-label-lfo">LFO</p>
 
               <div className="measuring-tape"></div>
             </div>
