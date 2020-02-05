@@ -1,19 +1,19 @@
 .horizontal-rocker-box {
   position: absolute;
-  height: 44px;
+  height: 41px;
   width: 100px;
   border: 5px solid black;
   border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
   box-sizing: border-box;
 }
 
 .oscillator-modulation-rocker {
-  top: 196px;
+  top: 192px;
   left: 298px;
 }
 .oscillator-modulation-on-label {
-  top: 240px;
+  top: 233px;
   left: 377px;
 }
 

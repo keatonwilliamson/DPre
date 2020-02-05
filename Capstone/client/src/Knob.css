@@ -29,7 +29,7 @@
   background-image: url('./Assets/plastic-circle-transparent.png');
   background-size: cover;
   background-position: center;
-  filter: drop-shadow(-2px -2px 3px rgb(0, 0, 0));
+  filter: drop-shadow(-2px 2px 3px black);
 
   /* border-radius: 50%; */
   /* border: 1px solid #222; */
