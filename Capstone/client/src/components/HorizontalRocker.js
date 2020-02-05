@@ -17,7 +17,7 @@ class HorizontalRocker extends React.Component {
         // );
 
         this.state = {
-            on: false
+            on: props.on
         };
         this.colors = {
             orange: {

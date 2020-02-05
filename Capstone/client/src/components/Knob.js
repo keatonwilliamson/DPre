@@ -15,8 +15,7 @@ class Knob extends React.Component {
         //         props.value
         //     )
         // );
-        this.currentDeg = props.value;
-
+        this.currentDeg = props.initialDegreeValue;
         this.state = {
             deg: this.currentDeg,
             clicked: false
