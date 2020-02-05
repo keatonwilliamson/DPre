@@ -263,10 +263,11 @@
   position: absolute;
   font-family: 'Alata', sans-serif;
   color: white;
-  font-size: 46px;
+  font-size: 38px;
   margin: 0px;
+  letter-spacing: 5px;
     /* adjusted  down from 516px to compensate for line height*/
-  top: 536px;
+  top: 540px;
 }
 
 .controllers-label {
