@@ -29,6 +29,7 @@
     letter-spacing: 1px;
 }
 
+/* MODULATION MIX SUB LABELS */
 .modulation-mix-knob-label-osc-3{
     top: 432px;
     left: 191px;
@@ -72,4 +73,15 @@
 .oscillator-3-control-rocker-label-control{
     top: 401px;
     left: 355px;
+}
+/* END MODULATION MIX SUB LABELS */
+
+
+.oscillator-modulation-label-oscillator{
+    top: 153px;
+    left: 297px;
+}
+.oscillator-modulation-label-modulation{
+    top: 170px;
+    left: 291px;
 }
