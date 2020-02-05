@@ -86,8 +86,13 @@ class Design extends Component {
               />
 
               {/* Rockers */}
+              <HorizontalRocker parameter="modulationSourceA" uniqueClass={"modulation-source-b-rocker"} color={"orange"} onChange={this.handleChange}/>
+              <HorizontalRocker parameter="modulationSourceB" uniqueClass={"modulation-source-a-rocker"} color={"orange"} onChange={this.handleChange}/>
+
               <HorizontalRocker parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
               <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"}/>
+
+
               <HorizontalRocker parameter="filterModulationValue" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleChange}/>
 
               {/* Labels */}

@@ -1,6 +1,6 @@
 .horizontal-rocker-box {
   position: absolute;
-  height: 41px;
+  height: 39px;
   width: 100px;
   border: 5px solid black;
   border-top: 2px solid black;
@@ -13,8 +13,17 @@
   left: 298px;
 }
 .oscillator-modulation-on-label {
-  top: 233px;
+  top: 231px;
   left: 377px;
+}
+
+.modulation-source-a-rocker {
+  top: 478px;
+  left: 36px;
+}
+.modulation-source-b-rocker {
+  top: 478px;
+  left: 204px;
 }
 
 .filter-modulation-rocker {
