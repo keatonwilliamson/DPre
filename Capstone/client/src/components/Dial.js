@@ -25,16 +25,22 @@ function Dial(props) {
                 />
             ))
             }
-            { props.zeroCentered ?
+            {props.zeroCentered ?
                 (<>
-                <p style={{top: 113, left: 12 }} className="dial-number-label">{-2 * props.multiplier}</p>
-                <p style={{top: 37, left: 12 }} className="dial-number-label">{-1 * props.multiplier}</p>
-                <p style={{top: 3, left: 81 }} className="dial-number-label">{-0 * props.multiplier}</p>
-                <p style={{top: 37, left: 144 }} className="dial-number-label">{1 * props.multiplier}</p>
-                <p style={{top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p>
+                    <p style={{ top: 113, left: 12 }} className="dial-number-label">{-2 * props.multiplier}</p>
+                    <p style={{ top: 37, left: 12 }} className="dial-number-label">{-1 * props.multiplier}</p>
+                    <p style={{ top: 3, left: 81 }} className="dial-number-label">{-0 * props.multiplier}</p>
+                    <p style={{ top: 37, left: 144 }} className="dial-number-label">{1 * props.multiplier}</p>
+                    <p style={{ top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p>
                 </>
-                ) : (
-                 <p>hey</p>   
+                ) : (<>
+                    <p style={{ top: 139, left: 44 }} className="dial-number-label">{0}</p>
+                    <p style={{ top: 74, left: 10 }} className="dial-number-label">{2}</p>
+                    <p style={{ top: 9, left: 44 }} className="dial-number-label">{4}</p>
+                    <p style={{ top: 9, left: 118 }} className="dial-number-label">{6}</p>
+                    <p style={{ top: 74, left: 153 }} className="dial-number-label">{8}</p>
+                    <p style={{ top: 139, left: 118 }} className="dial-number-label">{10}</p>
+                </>
                 )
             }
         </div>

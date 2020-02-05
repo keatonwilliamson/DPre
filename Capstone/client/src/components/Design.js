@@ -10,6 +10,7 @@ class Design extends Component {
     values: [],
     settings: {
       masterTuneValue: 0,
+      glideValue: 0,
       oscillatorModulationValue: false,
       filterModulationValue: false
     }
@@ -67,6 +68,16 @@ class Design extends Component {
                 uniqueClass={"master-tune-knob"}
                 parameter="masterTuneValue"
                 currentValue={this.state.settings.masterTuneValue}
+                degrees={300}
+                min={1}
+                max={10}
+                value={80}
+                onChange={this.handleChange}
+              />
+              <Knob
+                uniqueClass={"glide-knob"}
+                parameter="glideValue"
+                currentValue={this.state.settings.glideValue}
                 degrees={300}
                 min={1}
                 max={10}

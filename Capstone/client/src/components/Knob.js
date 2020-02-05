@@ -78,7 +78,6 @@ class Knob extends React.Component {
     };
 
     render() {
-        if (this.props.masterTune) console.log("heyyyy tune")
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
         let knobValueStyle = this.dcpy({visibility: this.state.clicked ? "visible" : "hidden"});
         if (this.props.masterTune) {
