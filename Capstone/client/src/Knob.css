@@ -207,10 +207,8 @@
   background-color: white;
 }
 
-.oscillator-1-range-pointer {
-  left: 436px;
-  top: 72px;
-}
+
+
 
 /* POINTER DIAL */
 .pointer-dial-tick{
@@ -228,9 +226,122 @@
   width: 168px
 }
 
+/* POINTER DIALS */
 .oscillator-1-range-dial {
   left: 411px;
   top: 46px;
 }
+.oscillator-1-waveform-dial {
+  left: 737px;
+  top: 46px;
+}
+.oscillator-2-range-dial {
+  left: 411px;
+  top: 217px;
+}
+.oscillator-2-waveform-dial {
+  left: 737px;
+  top: 217px;
+}
+.oscillator-3-range-dial {
+  left: 411px;
+  top: 388px;
+}
+.oscillator-3-waveform-dial {
+  left: 737px;
+  top: 388px;
+}
+
+/* POINTERS */
+.oscillator-1-range-pointer {
+  left: 436px;
+  top: 72px;
+}
+
+.oscillator-1-waveform-pointer {
+  left: 762px;
+  top: 72px;
+}
+.oscillator-2-range-pointer {
+  left: 436px;
+  top: 243px;
+}
+.oscillator-2-waveform-pointer {
+  left: 762px;
+  top: 243px;
+}
+.oscillator-3-range-pointer {
+  left: 436px;
+  top: 414px;
+}
+.oscillator-3-waveform-pointer {
+  left: 762px;
+  top: 414px;
+}
 
 
+.pointer-dial-number-label {
+  position: absolute;
+  margin: 0px;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+
+.triangle-wave-label {
+  height: 26px;
+  width: auto;
+  position: absolute;
+  left: -7px;
+  top: 50px;
+}
+
+.triangle-saw-wave-label {
+  height: 28px;
+  width: auto;
+  position: absolute;
+  left: 12px;
+  top: 15px;
+}
+
+.saw-wave-label {
+  height: 27px;
+  width: auto;
+  position: absolute;
+  left: 51px;
+  top: -10px;
+}
+
+.square-wave-label {
+  height: 27px;
+  width: auto;
+  position: absolute;
+  left: 95px;
+  top: -9px;
+}
+
+.pulse-wave-label {
+  height: 26px;
+  width: auto;
+  position: absolute;
+  left: 131px;
+  top: 17px;
+}
+
+.small-pulse-wave-label {
+  height: 25px;
+  width: auto;
+  position: absolute;
+  left: 150px;
+  top: 56px;
+}
+/* 
+.saw-wave-label {
+  height: 33px;
+  width: auto;
+  position: absolute;
+  left: 6px;
+  top: 10px;
+} */

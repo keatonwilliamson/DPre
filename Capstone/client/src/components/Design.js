@@ -18,7 +18,12 @@ class Design extends Component {
       modulationSourceB: true,
       oscillatorModulationValue: false,
       oscillator3ControlValue: true,
-      oscillator1RangeValue: ["32", 180],
+      oscillator1RangeValue: ["32'", 135],
+      oscillator2RangeValue: ["16'", 165],
+      oscillator3RangeValue: ["16'", 165],
+      oscillator1WaveformValue: ["32'", 135],
+      oscillator2WaveformValue: ["16'", 165],
+      oscillator3WaveformValue: ["16'", 165],
     }
   }
 
@@ -28,6 +33,11 @@ class Design extends Component {
     });
   };
   handleKnobChange = (parameter, newValue, currentDegrees) => {
+    this.setState({
+      settings: { ...this.state.settings, [parameter]: [newValue, currentDegrees] }
+    });
+  };
+  handlePointerChange = (parameter, newValue, currentDegrees) => {
     this.setState({
       settings: { ...this.state.settings, [parameter]: [newValue, currentDegrees] }
     });
@@ -80,6 +90,11 @@ class Design extends Component {
               <Dial modulationMix={true} uniqueClass={"modulation-mix-dial"} />
 
               <PointerDial uniqueClass={"oscillator-1-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-1-waveform-dial"} waveforms={true} />
+              <PointerDial uniqueClass={"oscillator-2-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-2-waveform-dial"} waveforms={true} />
+              <PointerDial uniqueClass={"oscillator-3-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-3-waveform-dial"} waveforms={true} />
 
               {/* KNOBS */}
               <Knob
@@ -119,11 +134,62 @@ class Design extends Component {
                 parameter="oscillator1RangeValue"
                 currentValue={this.state.settings.oscillator1RangeValue[0]}
                 degrees={150}
-                min={1}
+                min={0}
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator1RangeValue[1]}
-                onChange={this.handleKnobChange}
+                onChange={this.handlePointerChange}
               />
+              <Pointer
+                uniqueClass={"oscillator-1-waveform-pointer"}
+                parameter="oscillator1WaveformValue"
+                currentValue={this.state.settings.oscillator1WaveformValue[0]}
+                degrees={150}
+                min={0}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator1WaveformValue[1]}
+                onChange={this.handlePointerChange}
+              />
+              <Pointer
+                uniqueClass={"oscillator-2-range-pointer"}
+                parameter="oscillator2RangeValue"
+                currentValue={this.state.settings.oscillator2RangeValue[0]}
+                degrees={150}
+                min={0}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator2RangeValue[1]}
+                onChange={this.handlePointerChange}
+              />
+              <Pointer
+                uniqueClass={"oscillator-2-waveform-pointer"}
+                parameter="oscillator2WaveformValue"
+                currentValue={this.state.settings.oscillator2WaveformValue[0]}
+                degrees={150}
+                min={0}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator2WaveformValue[1]}
+                onChange={this.handlePointerChange}
+              />
+              <Pointer
+                uniqueClass={"oscillator-3-range-pointer"}
+                parameter="oscillator3RangeValue"
+                currentValue={this.state.settings.oscillator3RangeValue[0]}
+                degrees={150}
+                min={0}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator3RangeValue[1]}
+                onChange={this.handlePointerChange}
+              />
+              <Pointer
+                uniqueClass={"oscillator-3-waveform-pointer"}
+                parameter="oscillator3WaveformValue"
+                currentValue={this.state.settings.oscillator3WaveformValue[0]}
+                degrees={150}
+                min={0}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator3WaveformValue[1]}
+                onChange={this.handlePointerChange}
+              />
+
 
 
               {/* Rockers */}
@@ -153,10 +219,7 @@ class Design extends Component {
               <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
 
 
-              <img className="triangle-saw-label" src={require('../Assets/triangle-saw.png')} alt="img" />
-
-
-              {/* <div className="waveforms-border">
+               {/* <div className="waveforms-border">
 
                 <div className="triangle-wave-border">
                   <div className="triangle-wave-1"></div>
@@ -195,7 +258,7 @@ class Design extends Component {
                   <div className="small-pulse-wave-4"></div>
                 </div>
 
-              </div> */}
+              </div>  */}
 
 
               <div className="measuring-tape"></div>

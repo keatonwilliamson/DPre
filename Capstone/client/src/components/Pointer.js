@@ -34,17 +34,15 @@ class Pointer extends React.Component {
         const moveHandler = e => {
             this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
             if (this.currentDeg === this.startAngle) this.currentDeg--;
-            let newValue = Math.floor(
-                this.convertRange(
-                    this.startAngle,
-                    this.endAngle,
-                    this.props.min,
-                    this.props.max,
-                    this.currentDeg
-                )
-            );
+            let newValue = Math.max(Math.floor(this.convertRange(
+                this.startAngle,
+                this.endAngle,
+                this.props.min,
+                this.props.max,
+                this.currentDeg
+            )), 0);
             this.setState({ deg: (newValue * 30 + 105) });
-            this.props.onChange(this.props.parameter, this.rangeValues[newValue], Math.floor(this.currentDeg));
+            this.props.onChange(this.props.parameter, this.rangeValues[newValue], (newValue * 30 + 105));
         };
         document.addEventListener("mousemove", moveHandler);
         document.addEventListener("mouseup", e => {
