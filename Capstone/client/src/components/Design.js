@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
 import Knob from './Knob'
+import Pointer from './Pointer'
 import HorizontalRocker from './HorizontalRocker';
 import OnLabel from './OnLabel';
 import Dial from './Dial';
+import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 class Design extends Component {
   state = {
@@ -16,6 +18,7 @@ class Design extends Component {
       modulationSourceB: true,
       oscillatorModulationValue: false,
       oscillator3ControlValue: true,
+      oscillator1RangeValue: ["32", 180],
     }
   }
 
@@ -76,6 +79,8 @@ class Design extends Component {
               <Dial uniqueClass={"glide-dial"} />
               <Dial modulationMix={true} uniqueClass={"modulation-mix-dial"} />
 
+              <PointerDial uniqueClass={"oscillator-1-range-dial"}/>
+
               {/* KNOBS */}
               <Knob
                 masterTune={true}
@@ -109,6 +114,18 @@ class Design extends Component {
                 onChange={this.handleKnobChange}
               />
 
+              <Pointer
+                uniqueClass={"oscillator-1-range-pointer"}
+                parameter="oscillator1RangeValue"
+                currentValue={this.state.settings.oscillator1RangeValue[0]}
+                degrees={150}
+                min={1}
+                max={5}
+                initialDegreeValue={this.state.settings.oscillator1RangeValue[1]}
+                onChange={this.handleKnobChange}
+              />
+
+
               {/* Rockers */}
               <HorizontalRocker on={this.state.settings.modulationSourceA} parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleRockerChange} />
               <HorizontalRocker on={this.state.settings.modulationSourceB} parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleRockerChange} />
@@ -135,6 +152,50 @@ class Design extends Component {
               <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
               <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
 
+
+              <img className="triangle-saw-label" src={require('../Assets/triangle-saw.png')} alt="img" />
+
+
+              {/* <div className="waveforms-border">
+
+                <div className="triangle-wave-border">
+                  <div className="triangle-wave-1"></div>
+                  <div className="triangle-wave-2"></div>
+                </div>
+
+                <div className="triangle-saw-wave-border">
+                  <div className="triangle-saw-wave-1"></div>
+                  <div className="triangle-saw-wave-2"></div>
+                  <div className="triangle-saw-wave-3"></div>
+                </div>
+
+                <div className="saw-wave-border">
+                  <div className="saw-wave-1"></div>
+                  <div className="saw-wave-2"></div>
+                </div>
+
+                <div className="square-wave-border">
+                  <div className="square-wave-1"></div>
+                  <div className="square-wave-2"></div>
+                  <div className="square-wave-3"></div>
+                  <div className="square-wave-4"></div>
+                </div>
+
+                <div className="pulse-wave-border">
+                  <div className="pulse-wave-1"></div>
+                  <div className="pulse-wave-2"></div>
+                  <div className="pulse-wave-3"></div>
+                  <div className="pulse-wave-4"></div>
+                </div>
+
+                <div className="small-pulse-wave-border">
+                  <div className="small-pulse-wave-1"></div>
+                  <div className="small-pulse-wave-2"></div>
+                  <div className="small-pulse-wave-3"></div>
+                  <div className="small-pulse-wave-4"></div>
+                </div>
+
+              </div> */}
 
 
               <div className="measuring-tape"></div>

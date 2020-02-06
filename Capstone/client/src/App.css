@@ -171,7 +171,7 @@
   justify-content: center;
   align-items: center; */
   position: fixed;
-  background-image: url('./Assets/vinyl.jpg');
+  background-image: url('./Assets/vinyl-sepia.jpg');
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -294,6 +294,272 @@
 }
 .output-label {
   left: 2208px;
+}
+
+
+
+
+
+.triangle-saw-label {
+  height: 33px;
+  width: auto;
+  position: absolute;
+  left: 482px;
+  top: 33px;
+}
+
+
+
+
+
+
+
+.waveforms-border {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  left: 460px;
+  top: 10px;
+  border: 2px solid black;
+}
+
+.triangle-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 6px;
+  top: 58px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.triangle-wave-1 {
+  top: 6px;
+  left: -2px;
+  position: absolute;
+  border-top: 2px solid white;
+  border-right: 2px solid rgba(255, 255, 255, 0);
+  width: 15px;
+  transform: rotate(-58deg);
+  transform-origin: top right;
+} 
+.triangle-wave-2 {
+  top: 6px;
+  left: 15px;
+  position: absolute;
+  border-top: 2px solid white;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  width: 15px;
+  transform: rotate(58deg);
+  transform-origin: top left;
+}
+
+.triangle-saw-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 27px;
+  top: 25px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.triangle-saw-wave-1 {
+  top: 5px;
+  left: -1px;
+  position: absolute;
+  border-top: 2px solid white;
+  border-right: 2px solid rgba(255, 255, 255, 0);
+  width: 15px;
+  transform: rotate(-56deg);
+  transform-origin: top right;
+} 
+.triangle-saw-wave-2 {
+  top: 5px;
+  left: 18px;
+  position: absolute;
+  border-top: 2px solid white;
+  /* border-left: 2px solid rgba(255, 255, 255, 0); */
+  width: 10px;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+.triangle-saw-wave-3 {
+  top: 19.5px;
+  left: 15.2px;
+  position: absolute;
+  border-top: 2px solid white;
+  /* border-right: 2px solid rgba(255, 255, 255, 0); */
+  width: 9px;
+  transform: rotate(41deg);
+  transform-origin: top right;
+}
+
+.saw-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 60px;
+  top: 30px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.saw-wave-1 {
+  top: 6px;
+  left: 1px;
+  position: absolute;
+  border-top: 2px solid white;
+  border-right: 2px solid rgba(255, 255, 255, 0);
+  width: 19px;
+  transform: rotate(-42deg);
+  transform-origin: top right;
+} 
+.saw-wave-2 {
+  top: 6px;
+  left: 22.2px;
+  position: absolute;
+  border-top: 2px solid white;
+  border-left: 2px solid rgba(255, 255, 255, 0);
+  width: 13.5px;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+.square-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 100px;
+  top: 30px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.square-wave-1 {
+  top: 21px;
+  left: -5.9px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.square-wave-2 {
+  top: 6.1px;
+  left: 7px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 10px;
+  transform: rotate(0deg);
+  transform-origin: top left;
+}
+.square-wave-3 {
+  top: 21px;
+  left: 2.2px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.square-wave-4 {
+  top: 19.4px;
+  left: 15.4px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 9px;
+  transform: rotate(0deg);
+  transform-origin: top left;
+}
+
+.pulse-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 130px;
+  top: 30px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.pulse-wave-1 {
+  top: 21px;
+  left: -5.9px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.pulse-wave-2 {
+  top: 6.1px;
+  left: 7px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 8px;
+  transform: rotate(0deg);
+  transform-origin: top left;
+}
+.pulse-wave-3 {
+  top: 21px;
+  left: 0.2px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.pulse-wave-4 {
+  top: 19.4px;
+  left: 13.4px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 11px;
+  transform: rotate(0deg);
+  transform-origin: top left;
+}
+
+
+.small-pulse-wave-border {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 165px;
+  top: 30px;
+  border: 1px solid pink;
+  background-color:black;
+}
+.small-pulse-wave-1 {
+  top: 21px;
+  left: -6.2px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.small-pulse-wave-2 {
+  top: 6.1px;
+  left: 7px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 6px;
+  transform: rotate(0deg);
+  transform-origin: top left;
+}
+.small-pulse-wave-3 {
+  top: 21px;
+  left: -1.8px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 15px;
+  transform: rotate(90deg);
+  transform-origin: top right;
+} 
+.small-pulse-wave-4 {
+  top: 19.4px;
+  left: 11.4px;
+  position: absolute;
+  border-top: 2px solid white;
+  width: 13px;
+  transform: rotate(0deg);
+  transform-origin: top left;
 }
 
 

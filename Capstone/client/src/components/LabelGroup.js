@@ -8,8 +8,6 @@ function LabelGroup() {
 
         <p className="knob-label oscillator-modulation-label-oscillator">OSCILLATOR</p>
         <p className="knob-label oscillator-modulation-label-modulation">MODULATION</p>
-
-
         </>
     )
 }
