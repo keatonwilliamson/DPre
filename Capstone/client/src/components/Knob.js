@@ -33,16 +33,14 @@ class Knob extends React.Component {
         const moveHandler = e => {
             this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
             if (this.currentDeg === this.startAngle) this.currentDeg--;
-            let newValue = Math.floor(
-                this.convertRange(
-                    this.startAngle,
-                    this.endAngle,
-                    this.props.min,
-                    this.props.max,
-                    this.currentDeg
-                )
-            );
-            if(this.props.masterTune) newValue = ((newValue - 5)/2)
+            let newValue = Math.max(Math.floor(this.convertRange(
+                this.startAngle,
+                this.endAngle,
+                this.props.min,
+                this.props.max,
+                this.currentDeg
+            )), 0);
+            if (this.props.masterTune) newValue = ((newValue - 5) / 2)
             this.setState({ deg: this.currentDeg });
             this.props.onChange(this.props.parameter, newValue, Math.floor(this.currentDeg));
         };
@@ -79,7 +77,7 @@ class Knob extends React.Component {
 
     render() {
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
-        let knobValueStyle = this.dcpy({visibility: this.state.clicked ? "visible" : "hidden"});
+        let knobValueStyle = this.dcpy({ visibility: this.state.clicked ? "visible" : "hidden" });
         if (this.props.masterTune) {
             knobValueStyle.marginTop = "12px";
             knobValueStyle.fontSize = "24px"

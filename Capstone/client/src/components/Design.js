@@ -88,7 +88,7 @@ class Design extends Component {
                 parameter="masterTuneValue"
                 currentValue={this.state.settings.masterTuneValue[0]}
                 degrees={300}
-                min={1}
+                min={0}
                 max={10}
                 initialDegreeValue={180}
                 onChange={this.handleKnobChange}
@@ -98,7 +98,7 @@ class Design extends Component {
                 parameter="glideValue"
                 currentValue={this.state.settings.glideValue[0]}
                 degrees={300}
-                min={1}
+                min={0}
                 max={10}
                 initialDegreeValue={this.state.settings.glideValue[1]}
                 onChange={this.handleKnobChange}
@@ -108,7 +108,7 @@ class Design extends Component {
                 parameter="modulationMixValue"
                 currentValue={this.state.settings.modulationMixValue[0]}
                 degrees={300}
-                min={1}
+                min={0}
                 max={10}
                 initialDegreeValue={this.state.settings.modulationMixValue[1]}
                 onChange={this.handleKnobChange}
