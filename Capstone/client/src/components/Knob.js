@@ -6,15 +6,6 @@ class Knob extends React.Component {
         this.fullAngle = props.degrees;
         this.startAngle = (360 - props.degrees) / 2;
         this.endAngle = this.startAngle + props.degrees;
-        // this.currentDeg = Math.floor(
-        //     this.convertRange(
-        //         props.min,
-        //         props.max,
-        //         this.startAngle,
-        //         this.endAngle,
-        //         props.value
-        //     )
-        // );
         this.currentDeg = props.initialDegreeValue;
         this.state = {
             deg: this.currentDeg,
@@ -52,7 +43,6 @@ class Knob extends React.Component {
         });
     };
 
-
     getDeg = (cX, cY, pts) => {
         const x = cX - pts.x;
         const y = cY - pts.y;
@@ -65,7 +55,6 @@ class Knob extends React.Component {
         let finalDeg = Math.min(Math.max(this.startAngle, deg), this.endAngle);
         return finalDeg;
     };
-
 
     // ((current degrees - smallest angle) / (biggest angle - smallest angle)) * (biggest range - smallest range) + smallestRange
     convertRange = (sA, bA, sR, bR, cD) => {
@@ -83,35 +72,19 @@ class Knob extends React.Component {
             knobValueStyle.marginTop = "12px";
             knobValueStyle.fontSize = "24px"
         }
-        // if (this.state.glow) iStyle.filter = "drop-shadow(-0px -0px 3px white"
-        // let oStyle = { ...iStyle }
-        // delete oStyle.transform;
-        // oStyle.filter = "drop-shadow(-0px -0px 1px white"
-        // delete iStyle.filter;
-        let metalStyle = this.dcpy({ transform: "rotate(" + -this.state.deg + "deg)" });
+        else if (this.props.oscillatorFrequency) {
+            knobValueStyle.marginTop = "12px";
+            knobValueStyle.fontSize = "38px"
+        }
         return (
             <div className={`${this.props.oscillatorFrequency ? "oscillator-frequency-knob" : "knob"} outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
-                {this.props.oscillatorFrequency ? (<>
-                    <div className="oscillator-frequency-knob inner" style={iStyle}>
-                        <div className="grip" />
-                        <div className="grip outer-grip" />
-                    </div >
-                    <div className="oscillator-frequency-knob-metal">
-                        <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
-                    </div >
-                </>
-                ) : (<>
-                    <div className="knob inner" style={iStyle}>
-                        <div className="knob-metal" style={metalStyle}>
-                            <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
-                        </div >
-                        <div className="grip" />
-                        <div className="grip outer-grip" />
-                    </div >
-                </>
-                    )
-                }
-
+                <div className={`${this.props.oscillatorFrequency ? "oscillator-frequency-knob" : "knob"} inner`} style={iStyle}>
+                    <div className="grip" />
+                    <div className="grip outer-grip" />
+                </div >
+                <div className={this.props.oscillatorFrequency ? "oscillator-frequency-knob-metal" : "knob-metal"}>
+                    <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
+                </div >
             </div>
         );
     }

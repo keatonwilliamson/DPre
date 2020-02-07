@@ -26,11 +26,6 @@ class Home extends Component {
           <Video width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
           </Video>
         </div>
-        {/* <ul>
-          {
-            this.state.values.map(value => <li>{value}</li>)
-          }
-        </ul> */}
       </>
     )
   }
