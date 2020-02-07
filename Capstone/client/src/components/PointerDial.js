@@ -40,12 +40,12 @@ function PointerDial(props) {
                     <p style={{ top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p> */}
                 </>
                 ) : (<>
-                    <p style={{ top: 55, left: -1 }} className="pointer-dial-number-label">LO</p>
-                    <p style={{ top: 16, left: 17 }} className="pointer-dial-number-label">32'</p>
-                    <p style={{ top: -3, left: 58 }} className="pointer-dial-number-label">16'</p>
-                    <p style={{ top: -3, left: 103 }} className="pointer-dial-number-label">8'</p>
-                    <p style={{ top: 20, left: 140 }} className="pointer-dial-number-label">4'</p>
-                    <p style={{ top: 57, left: 158 }} className="pointer-dial-number-label">2'</p>
+                    <p style={{ top: 56, left: 3 }} className="pointer-dial-number-label">LO</p>
+                    <p style={{ top: 21, left: 20 }} className="pointer-dial-number-label">32'</p>
+                    <p style={{ top: 1, left: 59 }} className="pointer-dial-number-label">16'</p>
+                    <p style={{ top: 1, left: 102 }} className="pointer-dial-number-label">8'</p>
+                    <p style={{ top: 23, left: 135 }} className="pointer-dial-number-label">4'</p>
+                    <p style={{ top: 57, left: 154 }} className="pointer-dial-number-label">2'</p>
                 </>
                 )
             }

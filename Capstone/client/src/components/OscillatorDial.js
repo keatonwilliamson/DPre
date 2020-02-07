@@ -1,0 +1,50 @@
+import React from 'react';
+function OscillatorDial(props) {
+    const renderTicks = () => {
+        let ticks = [];
+        for (let i = 1; i <= 17; i++) {
+            const tick = {
+                tickStyle: {
+                    transform: `rotate(${i * 20}deg)`,
+                    transformOrigin: "top",
+                    height: `${(i === 9 ? 78 : 67)}px`
+                }
+            };
+            ticks.push(tick);
+        }
+        return ticks;
+    };
+    return (
+        <div className={`oscillator-dial-container ${props.uniqueClass}`}>
+            {renderTicks().map((tick, i) => (
+                <div className="oscillator-dial-tick"
+                    key={i}
+                    // className={
+                    //     "tick" + (tick.deg <= this.currentDeg ? " active" : "")
+                    // }
+                    style={tick.tickStyle}
+                />
+            ))
+            }
+            {/* {props.zeroCentered ?
+                (<>
+                    <p style={{ top: 113, left: 12 }} className="dial-number-label">{-2 * props.multiplier}</p>
+                    <p style={{ top: 37, left: 12 }} className="dial-number-label">{-1 * props.multiplier}</p>
+                    <p style={{ top: 3, left: 81 }} className="dial-number-label">{-0 * props.multiplier}</p>
+                    <p style={{ top: 37, left: 144 }} className="dial-number-label">{1 * props.multiplier}</p>
+                    <p style={{ top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p>
+                </>
+                ) : (<>
+                    <p style={{ top: 139, left: 44 }} className="dial-number-label">{props.modulationMix ? "" : 0}</p>
+                    <p style={{ top: 74, left: 10 }} className="dial-number-label">{2}</p>
+                    <p style={{ top: 9, left: 44 }} className="dial-number-label">{4}</p>
+                    <p style={{ top: 9, left: 118 }} className="dial-number-label">{6}</p>
+                    <p style={{ top: 74, left: 153 }} className="dial-number-label">{8}</p>
+                    <p style={{ top: 139, left: 118 }} className="dial-number-label">{props.modulationMix ? "" : 10}</p>
+                </>
+                )
+            } */}
+        </div>
+    )
+}
+export default OscillatorDial;

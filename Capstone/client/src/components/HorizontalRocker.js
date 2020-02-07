@@ -119,7 +119,7 @@ class HorizontalRocker extends React.Component {
     render() {
         // rounds
         let leftRoundStyle = this.dcpy({
-            height: "34px",
+            height: "33px",
             width: "29px",
             backgroundImage: `${this.colors[this.props.color].leftRoundGradient}`,
             left: `0px`,
@@ -127,7 +127,7 @@ class HorizontalRocker extends React.Component {
             transition: "all 0.3s ease-out"
         });
         let rightRoundStyle = this.dcpy({
-            height: "34px",
+            height: "33px",
             width: "29px",
             backgroundImage: `${this.colors[this.props.color].rightRoundGradient}`,
             left: `61px`,
@@ -136,7 +136,7 @@ class HorizontalRocker extends React.Component {
         });
         // flats
         let leftFlatStyle = this.dcpy({
-            height: "34px",
+            height: "33px",
             width: `${this.state.on ? 24 : 31}px`,
             backgroundColor: `${this.state.on ? this.colors[this.props.color].on.leftFlat : this.colors[this.props.color].off.leftFlat}`,
             left: `${this.state.on ? 29 : 5}px`,
@@ -145,7 +145,7 @@ class HorizontalRocker extends React.Component {
             transition: "all 0.3s ease-out"
         });
         let rightFlatStyle = this.dcpy({
-            height: "34px",
+            height: "33px",
             width: `${this.state.on ? 30 : 24}px`,
             backgroundColor: `${this.state.on ? this.colors[this.props.color].on.rightFlat : this.colors[this.props.color].off.rightFlat}`,
             left: `${this.state.on ? 53 : 37}px`,

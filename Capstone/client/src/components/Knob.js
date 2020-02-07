@@ -41,6 +41,7 @@ class Knob extends React.Component {
                 this.currentDeg
             )), 0);
             if (this.props.masterTune) newValue = ((newValue - 5) / 2)
+            if (this.props.oscillatorFrequency) newValue = (newValue - 8)
             this.setState({ deg: this.currentDeg });
             this.props.onChange(this.props.parameter, newValue, Math.floor(this.currentDeg));
         };
@@ -89,14 +90,28 @@ class Knob extends React.Component {
         // delete iStyle.filter;
         let metalStyle = this.dcpy({ transform: "rotate(" + -this.state.deg + "deg)" });
         return (
-            <div className={`knob outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
-                <div className="knob inner" style={iStyle}>
-                    <div className="metal" style={metalStyle}>
+            <div className={`${this.props.oscillatorFrequency ? "oscillator-frequency-knob" : "knob"} outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
+                {this.props.oscillatorFrequency ? (<>
+                    <div className="oscillator-frequency-knob inner" style={iStyle}>
+                        <div className="grip" />
+                        <div className="grip outer-grip" />
+                    </div >
+                    <div className="oscillator-frequency-knob-metal">
                         <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
-                    </div>
-                    <div className="grip" />
-                    <div className="grip outer-grip" />
-                </div>
+                    </div >
+                </>
+                ) : (<>
+                    <div className="knob inner" style={iStyle}>
+                        <div className="knob-metal" style={metalStyle}>
+                            <p className="knob-value" style={knobValueStyle}>{this.props.currentValue}</p>
+                        </div >
+                        <div className="grip" />
+                        <div className="grip outer-grip" />
+                    </div >
+                </>
+                    )
+                }
+
             </div>
         );
     }

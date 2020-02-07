@@ -28,29 +28,29 @@
 }
 .knob.inner .grip {
   position: absolute;
-  width: 7%;
-  height: 7%;
-  bottom: 11%;
+  width: 6px;
+  height: 6px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
   background: white;
-  box-shadow: 0 0 3px 1px black;
+
 }
   .knob.inner .outer-grip {
-  width: 7%;
-  height: 7%;
+  width: 6px;
+  height: 6px;
   transform: translateX(-70%);
   border-radius: 50%;
   background: white;
   transform: translateX(-50%);
   bottom: 10%;
   left: 50%; 
-  bottom: 1px;
-
+  bottom: 1.5px;
+  box-shadow: 0px -0.1px 1px 1px black;
 }
 
-.metal {
+.knob-metal {
   border-radius: 100%;
   height: 62px;
   width: 62px;
@@ -197,6 +197,16 @@
   left: 206px;
 }
 
+.oscillator-2-frequency-knob {
+  top: 242px;
+  left: 590px;
+}
+
+.oscillator-3-frequency-knob {
+  top: 414px;
+  left: 590px;
+}
+
 
 .tick {
   width: 3px;
@@ -213,7 +223,7 @@
 /* POINTER DIAL */
 .pointer-dial-tick{
   width: 3px;
-  height: 66px;
+  height: 62px;
   left: 84px;
   top: 84px;
   position: absolute;
@@ -228,7 +238,7 @@
 
 /* POINTER DIALS */
 .oscillator-1-range-dial {
-  left: 411px;
+  left: 407px;
   top: 46px;
 }
 .oscillator-1-waveform-dial {
@@ -236,7 +246,7 @@
   top: 46px;
 }
 .oscillator-2-range-dial {
-  left: 411px;
+  left: 407px;
   top: 217px;
 }
 .oscillator-2-waveform-dial {
@@ -244,17 +254,17 @@
   top: 217px;
 }
 .oscillator-3-range-dial {
-  left: 411px;
+  left: 407px;
   top: 388px;
 }
 .oscillator-3-waveform-dial {
   left: 737px;
-  top: 388px;
+  top: 413px;
 }
 
 /* POINTERS */
 .oscillator-1-range-pointer {
-  left: 436px;
+  left: 432px;
   top: 72px;
 }
 
@@ -263,7 +273,7 @@
   top: 72px;
 }
 .oscillator-2-range-pointer {
-  left: 436px;
+  left: 432px;
   top: 243px;
 }
 .oscillator-2-waveform-pointer {
@@ -271,7 +281,7 @@
   top: 243px;
 }
 .oscillator-3-range-pointer {
-  left: 436px;
+  left: 432px;
   top: 414px;
 }
 .oscillator-3-waveform-pointer {
@@ -345,3 +355,89 @@
   left: 6px;
   top: 10px;
 } */
+
+
+.oscillator-dial-container{
+  position: absolute;
+  height: 192px;
+  width: 192px
+}
+
+.oscillator-frequency-knob {
+  position: absolute;
+  display: flex;
+  position: relative;
+  height: 114px;
+  width: 114px;
+}
+
+.oscillator-frequency-knob.inner {
+  background-image: url('./Assets/moog-knob.png');
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oscillator-frequency-knob.outer {
+  position: absolute;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./Assets/plastic-circle-transparent.png');
+  background-size: cover;
+  background-position: center;
+  filter: drop-shadow(-2px 2px 3px black);
+
+}
+.oscillator-frequency-knob-metal {
+  position: absolute;
+  border-radius: 100%;
+  height: 83px;
+  width: 83px;
+  background-image: url('./Assets/metal-circle-transparent.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.oscillator-frequency-knob .grip {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 3px 1px black;
+}
+.oscillator-frequency-knob .outer-grip {
+  width: 6px;
+  height: 6px;
+  transform: translateX(-70%);
+  border-radius: 50%;
+  background: white;
+  transform: translateX(-50%);
+  bottom: 10%;
+  left: 50%; 
+  bottom: 2px;
+  box-shadow: 0px -0.1px 1px 1px black;
+}
+
+.oscillator-dial-tick{
+  width: 3px;
+  left: 96px;
+  top: 96px;
+  position: absolute;
+  background-color: white;
+}
+.oscillator-2-dial{
+  top: 211px;
+  left: 558px;
+}
+.oscillator-3-dial{
+  top: 382px;
+  left: 558px;
+}

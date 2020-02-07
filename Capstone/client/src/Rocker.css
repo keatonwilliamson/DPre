@@ -1,6 +1,6 @@
 .horizontal-rocker-box {
   position: absolute;
-  height: 39px;
+  height: 38px;
   width: 100px;
   border: 5px solid black;
   border-top: 2px solid black;
@@ -28,7 +28,7 @@
 
 .oscillator-3-control-rocker {
   top: 451px;
-  left: 338px;
+  left: 336px;
   transform: rotate(-90deg);
 }
 

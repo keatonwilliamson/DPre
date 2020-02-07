@@ -5,6 +5,7 @@ import Pointer from './Pointer'
 import HorizontalRocker from './HorizontalRocker';
 import OnLabel from './OnLabel';
 import Dial from './Dial';
+import OscillatorDial from './OscillatorDial';
 import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 class Design extends Component {
@@ -21,6 +22,8 @@ class Design extends Component {
       oscillator1RangeValue: ["32'", 135],
       oscillator2RangeValue: ["16'", 165],
       oscillator3RangeValue: ["16'", 165],
+      oscillator2FrequencyValue: [0, 180],
+      oscillator3FrequencyValue: [0, 180],
       oscillator1WaveformValue: ["32'", 135],
       oscillator2WaveformValue: ["16'", 165],
       oscillator3WaveformValue: ["16'", 165],
@@ -96,6 +99,9 @@ class Design extends Component {
               <PointerDial uniqueClass={"oscillator-3-range-dial"}/>
               <PointerDial uniqueClass={"oscillator-3-waveform-dial"} waveforms={true} />
 
+              <OscillatorDial uniqueClass={"oscillator-2-dial"} />
+              <OscillatorDial uniqueClass={"oscillator-3-dial"} />
+
               {/* KNOBS */}
               <Knob
                 masterTune={true}
@@ -128,6 +134,21 @@ class Design extends Component {
                 initialDegreeValue={this.state.settings.modulationMixValue[1]}
                 onChange={this.handleKnobChange}
               />
+
+              <Knob
+                oscillatorFrequency={true}
+                uniqueClass={"oscillator-2-frequency-knob"}
+                parameter="oscillator2FrequencyValue"
+                currentValue={this.state.settings.oscillator2FrequencyValue[0]}
+                degrees={320}
+                min={0}
+                max={16}
+                initialDegreeValue={this.state.settings.oscillator2FrequencyValue[1]}
+                onChange={this.handleKnobChange}
+              />
+
+
+
 
               <Pointer
                 uniqueClass={"oscillator-1-range-pointer"}
