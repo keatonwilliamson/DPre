@@ -133,6 +133,13 @@
     background-size: cover;
     filter: drop-shadow(-8px 12px 8px black);
   }
+  .pointer-metal-waveform-display {
+    /* position: absolute; */
+    margin-top: 4px;
+    height: 35px;
+    width: auto;
+    filter: drop-shadow(2px 2px 2px black) drop-shadow(-2px 2px 2px black)drop-shadow(2px -2px 2px black)drop-shadow(-2px -2px 2px black);
+  }
   
   .pointer-value {
     font-family: 'Alata', sans-serif;

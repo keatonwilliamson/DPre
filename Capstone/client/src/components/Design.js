@@ -24,9 +24,9 @@ class Design extends Component {
       oscillator3RangeValue: ["16'", 165],
       oscillator2FrequencyValue: [0, 180],
       oscillator3FrequencyValue: [0, 180],
-      oscillator1WaveformValue: ["32'", 135],
-      oscillator2WaveformValue: ["16'", 165],
-      oscillator3WaveformValue: ["16'", 165],
+      oscillator1WaveformValue: ["saw", 165],
+      oscillator2WaveformValue: ["saw", 165],
+      oscillator3WaveformValue: ["saw", 165],
     }
   }
 
@@ -173,6 +173,7 @@ class Design extends Component {
                 onChange={this.handlePointerChange}
               />
               <Pointer
+                waveforms={true}
                 uniqueClass={"oscillator-1-waveform-pointer"}
                 parameter="oscillator1WaveformValue"
                 currentValue={this.state.settings.oscillator1WaveformValue[0]}
@@ -193,6 +194,7 @@ class Design extends Component {
                 onChange={this.handlePointerChange}
               />
               <Pointer
+                waveforms={true}
                 uniqueClass={"oscillator-2-waveform-pointer"}
                 parameter="oscillator2WaveformValue"
                 currentValue={this.state.settings.oscillator2WaveformValue[0]}
@@ -213,6 +215,7 @@ class Design extends Component {
                 onChange={this.handlePointerChange}
               />
               <Pointer
+                waveforms={true}
                 uniqueClass={"oscillator-3-waveform-pointer"}
                 parameter="oscillator3WaveformValue"
                 currentValue={this.state.settings.oscillator3WaveformValue[0]}

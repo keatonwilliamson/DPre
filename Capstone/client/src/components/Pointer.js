@@ -6,16 +6,8 @@ class Pointer extends React.Component {
         this.fullAngle = props.degrees;
         this.startAngle = (360 - props.degrees) / 2;
         this.endAngle = this.startAngle + props.degrees;
-        // this.currentDeg = Math.floor(
-        //     this.convertRange(
-        //         props.min,
-        //         props.max,
-        //         this.startAngle,
-        //         this.endAngle,
-        //         props.value
-        //     )
-        // );
-        this.rangeValues = ["LO", "32'", "16'", "8'", "4'", "2'",]
+        this.rangeValues = ["LO", "32'", "16'", "8'", "4'", "2'"]
+        this.waveformValues = ["triangle", "triangle-saw", "saw", "square", "pulse", "small-pulse"]
         this.currentDeg = props.initialDegreeValue;
         this.state = {
             deg: this.currentDeg,
@@ -42,7 +34,7 @@ class Pointer extends React.Component {
                 this.currentDeg
             )), 0);
             this.setState({ deg: (newValue * 30 + 105) });
-            this.props.onChange(this.props.parameter, this.rangeValues[newValue], (newValue * 30 + 105));
+            this.props.onChange(this.props.parameter, (this.props.waveforms ? this.waveformValues[newValue] : this.rangeValues[newValue]), (newValue * 30 + 105));
         };
         document.addEventListener("mousemove", moveHandler);
         document.addEventListener("mouseup", e => {
@@ -85,7 +77,11 @@ class Pointer extends React.Component {
                 <div className={`pointer outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
                     <div className="pointer inner" style={iStyle}>
                         <div className="pointer-metal" style={metalStyle}>
-                            <p className="pointer-value" style={knobValueStyle}>{this.props.currentValue}</p>
+                            {this.props.waveforms ?
+                                <img className="pointer-metal-waveform-display" style={knobValueStyle} src={require(`../Assets/waveforms/${this.props.currentValue}.png`)} alt="img" />
+                                :
+                                <p className="pointer-value" style={knobValueStyle}>{this.props.currentValue}</p>
+                            }
                         </div>
                         <div className="grip" />
                     </div>
