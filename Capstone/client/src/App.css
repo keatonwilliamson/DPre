@@ -297,7 +297,7 @@
 }
 
 
-
+/* 
 .waveforms-border {
   height: 200px;
   width: 200px;
@@ -361,7 +361,7 @@
   left: 18px;
   position: absolute;
   border-top: 2px solid white;
-  /* border-left: 2px solid rgba(255, 255, 255, 0); */
+  border-left: 2px solid rgba(255, 255, 255, 0);
   width: 10px;
   transform: rotate(90deg);
   transform-origin: top left;
@@ -371,7 +371,7 @@
   left: 15.2px;
   position: absolute;
   border-top: 2px solid white;
-  /* border-right: 2px solid rgba(255, 255, 255, 0); */
+  border-right: 2px solid rgba(255, 255, 255, 0);
   width: 9px;
   transform: rotate(41deg);
   transform-origin: top right;
@@ -544,7 +544,7 @@
   width: 13px;
   transform: rotate(0deg);
   transform-origin: top left;
-}
+} */
 
 
 :root {

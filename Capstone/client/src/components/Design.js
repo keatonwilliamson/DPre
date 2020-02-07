@@ -147,6 +147,18 @@ class Design extends Component {
                 onChange={this.handleKnobChange}
               />
 
+              <Knob
+                oscillatorFrequency={true}
+                uniqueClass={"oscillator-3-frequency-knob"}
+                parameter="oscillator3FrequencyValue"
+                currentValue={this.state.settings.oscillator3FrequencyValue[0]}
+                degrees={320}
+                min={0}
+                max={16}
+                initialDegreeValue={this.state.settings.oscillator3FrequencyValue[1]}
+                onChange={this.handleKnobChange}
+              />
+
 
 
 

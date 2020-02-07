@@ -259,7 +259,7 @@
 }
 .oscillator-3-waveform-dial {
   left: 737px;
-  top: 413px;
+  top: 388px;
 }
 
 /* POINTERS */
@@ -304,47 +304,47 @@
   height: 26px;
   width: auto;
   position: absolute;
-  left: -7px;
-  top: 50px;
+  left: -2px;
+  top: 51px;
 }
 
 .triangle-saw-wave-label {
   height: 28px;
   width: auto;
   position: absolute;
-  left: 12px;
-  top: 15px;
+  left: 15px;
+  top: 18px;
 }
 
 .saw-wave-label {
   height: 27px;
   width: auto;
   position: absolute;
-  left: 51px;
-  top: -10px;
+  left: 52px;
+  top: -5px;
 }
 
 .square-wave-label {
   height: 27px;
   width: auto;
   position: absolute;
-  left: 95px;
-  top: -9px;
+  left: 93px;
+  top: -5px;
 }
 
 .pulse-wave-label {
   height: 26px;
   width: auto;
   position: absolute;
-  left: 131px;
-  top: 17px;
+  left: 129px;
+  top: 19px;
 }
 
 .small-pulse-wave-label {
   height: 25px;
   width: auto;
   position: absolute;
-  left: 150px;
+  left: 147px;
   top: 56px;
 }
 /* 
