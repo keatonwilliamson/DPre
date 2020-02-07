@@ -54,3 +54,110 @@
   font-size: 13px;
   transition: all 0.34s ease-out;
 }
+
+
+
+/* MIXER SECTION */
+.oscillator-1-rocker {
+  top: 100px;
+  left: 1100px;
+}
+.oscillator-2-rocker {
+  top: 300px;
+  left: 1100px;
+}
+.oscillator-3-rocker {
+  top: 500px;
+  left: 1100px;
+}
+
+.external-input-rocker {
+  top: 200px;
+  left: 1100px;
+}
+.noise-rocker {
+  top: 400px;
+  left: 1100px;
+}
+
+.filter-modulation-rocker {
+  top: 100px;
+  left: 1500px;
+}
+.keyboard-control-1-rocker {
+  top: 160px;
+  left: 1500px;
+}
+.keyboard-control-2-rocker {
+  top: 220px;
+  left: 1500px;
+}
+
+
+.noise-color-rocker {
+  top: 400px;
+  left: 1400px;
+  transform: rotate(-90deg);
+}
+
+/* MIXER SECTION ON LABELS */
+.oscillator-1-on-label {
+  top: 100px;
+  left: 1100px;
+}
+.oscillator-2-on-label {
+  top: 300px;
+  left: 1100px;
+}
+.oscillator-3-on-label {
+  top: 500px;
+  left: 1100px;
+}
+
+.external-input-on-label {
+  top: 200px;
+  left: 1100px;
+}
+.noise-on-label {
+  top: 400px;
+  left: 1100px;
+}
+
+.filter-modulation-on-label {
+  top: 100px;
+  left: 1500px;
+}
+.keyboard-control-1-on-label {
+  top: 160px;
+  left: 1500px;
+}
+.keyboard-control-2-on-label {
+  top: 220px;
+  left: 1500px;
+}
+
+
+.main-output-rocker {
+  top: 20px;
+  left: 2300px;
+}
+.main-output-on-label {
+  top: 20px;
+  left: 2300px;
+}
+.tuner-rocker {
+  top: 320px;
+  left: 2200px;
+}
+.tuner-on-label {
+  top: 320px;
+  left: 2200px;
+}
+
+.power-rocker {
+  top: 320px;
+  left: 2300px;
+  transform: rotate(-90deg);
+}
+
+

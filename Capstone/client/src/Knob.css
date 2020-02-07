@@ -138,7 +138,7 @@
     margin-top: 4px;
     height: 35px;
     width: auto;
-    filter: drop-shadow(2px 2px 2px black) drop-shadow(-2px 2px 2px black)drop-shadow(2px -2px 2px black)drop-shadow(-2px -2px 2px black);
+    filter: drop-shadow(2px 2px 1px black) drop-shadow(-2px 2px 1px black)drop-shadow(2px -2px 1px black)drop-shadow(-2px -2px 1px black);
   }
   
   .pointer-value {
@@ -297,6 +297,164 @@
   top: 414px;
 }
 
+/* OSC VOLUME KNOBS */
+
+.oscillator-1-volume-knob {
+  left: 950px;
+  top: 72px;
+}
+
+.oscillator-2-volume-knob {
+  left: 950px;
+  top: 243px;
+}
+
+.oscillator-3-volume-knob {
+  left: 950px;
+  top: 414px;
+}
+
+.external-input-volume-knob {
+  left: 1300px;
+  top: 130px;
+}
+.noise-volume-knob {
+  left: 1300px;
+  top: 300px;
+}
+
+/* OSC VOLUME DIALS */
+.oscillator-1-volume-dial {
+  left: 900px;
+  top: 72px;
+}
+
+.oscillator-2-volume-dial {
+  left: 900px;
+  top: 243px;
+}
+
+.oscillator-3-volume-dial {
+  left: 900px;
+  top: 414px;
+}
+
+
+.external-input-volume-dial {
+  left: 1250px;
+  top: 114px;
+}
+.noise-volume-dial {
+  left: 1250px;
+  top: 314px;
+}
+
+/* MODIFIERS SECTION DIALS */
+.filter-cutoff-dial {
+  left: 1600px;
+  top: 0px;
+}
+.filter-emphasis-dial {
+  left: 1800px;
+  top: 0px;
+}
+.filter-contour-dial {
+  left: 2000px;
+  top: 0px;
+}
+.filter-attack-dial {
+  left: 1600px;
+  top: 200px;
+}
+.filter-decay-dial {
+  left: 1800px;
+  top: 200px;
+}
+.filter-sustain-dial {
+  left: 2000px;
+  top: 200px;
+}
+
+.loudness-attack-dial {
+  left: 1600px;
+  top: 430px;
+}
+.loudness-decay-dial {
+  left: 1800px;
+  top: 430px;
+}
+.loudness-sustain-dial {
+  left: 2000px;
+  top: 430px;
+}
+
+/* output */
+.main-output-volume-dial {
+  left: 2150px;
+  top: 0px;
+}
+.phones-output-volume-dial {
+  left: 2150px;
+  top: 430px;
+}
+
+
+/* MODIFIERS SECTION KNOBS */
+.filter-cutoff-knob {
+  left: 1600px;
+  top: 0px;
+}
+.filter-emphasis-knob {
+  left: 1800px;
+  top: 0px;
+}
+.filter-contour-knob {
+  left: 2000px;
+  top: 0px;
+}
+.filter-attack-knob {
+  left: 1600px;
+  top: 200px;
+}
+.filter-decay-knob {
+  left: 1800px;
+  top: 200px;
+}
+.filter-sustain-knob {
+  left: 2000px;
+  top: 200px;
+}
+
+.loudness-attack-knob {
+  left: 1600px;
+  top: 430px;
+}
+.loudness-decay-knob {
+  left: 1800px;
+  top: 430px;
+}
+.loudness-sustain-knob {
+  left: 2000px;
+  top: 430px;
+}
+
+/* output */
+.main-output-volume-knob {
+  left: 2150px;
+  top: 0px;
+}
+.phones-output-volume-knob {
+  left: 2150px;
+  top: 430px;
+}
+
+
+
+
+
+
+
+
 
 .pointer-dial-number-label {
   position: absolute;
@@ -441,11 +599,29 @@
   position: absolute;
   background-color: white;
 }
-.oscillator-2-dial{
+
+
+
+.oscillator-2-frequency-dial{
   top: 211px;
   left: 558px;
 }
-.oscillator-3-dial{
+.oscillator-3-frequency-dial{
   top: 382px;
   left: 558px;
+}
+
+
+
+.oscillator-1-volume-dial{
+  top: 0px;
+  left: 900px;
+}
+.oscillator-2-volume-dial{
+  top: 211px;
+  left: 900px;
+}
+.oscillator-3-volume-dial{
+  top: 400px;
+  left: 900px;
 }

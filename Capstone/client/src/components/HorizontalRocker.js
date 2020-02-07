@@ -29,10 +29,10 @@ class HorizontalRocker extends React.Component {
                 },
                 off: {
                     leftFlat: "black",
-                    rightFlat: "rgb(38, 38, 38)"
+                    rightFlat: (this.props.power ? "black" : "rgb(38, 38, 38)"),
                 },
                 leftRoundGradient: "linear-gradient(to right, black, rgb(45, 45, 45))",
-                rightRoundGradient: "linear-gradient(to right, rgb(45, 45, 45), black)",
+                rightRoundGradient: `linear-gradient(to right, rgb(45, 45, 45), ${(this.props.power ? "rgb(20, 20, 20)" : "black")})`,
                 rightFlatBorderLeft: "1px solid rgb(73, 73, 73)",
                 rightFlatBorderRight: "1px solid rgb(73, 73, 73)",
                 leftFlatBorderLeft: "1px solid rgb(73, 73, 73)",

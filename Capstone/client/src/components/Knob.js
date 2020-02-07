@@ -25,7 +25,7 @@ class Knob extends React.Component {
             this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
             if (this.currentDeg === this.startAngle) this.currentDeg--;
             let mutableCurrentDegrees = this.currentDeg;
-            if ((this.props.masterTune || this.props.oscillatorFrequency) && this.currentDeg < 180) mutableCurrentDegrees = mutableCurrentDegrees + (this.props.masterTune ? 30 : 20)
+            if ((this.props.zeroCentered || this.props.oscillatorFrequency) && this.currentDeg < 180) mutableCurrentDegrees = mutableCurrentDegrees + (this.props.zeroCentered ? 30 : 20)
             let newValue = Math.max(Math.floor(this.convertRange(
                 this.startAngle,
                 this.endAngle,
@@ -33,7 +33,7 @@ class Knob extends React.Component {
                 this.props.max,
                 mutableCurrentDegrees
             )), 0);
-            if (this.props.masterTune) newValue = ((newValue - 5) / 2)
+            if (this.props.zeroCentered) newValue = ((newValue - 5) / 2)
             else if (this.props.oscillatorFrequency) newValue = (newValue - 8)
             this.setState({ deg: this.currentDeg });
             this.props.onChange(this.props.parameter, newValue, Math.floor(this.currentDeg));
@@ -70,7 +70,7 @@ class Knob extends React.Component {
     render() {
         let iStyle = this.dcpy({ transform: "rotate(" + this.state.deg + "deg)" });
         let knobValueStyle = this.dcpy({ visibility: this.state.clicked ? "visible" : "hidden" });
-        if (this.props.masterTune) {
+        if (this.props.zeroCentered) {
             knobValueStyle.marginTop = "12px";
             knobValueStyle.fontSize = "24px"
         }

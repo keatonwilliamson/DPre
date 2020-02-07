@@ -12,21 +12,52 @@ class Design extends Component {
   state = {
     values: [],
     settings: {
-      masterTuneValue: [0, 180],
-      glideValue: [0, 30],
-      modulationMixValue: [5, 180],
+      masterTune: [0, 180],
+      glide: [0, 30],
+      modulationMix: [5, 180],
       modulationSourceA: true,
       modulationSourceB: true,
-      oscillatorModulationValue: false,
-      oscillator3ControlValue: true,
-      oscillator1RangeValue: ["32'", 135],
-      oscillator2RangeValue: ["16'", 165],
-      oscillator3RangeValue: ["16'", 165],
-      oscillator2FrequencyValue: [0, 180],
-      oscillator3FrequencyValue: [0, 180],
-      oscillator1WaveformValue: ["saw", 165],
-      oscillator2WaveformValue: ["saw", 165],
-      oscillator3WaveformValue: ["saw", 165],
+      oscillatorModulation: false,
+      oscillator3Control: true,
+      oscillator1Range: ["32'", 135],
+      oscillator2Range: ["16'", 165],
+      oscillator3Range: ["16'", 165],
+      oscillator2Frequency: [0, 180],
+      oscillator3Frequency: [0, 180],
+      oscillator1Waveform: ["saw", 165],
+      oscillator2Waveform: ["saw", 165],
+      oscillator3Waveform: ["saw", 165],
+      oscillator1Volume: [5, 180],
+      oscillator2Volume: [5, 180],
+      oscillator3Volume: [5, 180],
+      oscillator1: true,
+      oscillator2: false,
+      oscillator3: false,
+      externalInput: false,
+      noise: false,
+      externalInputVolume: [0, 30],
+      noiseVolume: [0, 30],
+      noiseColor: true,
+      filterModulation: false,
+      keyboardControl1: false,
+      keyboardControl2: false,
+      filterCutoff: [0, 30],
+      filterEmphasis: [0, 30],
+      filterContour: [0, 30],
+      filterAttack: [0, 30],
+      filterDecay: [0, 30],
+      filterSustain: [0, 30],
+      loudnessAttack: [0, 30],
+      loudnessDecay: [0, 30],
+      loudnessSustain: [0, 30],
+      mainOutputVolume: [0, 30],
+      mainOutput: false,
+      tuner: false,
+      phonesOutputVolume: [0, 30],
+      power: true,
+      lfoRate: [0, 30],
+      pitchWheel: 0,
+      modWheel: 0,
     }
   }
 
@@ -46,8 +77,14 @@ class Design extends Component {
     });
   };
 
+  handleSliderChange = (event) => {
+    this.setState({
+      settings: { ...this.state.settings, [event.target.id]: event.target.value }
+    });
+  }
+
   modulationMixLabelFadeAmount = () => {
-    return ((this.state.settings.modulationMixValue[1] - 180) / 188)
+    return ((this.state.settings.modulationMix[1] - 180) / 188)
   };
 
   componentDidMount() {
@@ -92,137 +129,331 @@ class Design extends Component {
               <Dial uniqueClass={"glide-dial"} />
               <Dial modulationMix={true} uniqueClass={"modulation-mix-dial"} />
 
-              <PointerDial uniqueClass={"oscillator-1-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-1-range-dial"} />
               <PointerDial uniqueClass={"oscillator-1-waveform-dial"} waveforms={true} />
-              <PointerDial uniqueClass={"oscillator-2-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-2-range-dial"} />
               <PointerDial uniqueClass={"oscillator-2-waveform-dial"} waveforms={true} />
-              <PointerDial uniqueClass={"oscillator-3-range-dial"}/>
+              <PointerDial uniqueClass={"oscillator-3-range-dial"} />
               <PointerDial uniqueClass={"oscillator-3-waveform-dial"} waveforms={true} />
 
-              <OscillatorDial uniqueClass={"oscillator-2-dial"} />
-              <OscillatorDial uniqueClass={"oscillator-3-dial"} />
+              <OscillatorDial uniqueClass={"oscillator-2-frequency-dial"} />
+              <OscillatorDial uniqueClass={"oscillator-3-frequency-dial"} />
+
+              <Dial uniqueClass={"oscillator-1-volume-dial"} />
+              <Dial uniqueClass={"oscillator-2-volume-dial"} />
+              <Dial uniqueClass={"oscillator-3-volume-dial"} />
+
+              <Dial uniqueClass={"external-input-volume-dial"} />
+              <Dial uniqueClass={"noise-volume-dial"} />
+
+              <Dial uniqueClass={"filter-cutoff-dial"} />
+              <Dial uniqueClass={"filter-emphasis-dial"} />
+              <Dial uniqueClass={"filter-contour-dial"} />
+              <Dial uniqueClass={"filter-attack-dial"} />
+              <Dial uniqueClass={"filter-decay-dial"} />
+              <Dial uniqueClass={"filter-sustain-dial"} />
+              <Dial uniqueClass={"loudness-attack-dial"} />
+              <Dial uniqueClass={"loudness-decay-dial"} />
+              <Dial uniqueClass={"loudness-sustain-dial"} />
+
+              <Dial uniqueClass={"main-output-volume-dial"} />
+              <Dial uniqueClass={"phones-output-volume-dial"} />
+
+
 
               {/* KNOBS */}
               <Knob
-                masterTune={true}
+                zeroCentered={true}
                 uniqueClass={"master-tune-knob"}
-                parameter="masterTuneValue"
-                currentValue={this.state.settings.masterTuneValue[0]}
+                parameter="masterTune"
+                currentValue={this.state.settings.masterTune[0]}
                 degrees={300}
                 min={0}
                 max={10}
-                initialDegreeValue={180}
+                initialDegreeValue={this.state.settings.masterTune[1]}
                 onChange={this.handleKnobChange}
               />
               <Knob
                 uniqueClass={"glide-knob"}
-                parameter="glideValue"
-                currentValue={this.state.settings.glideValue[0]}
+                parameter="glide"
+                currentValue={this.state.settings.glide[0]}
                 degrees={300}
                 min={0}
                 max={10}
-                initialDegreeValue={this.state.settings.glideValue[1]}
+                initialDegreeValue={this.state.settings.glide[1]}
                 onChange={this.handleKnobChange}
               />
               <Knob
                 uniqueClass={"modulation-mix-knob"}
-                parameter="modulationMixValue"
-                currentValue={this.state.settings.modulationMixValue[0]}
+                parameter="modulationMix"
+                currentValue={this.state.settings.modulationMix[0]}
                 degrees={300}
                 min={0}
                 max={10}
-                initialDegreeValue={this.state.settings.modulationMixValue[1]}
+                initialDegreeValue={this.state.settings.modulationMix[1]}
                 onChange={this.handleKnobChange}
               />
 
               <Knob
                 oscillatorFrequency={true}
                 uniqueClass={"oscillator-2-frequency-knob"}
-                parameter="oscillator2FrequencyValue"
-                currentValue={this.state.settings.oscillator2FrequencyValue[0]}
+                parameter="oscillator2Frequency"
+                currentValue={this.state.settings.oscillator2Frequency[0]}
                 degrees={320}
                 min={0}
                 max={16}
-                initialDegreeValue={this.state.settings.oscillator2FrequencyValue[1]}
+                initialDegreeValue={this.state.settings.oscillator2Frequency[1]}
                 onChange={this.handleKnobChange}
               />
 
               <Knob
                 oscillatorFrequency={true}
                 uniqueClass={"oscillator-3-frequency-knob"}
-                parameter="oscillator3FrequencyValue"
-                currentValue={this.state.settings.oscillator3FrequencyValue[0]}
+                parameter="oscillator3Frequency"
+                currentValue={this.state.settings.oscillator3Frequency[0]}
                 degrees={320}
                 min={0}
                 max={16}
-                initialDegreeValue={this.state.settings.oscillator3FrequencyValue[1]}
+                initialDegreeValue={this.state.settings.oscillator3Frequency[1]}
+                onChange={this.handleKnobChange}
+              />
+
+              {/* oscillator volume knobs */}
+              <Knob
+                uniqueClass={"oscillator-1-volume-knob"}
+                parameter="oscillator1Volume"
+                currentValue={this.state.settings.oscillator1Volume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.oscillator1Volume[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"oscillator-2-volume-knob"}
+                parameter="oscillator2Volume"
+                currentValue={this.state.settings.oscillator2Volume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.oscillator2Volume[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"oscillator-3-volume-knob"}
+                parameter="oscillator3Volume"
+                currentValue={this.state.settings.oscillator3Volume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.oscillator3Volume[1]}
+                onChange={this.handleKnobChange}
+              />
+
+              <Knob
+                uniqueClass={"external-input-volume-knob"}
+                parameter="externalInputVolume"
+                currentValue={this.state.settings.externalInputVolume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.externalInputVolume[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"noise-volume-knob"}
+                parameter="noiseVolume"
+                currentValue={this.state.settings.noiseVolume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.noiseVolume[1]}
+                onChange={this.handleKnobChange}
+              />
+
+
+
+              <Knob
+                zeroCentered={true}
+                uniqueClass={"filter-cutoff-knob"}
+                parameter="filterCutoff"
+                currentValue={this.state.settings.filterCutoff[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterCutoff[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"filter-emphasis-knob"}
+                parameter="filterEmphasis"
+                currentValue={this.state.settings.filterEmphasis[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterEmphasis[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"filter-contour-knob"}
+                parameter="filterContour"
+                currentValue={this.state.settings.filterContour[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterContour[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"filter-attack-knob"}
+                parameter="filterAttack"
+                currentValue={this.state.settings.filterAttack[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterAttack[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"filter-decay-knob"}
+                parameter="filterDecay"
+                currentValue={this.state.settings.filterDecay[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterDecay[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"filter-sustain-knob"}
+                parameter="filterSustain"
+                currentValue={this.state.settings.filterSustain[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.filterSustain[1]}
+                onChange={this.handleKnobChange}
+              />
+
+
+              <Knob
+                uniqueClass={"loudness-attack-knob"}
+                parameter="loudnessAttack"
+                currentValue={this.state.settings.loudnessAttack[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.loudnessAttack[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"loudness-decay-knob"}
+                parameter="loudnessDecay"
+                currentValue={this.state.settings.loudnessDecay[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.loudnessDecay[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"loudness-sustain-knob"}
+                parameter="loudnessSustain"
+                currentValue={this.state.settings.loudnessSustain[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.loudnessSustain[1]}
+                onChange={this.handleKnobChange}
+              />
+
+
+              <Knob
+                uniqueClass={"main-output-volume-knob"}
+                parameter="mainOutputVolume"
+                currentValue={this.state.settings.mainOutputVolume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.mainOutputVolume[1]}
+                onChange={this.handleKnobChange}
+              />
+              <Knob
+                uniqueClass={"phones-output-volume-knob"}
+                parameter="phonesOutputVolume"
+                currentValue={this.state.settings.phonesOutputVolume[0]}
+                degrees={300}
+                min={0}
+                max={10}
+                initialDegreeValue={this.state.settings.phonesOutputVolume[1]}
                 onChange={this.handleKnobChange}
               />
 
 
 
 
+
               <Pointer
                 uniqueClass={"oscillator-1-range-pointer"}
-                parameter="oscillator1RangeValue"
-                currentValue={this.state.settings.oscillator1RangeValue[0]}
+                parameter="oscillator1Range"
+                currentValue={this.state.settings.oscillator1Range[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator1RangeValue[1]}
+                initialDegreeValue={this.state.settings.oscillator1Range[1]}
                 onChange={this.handlePointerChange}
               />
               <Pointer
                 waveforms={true}
                 uniqueClass={"oscillator-1-waveform-pointer"}
-                parameter="oscillator1WaveformValue"
-                currentValue={this.state.settings.oscillator1WaveformValue[0]}
+                parameter="oscillator1Waveform"
+                currentValue={this.state.settings.oscillator1Waveform[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator1WaveformValue[1]}
+                initialDegreeValue={this.state.settings.oscillator1Waveform[1]}
                 onChange={this.handlePointerChange}
               />
               <Pointer
                 uniqueClass={"oscillator-2-range-pointer"}
-                parameter="oscillator2RangeValue"
-                currentValue={this.state.settings.oscillator2RangeValue[0]}
+                parameter="oscillator2Range"
+                currentValue={this.state.settings.oscillator2Range[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator2RangeValue[1]}
+                initialDegreeValue={this.state.settings.oscillator2Range[1]}
                 onChange={this.handlePointerChange}
               />
               <Pointer
                 waveforms={true}
                 uniqueClass={"oscillator-2-waveform-pointer"}
-                parameter="oscillator2WaveformValue"
-                currentValue={this.state.settings.oscillator2WaveformValue[0]}
+                parameter="oscillator2Waveform"
+                currentValue={this.state.settings.oscillator2Waveform[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator2WaveformValue[1]}
+                initialDegreeValue={this.state.settings.oscillator2Waveform[1]}
                 onChange={this.handlePointerChange}
               />
               <Pointer
                 uniqueClass={"oscillator-3-range-pointer"}
-                parameter="oscillator3RangeValue"
-                currentValue={this.state.settings.oscillator3RangeValue[0]}
+                parameter="oscillator3Range"
+                currentValue={this.state.settings.oscillator3Range[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator3RangeValue[1]}
+                initialDegreeValue={this.state.settings.oscillator3Range[1]}
                 onChange={this.handlePointerChange}
               />
               <Pointer
                 waveforms={true}
                 uniqueClass={"oscillator-3-waveform-pointer"}
-                parameter="oscillator3WaveformValue"
-                currentValue={this.state.settings.oscillator3WaveformValue[0]}
+                parameter="oscillator3Waveform"
+                currentValue={this.state.settings.oscillator3Waveform[0]}
                 degrees={150}
                 min={0}
                 max={5}
-                initialDegreeValue={this.state.settings.oscillator3WaveformValue[1]}
+                initialDegreeValue={this.state.settings.oscillator3Waveform[1]}
                 onChange={this.handlePointerChange}
               />
 
@@ -232,11 +463,62 @@ class Design extends Component {
               <HorizontalRocker on={this.state.settings.modulationSourceA} parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleRockerChange} />
               <HorizontalRocker on={this.state.settings.modulationSourceB} parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleRockerChange} />
 
-              <HorizontalRocker on={this.state.settings.oscillatorModulationValue} parameter="oscillatorModulationValue" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
-              <OnLabel on={this.state.settings.oscillatorModulationValue} uniqueClass={"oscillator-modulation-on-label"} />
+              <HorizontalRocker on={this.state.settings.oscillatorModulation} parameter="oscillatorModulation" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.oscillatorModulation} uniqueClass={"oscillator-modulation-on-label"} />
 
 
-              <HorizontalRocker on={this.state.settings.oscillator3ControlValue} parameter="oscillator3ControlValue" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker on={this.state.settings.oscillator3Control} parameter="oscillator3Control" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+
+
+
+              <HorizontalRocker on={this.state.settings.oscillator1} parameter="oscillator1" uniqueClass={"oscillator-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.oscillator1} uniqueClass={"oscillator-1-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.oscillator2} parameter="oscillator2" uniqueClass={"oscillator-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.oscillator2} uniqueClass={"oscillator-2-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.oscillator3} parameter="oscillator3" uniqueClass={"oscillator-3-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.oscillator3} uniqueClass={"oscillator-3-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.externalInput} parameter="externalInput" uniqueClass={"external-input-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.externalInput} uniqueClass={"external-input-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.noise} parameter="noise" uniqueClass={"noise-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.noise} uniqueClass={"noise-on-label"} />
+
+
+
+
+              <HorizontalRocker on={this.state.settings.noiseColor} parameter="noiseColor" uniqueClass={"noise-color-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+
+
+
+
+              <HorizontalRocker on={this.state.settings.filterModulation} parameter="filterModulation" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.filterModulation} uniqueClass={"filter-modulation-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.keyboardControl1} parameter="keyboardControl1" uniqueClass={"keyboard-control-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.keyboardControl1} uniqueClass={"keyboard-control-1-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.keyboardControl2} parameter="keyboardControl2" uniqueClass={"keyboard-control-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.keyboardControl2} uniqueClass={"keyboard-control-2-on-label"} />
+
+
+
+              <HorizontalRocker on={this.state.settings.mainOutput} parameter="mainOutput" uniqueClass={"main-output-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.mainOutput} uniqueClass={"main-output-on-label"} />
+
+              <HorizontalRocker on={this.state.settings.tuner} parameter="tuner" uniqueClass={"tuner-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <OnLabel on={this.state.settings.tuner} uniqueClass={"tuner-on-label"} />
+
+
+              <HorizontalRocker on={this.state.settings.power} parameter="power" uniqueClass={"power-rocker"} color={"black"} power={true} onChange={this.handleRockerChange} />
+
+
+
+
+
+
 
               {/* Labels */}
               <LabelGroup />
@@ -251,55 +533,25 @@ class Design extends Component {
               <p style={{ filter: `opacity(${this.state.settings.modulationSourceB ? 0.2 : 1})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-noise">NOISE</p>
               <p style={{ filter: `opacity(${this.state.settings.modulationSourceB ? 1 : 0.2})` }} className="modulation-mix-sub-label modulation-mix-rocker-label-lfo">LFO</p>
 
-              <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
-              <p style={{ filter: `opacity(${this.state.settings.oscillator3ControlValue ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
-
-
-               {/* <div className="waveforms-border">
-
-                <div className="triangle-wave-border">
-                  <div className="triangle-wave-1"></div>
-                  <div className="triangle-wave-2"></div>
-                </div>
-
-                <div className="triangle-saw-wave-border">
-                  <div className="triangle-saw-wave-1"></div>
-                  <div className="triangle-saw-wave-2"></div>
-                  <div className="triangle-saw-wave-3"></div>
-                </div>
-
-                <div className="saw-wave-border">
-                  <div className="saw-wave-1"></div>
-                  <div className="saw-wave-2"></div>
-                </div>
-
-                <div className="square-wave-border">
-                  <div className="square-wave-1"></div>
-                  <div className="square-wave-2"></div>
-                  <div className="square-wave-3"></div>
-                  <div className="square-wave-4"></div>
-                </div>
-
-                <div className="pulse-wave-border">
-                  <div className="pulse-wave-1"></div>
-                  <div className="pulse-wave-2"></div>
-                  <div className="pulse-wave-3"></div>
-                  <div className="pulse-wave-4"></div>
-                </div>
-
-                <div className="small-pulse-wave-border">
-                  <div className="small-pulse-wave-1"></div>
-                  <div className="small-pulse-wave-2"></div>
-                  <div className="small-pulse-wave-3"></div>
-                  <div className="small-pulse-wave-4"></div>
-                </div>
-
-              </div>  */}
-
+              <p style={{ filter: `opacity(${this.state.settings.oscillator3Control ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
+              <p style={{ filter: `opacity(${this.state.settings.oscillator3Control ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
 
               <div className="measuring-tape"></div>
             </div>
-            <div></div>
+
+            <div className="modulation-panel">
+              <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="pitchWheel"
+                  value={this.state.settings.pitchWheel}
+                  onChange={this.handleSliderChange} />
+              </div>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="modWheel"
+                  value={this.state.settings.modWheel}
+                  onChange={this.handleSliderChange} />
+              </div>
+            </div>
+
           </div>
         </div>
       </>
