@@ -92,10 +92,10 @@ class Design extends Component {
   };
 
   handleTextInputChange(event) {
-    console.log(this)
-    this.setState({
-      settings: { ...this.state.settings, [event.target.name]: event.target.value }
-    });
+    let textInputValue = (event.target.name === "patchName") ? event.target.value.toUpperCase() : event.target.value
+      this.setState({
+        settings: { ...this.state.settings, [event.target.name]: textInputValue }
+      });
   };
 
   modulationMixLabelFadeAmount = () => {
@@ -598,10 +598,10 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <div className="patch-form">
-                <input name="patchName" className="patch-name-text-input" type="text" placeholder={"PATCH NAME"} value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
-                <input name="patchNotes" className="patch-notes-text-input" type="text" placeholder={"NOTES"} value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
-              </div>
+              <form className="patch-form">
+                <textarea name="patchName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxlength="50" value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="patchNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxlength="255" value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
+              </form>
             </div>
           </div>
         </div>
