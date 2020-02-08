@@ -261,17 +261,38 @@
   grid-column: 3 / 4;
   height: 644px;
   width: 600px;
-  border: 3px solid pink;
+  /* border: 3px solid pink; */
 }
 .patch-form {
   top: 50px;
   left: 40px;
   position: absolute;
-  height: 55px;
-  width: 40px;
+  height: 550px;
+  width: 400px;
   border: 3px solid white;
   border-radius: 8px;
 }
+
+input[type="text"]{
+  background-color: transparent;
+  border: 0px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width:400px;
+  cursor:default;
+
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+
+
+
+
 
 .divider {
   position: absolute;
@@ -339,6 +360,8 @@
 .output-label {
   left: 2208px;
 }
+
+
 
 
 :root {

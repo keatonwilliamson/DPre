@@ -64,6 +64,8 @@ class Design extends Component {
       delay: false,
       pitchWheel: 50,
       modWheel: 50,
+      patchName: "",
+      patchNotes: "",
     }
   }
 
@@ -87,7 +89,14 @@ class Design extends Component {
     this.setState({
       settings: { ...this.state.settings, [event.target.id]: parseInt(event.target.value) }
     });
-  }
+  };
+
+  handleTextInputChange(event) {
+    console.log(this)
+    this.setState({
+      settings: { ...this.state.settings, [event.target.name]: event.target.value }
+    });
+  };
 
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
@@ -142,13 +151,13 @@ class Design extends Component {
                 <HorizontalRocker on={this.state.settings.decay} parameter="decay" uniqueClass={"decay-rocker"} color={"orange"} onChange={this.handleRockerChange} />
                 <OnLabel on={this.state.settings.decay} uniqueClass={"decay-on-label"} />
 
-                <div class="pitch-wheel-container">
+                <div className="pitch-wheel-container">
                   <input type="range" min="1" max="100" value="50" id="pitchWheel" className="pitch-wheel"
                     value={this.state.settings.pitchWheel}
                     onChange={this.handleSliderChange} />
                 </div>
 
-                <div class="mod-wheel-container">
+                <div className="mod-wheel-container">
                   <input type="range" min="1" max="100" value="50" id="modWheel" className="mod-wheel"
                     value={this.state.settings.modWheel}
                     onChange={this.handleSliderChange} />
@@ -590,7 +599,8 @@ class Design extends Component {
             </div>
             <div className="patch-form-container">
               <div className="patch-form">
-
+                <input name="patchName" className="patch-name-text-input" type="text" placeholder={"PATCH NAME"} value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
+                <input name="patchNotes" className="patch-notes-text-input" type="text" placeholder={"NOTES"} value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
               </div>
             </div>
           </div>
