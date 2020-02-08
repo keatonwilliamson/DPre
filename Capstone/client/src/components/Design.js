@@ -118,7 +118,6 @@ class Design extends Component {
       });
 
     this.slidingGrid.current.scrollLeft = 496;
-    console.log(this.slidingGrid);
 
     // var el = document.querySelector('div');
 

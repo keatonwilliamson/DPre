@@ -345,7 +345,7 @@ textarea{
   letter-spacing: 2px;
   position: absolute;
   top: 32px;
-  left: 480px;
+  left: 464px;
   transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
   cursor: pointer;
   display: block;
