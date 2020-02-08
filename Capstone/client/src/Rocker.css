@@ -161,3 +161,23 @@
 }
 
 
+
+
+.glide-rocker {
+  top: 100px;
+  left: 100px;
+}
+.glide-on-label {
+  top: 100px;
+  left: 100px;
+}
+.decay-rocker {
+  top: 200px;
+  left: 100px;
+}
+.decay-on-label {
+  top: 200px;
+  left: 100px;
+}
+
+

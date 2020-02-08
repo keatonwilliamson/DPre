@@ -11,6 +11,7 @@ import './App.css';
 import './Knob.css';
 import './Rocker.css';
 import './Labels.css';
+import './RangeSlider.css';
 
 class App extends Component {
   state = {

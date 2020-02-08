@@ -35,6 +35,7 @@
   flex-direction: row;
   margin-right: auto;
 }
+
 .moog-header-logo {
   height: 40px;
 }
@@ -199,12 +200,12 @@
   box-sizing: border-box;
   height: 100%;
   /* width: 2612px; */
-  width: 2902px;
+  width: 3200px;
   /* border: 3px solid red; */
   border-radius: 8px;
   display: grid;
-  grid-gap: 36px;
-  grid-template-columns: 0px 2550px 200px;
+  grid-gap: 24px;
+  grid-template-columns: 500px 2550px 0px;
   align-items: center;
   /* margin: 0px 40px; */
   /* position: absolute; 
@@ -226,12 +227,24 @@
 }
 
 .modulation-panel {
-  position: relative;
-  grid-column: 3 / 4;
-  height: 638px;
+  top: 190px;
+  left: 118px;
+  position: absolute;
+  height: 400px;
   width: 254px;
   border: 3px solid white;
   border-radius: 8px;
+  /* margin: 0px 40px; */
+  /* position: absolute; 
+  top: 50%;
+  transform: translate(0px, calc(-50%));  */
+}
+.modulation-panel-container {
+  position: relative;
+  grid-column: 1 / 2;
+  height: 644px;
+  width: 400px;
+  /* border: 3px solid pink; */
   /* margin: 0px 40px; */
   /* position: absolute; 
   top: 50%;
@@ -242,6 +255,23 @@
 .panel::after {
   content: ‘’;
 } */
+
+.patch-form-container {
+  position: relative;
+  grid-column: 3 / 4;
+  height: 644px;
+  width: 600px;
+  border: 3px solid pink;
+}
+.patch-form {
+  top: 50px;
+  left: 40px;
+  position: absolute;
+  height: 55px;
+  width: 40px;
+  border: 3px solid white;
+  border-radius: 8px;
+}
 
 .divider {
   position: absolute;

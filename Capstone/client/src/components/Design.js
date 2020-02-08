@@ -9,11 +9,15 @@ import OscillatorDial from './OscillatorDial';
 import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 class Design extends Component {
+  constructor(props) {
+    super(props);
+    this.slidingGrid = React.createRef();
+  }
   state = {
     values: [],
     settings: {
       masterTune: [0, 180],
-      glide: [0, 30],
+      glideAmount: [0, 30],
       modulationMix: [5, 180],
       modulationSourceA: true,
       modulationSourceB: true,
@@ -56,8 +60,10 @@ class Design extends Component {
       phonesOutputVolume: [0, 30],
       power: true,
       lfoRate: [0, 30],
-      pitchWheel: 0,
-      modWheel: 0,
+      glide: false,
+      delay: false,
+      pitchWheel: 50,
+      modWheel: 50,
     }
   }
 
@@ -79,7 +85,7 @@ class Design extends Component {
 
   handleSliderChange = (event) => {
     this.setState({
-      settings: { ...this.state.settings, [event.target.id]: event.target.value }
+      settings: { ...this.state.settings, [event.target.id]: parseInt(event.target.value) }
     });
   }
 
@@ -96,19 +102,67 @@ class Design extends Component {
       .then(values => {
         this.setState({ values: values });
       });
+
+    this.slidingGrid.current.scrollLeft = 496;
+    console.log(this.slidingGrid);
+
+    // var el = document.querySelector('div');
+
+    // get scroll position in px
+    // console.log(el.scrollLeft, el.scrollTop);
+
+    // set scroll position in px
+    // el.scrollLeft = 500;
+    // el.scrollTop = 1000;
   }
 
   render() {
     return (
       <>
         <div className="design-background"></div>
-        <div className="design-view">
+        <div ref={this.slidingGrid} className="design-view">
           <div className="sliding-grid">
-            <div></div>
+            <div className="modulation-panel-container">
+              <div className="modulation-panel">
+                <Dial uniqueClass={"lfo-rate-dial"} />
+                <Knob
+                  uniqueClass={"lfo-rate-knob"}
+                  parameter="lfoRate"
+                  currentValue={this.state.settings.lfoRate[0]}
+                  degrees={300}
+                  min={0}
+                  max={10}
+                  initialDegreeValue={this.state.settings.lfoRate[1]}
+                  onChange={this.handleKnobChange}
+                />
+
+                <HorizontalRocker on={this.state.settings.glide} parameter="glide" uniqueClass={"glide-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+                <OnLabel on={this.state.settings.glide} uniqueClass={"glide-on-label"} />
+
+                <HorizontalRocker on={this.state.settings.decay} parameter="decay" uniqueClass={"decay-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+                <OnLabel on={this.state.settings.decay} uniqueClass={"decay-on-label"} />
+
+                <div class="pitch-wheel-container">
+                  <input type="range" min="1" max="100" value="50" id="pitchWheel" className="pitch-wheel"
+                    value={this.state.settings.pitchWheel}
+                    onChange={this.handleSliderChange} />
+                </div>
+
+                <div class="mod-wheel-container">
+                  <input type="range" min="1" max="100" value="50" id="modWheel" className="mod-wheel"
+                    value={this.state.settings.modWheel}
+                    onChange={this.handleSliderChange} />
+                </div>
+
+              </div>
+            </div>
             <div className="panel">
 
               {/* SECTIONS */}
-              <p onMouseDown={() => console.log("yeahhh boi", this.state.settings)} className="section-label controllers-label">CONTROLLERS</p>
+              <p onMouseDown={() => {
+                console.log("yeahhh boi", this.state.settings)
+                console.log(this.slidingGrid);
+              }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>
 
@@ -174,13 +228,13 @@ class Design extends Component {
                 onChange={this.handleKnobChange}
               />
               <Knob
-                uniqueClass={"glide-knob"}
-                parameter="glide"
-                currentValue={this.state.settings.glide[0]}
+                uniqueClass={"glide-amount-knob"}
+                parameter="glideAmount"
+                currentValue={this.state.settings.glideAmount[0]}
                 degrees={300}
                 min={0}
                 max={10}
-                initialDegreeValue={this.state.settings.glide[1]}
+                initialDegreeValue={this.state.settings.glideAmount[1]}
                 onChange={this.handleKnobChange}
               />
               <Knob
@@ -516,10 +570,6 @@ class Design extends Component {
 
 
 
-
-
-
-
               {/* Labels */}
               <LabelGroup />
               <p style={{ filter: `opacity(${1 - this.modulationMixLabelFadeAmount()})` }} className="modulation-mix-sub-label modulation-mix-knob-label-osc-3">OSC. 3/</p>
@@ -538,20 +588,11 @@ class Design extends Component {
 
               <div className="measuring-tape"></div>
             </div>
+            <div className="patch-form-container">
+              <div className="patch-form">
 
-            <div className="modulation-panel">
-              <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="pitchWheel"
-                  value={this.state.settings.pitchWheel}
-                  onChange={this.handleSliderChange} />
-              </div>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="modWheel"
-                  value={this.state.settings.modWheel}
-                  onChange={this.handleSliderChange} />
               </div>
             </div>
-
           </div>
         </div>
       </>

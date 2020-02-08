@@ -33,11 +33,6 @@ function PointerDial(props) {
                     <img className="square-wave-label" src={require('../Assets/waveforms/square.png')} alt="img" />
                     <img className="pulse-wave-label" src={require('../Assets/waveforms/pulse.png')} alt="img" />
                     <img className="small-pulse-wave-label" src={require('../Assets/waveforms/small-pulse.png')} alt="img" />
-                    {/* <p style={{ top: 113, left: 12 }} className="dial-number-label">{-2 * props.multiplier}</p>
-                    <p style={{ top: 37, left: 12 }} className="dial-number-label">{-1 * props.multiplier}</p>
-                    <p style={{ top: 3, left: 81 }} className="dial-number-label">{-0 * props.multiplier}</p>
-                    <p style={{ top: 37, left: 144 }} className="dial-number-label">{1 * props.multiplier}</p>
-                    <p style={{ top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p> */}
                 </>
                 ) : (<>
                     <p style={{ top: 56, left: 3 }} className="pointer-dial-number-label">LO</p>
