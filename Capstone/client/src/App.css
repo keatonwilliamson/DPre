@@ -260,7 +260,7 @@
   position: relative;
   grid-column: 3 / 4;
   height: 644px;
-  width: 680px;
+  width: 980px;
   /* border: 3px solid pink; */
 }
 .patch-form {
@@ -291,7 +291,7 @@ textarea{
 
 .patch-name-text-input {
   position: absolute;
-  top: 30px;
+  top: 32px;
   left: 0px;
   height: 120px;
   border-bottom: 3px solid white;
@@ -307,9 +307,97 @@ textarea{
   letter-spacing: default;
 }
 
+/* FORM SUBMIT BUTTON */
+/* 
+.patch-form-submit {
+  position: absolute;
+  top: 0px;
+  left: 120px;
+  background-color: transparent;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1.5px solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:50px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 32px;
+  letter-spacing: 2px;
+  text-align:center;
+  transition: all 0.2s;
+  outline: none;
+}
+.patch-form-submit:hover {
+  color:#000000;
+  background-color:#FFFFFF;
+} */
+
+.patch-form-submit{
+  padding: 4px 40px 6px;
+  background: #000;
+  border:0;
+  color: #fff;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 32px;
+  letter-spacing: 2px;
+  position: absolute;
+  top: 32px;
+  left: 480px;
+  transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  cursor: pointer;
+  display: block;
+  outline: none;
+  background-color: transparent;
+  border: 1.5px solid #FFFFFF;
+  /* margin: 100px auto; */
+}
+
+.patch-form-submit::after,
+.patch-form-submit::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition:  all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.patch-form-submit::after{
+    width: 30px;
+    height: 2px;
+    background: white;
+    transform: translateX(-3px);
+    margin-top: 0px;
+}
+
+.patch-form-submit::before{
+    content: "";
+    transform: rotate(-135deg) translateX(50%);
+    width: 11px;
+    height: 11px;
+    background: transparent;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+  margin-top: -1px;
+}
 
 
+.patch-form-submit:hover{
+  padding: 4px 60px 6px 20px;
+}
 
+.patch-form-submit:hover::after,
+.patch-form-submit:hover::before{
+  opacity: 1;
+  right: 15px;
+}
+
+
+/* END FORM SUBMIT BUTTON */
 
 
 .divider {

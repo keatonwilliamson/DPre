@@ -93,10 +93,15 @@ class Design extends Component {
 
   handleTextInputChange(event) {
     let textInputValue = (event.target.name === "patchName") ? event.target.value.toUpperCase() : event.target.value
-      this.setState({
-        settings: { ...this.state.settings, [event.target.name]: textInputValue }
-      });
+    this.setState({
+      settings: { ...this.state.settings, [event.target.name]: textInputValue }
+    });
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.settings)
+  }
 
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
@@ -598,9 +603,10 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form className="patch-form">
-                <textarea name="patchName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxlength="50" value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
-                <textarea name="patchNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxlength="255" value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
+              <form className="patch-form" onSubmit={this.handleSubmit}>
+                <textarea name="patchName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxLength="50" value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="patchNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
+                <button className="patch-form-submit" type="submit">SAVE</button>
               </form>
             </div>
           </div>
