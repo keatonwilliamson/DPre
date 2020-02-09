@@ -103,7 +103,7 @@ class Design extends Component {
     event.preventDefault();
     console.log(this.state.settings)
     const authHeader = createAuthHeaders();
-    fetch('/api/v1/presets', {
+    fetch('/api/v1/values', {
       headers: authHeader
     })
       .then(response => response.json())
@@ -111,6 +111,39 @@ class Design extends Component {
       // .then(values => {
       //   this.setState({ values: values });
       // });
+
+      // fetch('/api/v1/presets', {
+      //   method: "POST",
+      //   headers: {
+      //     headers: authHeader
+      //   },
+      //   body: JSON.stringify({
+      //     bro: "yeah",
+      //     dude: "cool"
+      //   })
+      // })
+      // .then(data => data.json()).then(response => console.log(response));
+
+
+// fetch(`${baseUrl}/companies`, {
+//             method: "POST",
+//             headers: authHeader,
+//             body: JSON.stringify(newCompany)
+//         }).then(data => data.json())
+
+      fetch('/api/v1/presets', {
+        method: "POST",
+        headers: authHeader,
+        body: JSON.stringify({
+          PokemonSpecies: "pooookemonlapras",
+          Nickname: "pooookemonlapras",
+          PokedexId: 3,
+          PictureUrl: "pooookemonlapras",
+          KeyCaught: 3
+        })
+      }).then(response => response.json()).then(response => console.log(response))
+
+
   }
 
   modulationMixLabelFadeAmount = () => {
@@ -119,13 +152,13 @@ class Design extends Component {
 
   componentDidMount() {
     const authHeader = createAuthHeaders();
-    fetch('/api/v1/values', {
-      headers: authHeader
-    })
-      .then(response => response.json())
-      .then(values => {
-        this.setState({ values: values });
-      });
+    // fetch('/api/v1/values', {
+    //   headers: authHeader
+    // })
+    //   .then(response => response.json())
+    //   .then(values => {
+    //     this.setState({ values: values });
+    //   });
 
     this.slidingGrid.current.scrollLeft = 496;
 
