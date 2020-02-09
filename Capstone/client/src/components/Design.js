@@ -218,7 +218,7 @@ class Design extends Component {
               {/* SECTIONS */}
               <p onMouseDown={() => {
                 console.log("yeahhh boi", this.state.settings)
-                presetsManger.getAllPresets().then(response => console.log(response));
+                presetsManger.getPreset(1).then(response => console.log(response));
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>

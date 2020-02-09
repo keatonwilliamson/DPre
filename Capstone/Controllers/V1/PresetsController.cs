@@ -295,43 +295,222 @@ namespace Capstone.Controllers.V1
 
 
 
-        // [HttpGet("{id}", Name = "GetPokemon")]
-        // public async Task<IActionResult> Get([FromRoute] int id)
-        // {
-        //     using (SqlConnection conn = Connection)
-        //     {
-        //         conn.Open();
-        //         using (SqlCommand cmd = conn.CreateCommand())
-        //         {
-        //             cmd.CommandText = @"SELECT Id, PokemonSpecies, Nickname, PokedexId, PictureUrl, KeyCaught, DateCaught FROM Pokemon  WHERE Id = @id";
-        //             cmd.Parameters.Add(new SqlParameter("@id", id));
-        //             SqlDataReader reader = await cmd.ExecuteReaderAsync();
+        [HttpGet(Api.Presets.Get)]
+        public async Task<IActionResult> Get([FromRoute] int id)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT
+                        Id,
+                        UserId,
+                        MasterTuneValue,
+                        MasterTuneDegrees,
+                        GlideAmountValue,
+                        GlideAmountDegrees,
+                        ModulationMixValue,
+                        ModulationMixDegrees,
+                        ModulationSourceA,
+                        ModulationSourceB,
+                        OscillatorModulation,
+                        Oscillation3Control,
+                        Oscillator1RangeValue,
+                        Oscillator1RangeDegrees,
+                        Oscillator2RangeValue,
+                        Oscillator2RangeDegrees,
+                        Oscillator3RangeValue,
+                        Oscillator3RangeDegrees,
+                        Oscillator2FrequencyValue,
+                        Oscillator2FrequencyDegrees,
+                        Oscillator3FrequencyValue,
+                        Oscillator3FrequencyDegrees,
+                        Oscillator1WaveformValue,
+                        Oscillator1WaveformDegrees,
+                        Oscillator2WaveformValue,
+                        Oscillator2WaveformDegrees,
+                        Oscillator3WaveformValue,
+                        Oscillator3WaveformDegrees,
+                        Oscillator1VolumeValue,
+                        Oscillator1VolumeDegrees,
+                        Oscillator2VolumeValue,
+                        Oscillator2VolumeDegrees,
+                        Oscillator3VolumeValue,
+                        Oscillator3VolumeDegrees,
+                        Oscillator1,
+                        Oscillator2,
+                        Oscillator3,
+                        ExternalInput,
+                        Noise,
+                        ExternalInputVolumeValue,
+                        ExternalInputVolumeDegrees,
+                        NoiseVolumeValue,
+                        NoiseVolumeDegrees,
+                        NoiseColor,
+                        FilterModulation,
+                        KeyboardControl1,
+                        KeyboardControl2,
+                        FilterCutoffValue,
+                        FilterCutoffDegrees,
+                        FilterEmphasisValue,
+                        FilterEmphasisDegrees,
+                        FilterContourValue,
+                        FilterContourDegrees,
+                        FilterAttackValue,
+                        FilterAttackDegrees,
+                        FilterDecayValue,
+                        FilterDecayDegrees,
+                        FilterSustainValue,
+                        FilterSustainDegrees,
+                        LoudnessAttackValue,
+                        LoudnessAttackDegrees,
+                        LoudnessDecayValue,
+                        LoudnessDecayDegrees,
+                        LoudnessSustainValue,
+                        LoudnessSustainDegrees,
+                        MainOutputVolumeValue,
+                        MainOutputVolumeDegrees,
+                        MainOutput,
+                        Tuner,
+                        PhonesOutputVolumeValue,
+                        PhonesOutputVolumeDegrees,
+                        Power,
+                        LfoRateValue,
+                        LfoRateDegrees,
+                        Glide,
+                        Decay,
+                        PitchWheel,
+                        ModWheel,
+                        PresetName,
+                        PresetNotes,
+                        DateCreated
+                        FROM 
+                        Preset
+                        WHERE Id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+                    SqlDataReader reader = await cmd.ExecuteReaderAsync();
 
-        //             Pokemon pokemon = null;
+                    Preset preset = null;
 
-        //             if (reader.Read())
-        //             {
-        //                 pokemon = new Pokemon
-        //                 {
-        //                     Id = reader.GetInt32(reader.GetOrdinal("Id")),
-        //                     PokemonSpecies = reader.GetString(reader.GetOrdinal("PokemonSpecies")),
-        //                     Nickname = reader.GetString(reader.GetOrdinal("Nickname")),
-        //                     PokedexId = reader.GetInt32(reader.GetOrdinal("PokedexId")),
-        //                     PictureUrl = reader.GetString(reader.GetOrdinal("PictureUrl")),
-        //                     KeyCaught = reader.GetInt32(reader.GetOrdinal("KeyCaught")),
-        //                     DateCaught = reader.GetDateTime(reader.GetOrdinal("DateCaught")),
-        //                 };
-        //             }
-        //             reader.Close();
-        //             Response.Headers.Add("X-Requested-With", "*");
-        //             Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
-        //             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //             Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+                    if (reader.Read())
+                    {
+                        preset = new Preset
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            UserId = reader.GetString(reader.GetOrdinal("UserId")),
+                            MasterTuneValue = reader.GetInt32(reader.GetOrdinal("MasterTuneValue")),
+                            MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
+                            GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
+                            GlideAmountDegrees = reader.GetInt32(reader.GetOrdinal("GlideAmountDegrees")),
+                            ModulationMixValue = reader.GetInt32(reader.GetOrdinal("ModulationMixValue")),
+                            ModulationMixDegrees = reader.GetInt32(reader.GetOrdinal("ModulationMixDegrees")),
 
-        //             return Ok(pokemon);
-        //         }
-        //     }
-        // }
+                            ModulationSourceA = reader.GetBoolean(reader.GetOrdinal("ModulationSourceA")),
+                            ModulationSourceB = reader.GetBoolean(reader.GetOrdinal("ModulationSourceB")),
+                            OscillatorModulation = reader.GetBoolean(reader.GetOrdinal("OscillatorModulation")),
+                            Oscillation3Control = reader.GetBoolean(reader.GetOrdinal("Oscillation3Control")),
+
+                            Oscillator1RangeValue = reader.GetString(reader.GetOrdinal("Oscillator1RangeValue")),
+                            Oscillator1RangeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator1RangeDegrees")),
+                            Oscillator2RangeValue = reader.GetString(reader.GetOrdinal("Oscillator2RangeValue")),
+                            Oscillator2RangeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator2RangeDegrees")),
+                            Oscillator3RangeValue = reader.GetString(reader.GetOrdinal("Oscillator3RangeValue")),
+                            Oscillator3RangeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator3RangeDegrees")),
+
+                            Oscillator2FrequencyValue = reader.GetInt32(reader.GetOrdinal("Oscillator2FrequencyValue")),
+                            Oscillator2FrequencyDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator2FrequencyDegrees")),
+                            Oscillator3FrequencyValue = reader.GetInt32(reader.GetOrdinal("Oscillator3FrequencyValue")),
+                            Oscillator3FrequencyDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator3FrequencyDegrees")),
+
+                            Oscillator1WaveformValue = reader.GetString(reader.GetOrdinal("Oscillator1WaveformValue")),
+                            Oscillator1WaveformDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator1WaveformDegrees")),
+                            Oscillator2WaveformValue = reader.GetString(reader.GetOrdinal("Oscillator2WaveformValue")),
+                            Oscillator2WaveformDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator2WaveformDegrees")),
+                            Oscillator3WaveformValue = reader.GetString(reader.GetOrdinal("Oscillator3WaveformValue")),
+                            Oscillator3WaveformDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator3WaveformDegrees")),
+
+                            Oscillator1VolumeValue = reader.GetInt32(reader.GetOrdinal("Oscillator1VolumeValue")),
+                            Oscillator1VolumeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator1VolumeDegrees")),
+                            Oscillator2VolumeValue = reader.GetInt32(reader.GetOrdinal("Oscillator2VolumeValue")),
+                            Oscillator2VolumeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator2VolumeDegrees")),
+                            Oscillator3VolumeValue = reader.GetInt32(reader.GetOrdinal("Oscillator3VolumeValue")),
+                            Oscillator3VolumeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator3VolumeDegrees")),
+
+                            Oscillator1 = reader.GetBoolean(reader.GetOrdinal("Oscillator1")),
+                            Oscillator2 = reader.GetBoolean(reader.GetOrdinal("Oscillator2")),
+                            Oscillator3 = reader.GetBoolean(reader.GetOrdinal("Oscillator3")),
+                            ExternalInput = reader.GetBoolean(reader.GetOrdinal("ExternalInput")),
+                            Noise = reader.GetBoolean(reader.GetOrdinal("Noise")),
+
+                            ExternalInputVolumeValue = reader.GetInt32(reader.GetOrdinal("ExternalInputVolumeValue")),
+                            ExternalInputVolumeDegrees = reader.GetInt32(reader.GetOrdinal("ExternalInputVolumeDegrees")),
+                            NoiseVolumeValue = reader.GetInt32(reader.GetOrdinal("NoiseVolumeValue")),
+                            NoiseVolumeDegrees = reader.GetInt32(reader.GetOrdinal("NoiseVolumeDegrees")),
+
+                            NoiseColor = reader.GetBoolean(reader.GetOrdinal("NoiseColor")),
+                            FilterModulation = reader.GetBoolean(reader.GetOrdinal("FilterModulation")),
+                            KeyboardControl1 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl1")),
+                            KeyboardControl2 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl2")),
+
+                            FilterCutoffValue = reader.GetInt32(reader.GetOrdinal("FilterCutoffValue")),
+                            FilterCutoffDegrees = reader.GetInt32(reader.GetOrdinal("FilterCutoffDegrees")),
+                            FilterEmphasisValue = reader.GetInt32(reader.GetOrdinal("FilterEmphasisValue")),
+                            FilterEmphasisDegrees = reader.GetInt32(reader.GetOrdinal("FilterEmphasisDegrees")),
+                            FilterContourValue = reader.GetInt32(reader.GetOrdinal("FilterContourValue")),
+                            FilterContourDegrees = reader.GetInt32(reader.GetOrdinal("FilterContourDegrees")),
+
+                            FilterAttackValue = reader.GetInt32(reader.GetOrdinal("FilterAttackValue")),
+                            FilterAttackDegrees = reader.GetInt32(reader.GetOrdinal("FilterAttackDegrees")),
+                            FilterDecayValue = reader.GetInt32(reader.GetOrdinal("FilterDecayValue")),
+                            FilterDecayDegrees = reader.GetInt32(reader.GetOrdinal("FilterDecayDegrees")),
+                            FilterSustainValue = reader.GetInt32(reader.GetOrdinal("FilterSustainValue")),
+                            FilterSustainDegrees = reader.GetInt32(reader.GetOrdinal("FilterSustainDegrees")),
+
+                            LoudnessAttackValue = reader.GetInt32(reader.GetOrdinal("LoudnessAttackValue")),
+                            LoudnessAttackDegrees = reader.GetInt32(reader.GetOrdinal("LoudnessAttackDegrees")),
+                            LoudnessDecayValue = reader.GetInt32(reader.GetOrdinal("LoudnessDecayValue")),
+                            LoudnessDecayDegrees = reader.GetInt32(reader.GetOrdinal("LoudnessDecayDegrees")),
+                            LoudnessSustainValue = reader.GetInt32(reader.GetOrdinal("LoudnessSustainValue")),
+                            LoudnessSustainDegrees = reader.GetInt32(reader.GetOrdinal("LoudnessSustainDegrees")),
+
+                            MainOutputVolumeValue = reader.GetInt32(reader.GetOrdinal("MainOutputVolumeValue")),
+                            MainOutputVolumeDegrees = reader.GetInt32(reader.GetOrdinal("MainOutputVolumeDegrees")),
+
+                            MainOutput = reader.GetBoolean(reader.GetOrdinal("MainOutput")),
+
+                            Tuner = reader.GetBoolean(reader.GetOrdinal("Tuner")),
+
+                            PhonesOutputVolumeValue = reader.GetInt32(reader.GetOrdinal("PhonesOutputVolumeValue")),
+                            PhonesOutputVolumeDegrees = reader.GetInt32(reader.GetOrdinal("PhonesOutputVolumeDegrees")),
+
+                            Power = reader.GetBoolean(reader.GetOrdinal("Power")),
+
+                            LfoRateValue = reader.GetInt32(reader.GetOrdinal("LfoRateValue")),
+                            LfoRateDegrees = reader.GetInt32(reader.GetOrdinal("LfoRateDegrees")),
+
+                            Glide = reader.GetBoolean(reader.GetOrdinal("Glide")),
+                            Decay = reader.GetBoolean(reader.GetOrdinal("Decay")),
+
+                            PitchWheel = reader.GetInt32(reader.GetOrdinal("PitchWheel")),
+                            ModWheel = reader.GetInt32(reader.GetOrdinal("ModWheel")),
+
+                            PresetName = reader.GetString(reader.GetOrdinal("PresetName")),
+                            PresetNotes = reader.GetString(reader.GetOrdinal("PresetNotes")),
+                            DateCreated = reader.GetDateTime(reader.GetOrdinal("DateCreated")),
+                        };
+                    }
+                    reader.Close();
+                    Response.Headers.Add("X-Requested-With", "*");
+                    Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
+                    Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                    Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+
+                    return Ok(preset);
+                }
+            }
+        }
 
 
 

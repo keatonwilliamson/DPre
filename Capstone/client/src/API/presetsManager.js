@@ -11,6 +11,12 @@ export default {
         })
             .then(result => result.json())
     },
+    getPreset(id) {
+        return fetch(`/api/v1/presets/${id}`, {
+            headers: authHeader
+        })
+            .then(result => result.json())
+    },
     postPreset(settings) {
         return fetch('/api/v1/presets', {
             method: "POST",
