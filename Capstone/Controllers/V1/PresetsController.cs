@@ -80,15 +80,6 @@ namespace Capstone.Controllers.V1
         }
 
         [HttpGet(Api.Presets.GetAll)]
-        //  public IActionResult GetAll()
-        // {
-        //     var userId = HttpContext.GetUserId();
-        //     var values = new[] { "pikachu", "squirtle", "charmander", $"{userId}"};
-        //     return Ok(values);
-        // }
-
-
-
         public async Task<IActionResult> Get()
         {
             using (SqlConnection conn = Connection)
@@ -96,105 +87,94 @@ namespace Capstone.Controllers.V1
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    // cmd.CommandText = @"SELECT 
-                    //                     Id, 
-                    //                     PokemonSpecies, 
-                    //                     Nickname, 
-                    //                     PokedexId, 
-                    //                     PictureUrl,
-                    //                     KeyCaught, 
-                    //                     DateCaught 
-                    //                     FROM 
-                    //                     Pokemon";
-                    cmd.CommandText = @"SELECT 
-                                            Id,
-                                            UserId,
-                                            MasterTuneValue,
-                                            MasterTuneDegrees,
-                                            GlideAmountValue,
-                                            GlideAmountDegrees,
-                                            ModulationMixValue,
-                                            ModulationMixDegrees,
-                                            ModulationSourceA,
-                                            ModulationSourceB,
-                                            OscillatorModulation,
-                                            Oscillation3Control,
-                                            Oscillator1RangeValue,
-                                            Oscillator1RangeDegrees,
-                                            Oscillator2RangeValue,
-                                            Oscillator2RangeDegrees,
-                                            Oscillator3RangeValue,
-                                            Oscillator3RangeDegrees,
-                                            Oscillator2FrequencyValue,
-                                            Oscillator2FrequencyDegrees,
-                                            Oscillator3FrequencyValue,
-                                            Oscillator3FrequencyDegrees,
-                                            Oscillator1WaveformValue,
-                                            Oscillator1WaveformDegrees,
-                                            Oscillator2WaveformValue,
-                                            Oscillator2WaveformDegrees,
-                                            Oscillator3WaveformValue,
-                                            Oscillator3WaveformDegrees,
-                                            Oscillator1VolumeValue,
-                                            Oscillator1VolumeDegrees,
-                                            Oscillator2VolumeValue,
-                                            Oscillator2VolumeDegrees,
-                                            Oscillator3VolumeValue,
-                                            Oscillator3VolumeDegrees,
-                                            Oscillator1,
-                                            Oscillator2,
-                                            Oscillator3,
-                                            ExternalInput,
-                                            Noise,
-                                            ExternalInputVolumeValue,
-                                            ExternalInputVolumeDegrees,
-                                            NoiseVolumeValue,
-                                            NoiseVolumeDegrees,
-                                            NoiseColor,
-                                            FilterModulation,
-                                            KeyboardControl1,
-                                            KeyboardControl2,
-                                            FilterCutoffValue,
-                                            FilterCutoffDegrees,
-                                            FilterEmphasisValue,
-                                            FilterEmphasisDegrees,
-                                            FilterContourValue,
-                                            FilterContourDegrees,
-                                            FilterAttackValue,
-                                            FilterAttackDegrees,
-                                            FilterDecayValue,
-                                            FilterDecayDegrees,
-                                            FilterSustainValue,
-                                            FilterSustainDegrees,
-                                            LoudnessAttackValue,
-                                            LoudnessAttackDegrees,
-                                            LoudnessDecayValue,
-                                            LoudnessDecayDegrees,
-                                            LoudnessSustainValue,
-                                            LoudnessSustainDegrees,
-                                            MainOutputVolumeValue,
-                                            MainOutputVolumeDegrees,
-                                            MainOutput,
-                                            Tuner,
-                                            PhonesOutputVolumeValue,
-                                            PhonesOutputVolumeDegrees,
-                                            Power,
-                                            LfoRateValue,
-                                            LfoRateDegrees,
-                                            Glide,
-                                            Decay,
-                                            PitchWheel,
-                                            ModWheel,
-                                            PresetName,
-                                            PresetNotes,
-                                            DateCreated,
-                                        FROM 
-                                        Preset
-                                        ";
-
+                    cmd.CommandText = @"
+                        SELECT 
+                        Id,
+                        UserId,
+                        MasterTuneValue,
+                        MasterTuneDegrees,
+                        GlideAmountValue,
+                        GlideAmountDegrees,
+                        ModulationMixValue,
+                        ModulationMixDegrees,
+                        ModulationSourceA,
+                        ModulationSourceB,
+                        OscillatorModulation,
+                        Oscillation3Control,
+                        Oscillator1RangeValue,
+                        Oscillator1RangeDegrees,
+                        Oscillator2RangeValue,
+                        Oscillator2RangeDegrees,
+                        Oscillator3RangeValue,
+                        Oscillator3RangeDegrees,
+                        Oscillator2FrequencyValue,
+                        Oscillator2FrequencyDegrees,
+                        Oscillator3FrequencyValue,
+                        Oscillator3FrequencyDegrees,
+                        Oscillator1WaveformValue,
+                        Oscillator1WaveformDegrees,
+                        Oscillator2WaveformValue,
+                        Oscillator2WaveformDegrees,
+                        Oscillator3WaveformValue,
+                        Oscillator3WaveformDegrees,
+                        Oscillator1VolumeValue,
+                        Oscillator1VolumeDegrees,
+                        Oscillator2VolumeValue,
+                        Oscillator2VolumeDegrees,
+                        Oscillator3VolumeValue,
+                        Oscillator3VolumeDegrees,
+                        Oscillator1,
+                        Oscillator2,
+                        Oscillator3,
+                        ExternalInput,
+                        Noise,
+                        ExternalInputVolumeValue,
+                        ExternalInputVolumeDegrees,
+                        NoiseVolumeValue,
+                        NoiseVolumeDegrees,
+                        NoiseColor,
+                        FilterModulation,
+                        KeyboardControl1,
+                        KeyboardControl2,
+                        FilterCutoffValue,
+                        FilterCutoffDegrees,
+                        FilterEmphasisValue,
+                        FilterEmphasisDegrees,
+                        FilterContourValue,
+                        FilterContourDegrees,
+                        FilterAttackValue,
+                        FilterAttackDegrees,
+                        FilterDecayValue,
+                        FilterDecayDegrees,
+                        FilterSustainValue,
+                        FilterSustainDegrees,
+                        LoudnessAttackValue,
+                        LoudnessAttackDegrees,
+                        LoudnessDecayValue,
+                        LoudnessDecayDegrees,
+                        LoudnessSustainValue,
+                        LoudnessSustainDegrees,
+                        MainOutputVolumeValue,
+                        MainOutputVolumeDegrees,
+                        MainOutput,
+                        Tuner,
+                        PhonesOutputVolumeValue,
+                        PhonesOutputVolumeDegrees,
+                        Power,
+                        LfoRateValue,
+                        LfoRateDegrees,
+                        Glide,
+                        Decay,
+                        PitchWheel,
+                        ModWheel,
+                        PresetName,
+                        PresetNotes,
+                        DateCreated
+                        FROM 
+                        Preset
+                        ";
                     SqlDataReader reader = await cmd.ExecuteReaderAsync();
                     List<Preset> presetList = new List<Preset>();
-
                     while (reader.Read())
                     {
                         Preset preset = new Preset
@@ -301,8 +281,6 @@ namespace Capstone.Controllers.V1
                             PresetNotes = reader.GetString(reader.GetOrdinal("PresetNotes")),
                             DateCreated = reader.GetDateTime(reader.GetOrdinal("DateCreated")),
                         };
-
-                        // pokemonList.Add(pokemon);
                         presetList.Add(preset);
                     }
                     reader.Close();
@@ -649,7 +627,7 @@ namespace Capstone.Controllers.V1
                     // Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
                     // var values = new[] { "value yum", "value yum", "value 3asfasdfasd33" };
                     // return CreatedAtRoute("GetPokemon", new { id = newId }, pokemon);
-                    var message = "yeahh";
+                    var message = "yeahh! no exceptions were thrown";
                     try
                     {
                         var newId = await cmd.ExecuteScalarAsync();
@@ -660,7 +638,7 @@ namespace Capstone.Controllers.V1
                     }
 
                     // preset.Id = newId;
-                    return Ok(new { id = message });
+                    return Ok(new { message = message });
                     // return CreatedAtRoute("Post", new { id = newId }, preset);
                 }
             }
