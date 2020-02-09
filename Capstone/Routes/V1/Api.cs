@@ -16,6 +16,11 @@ namespace Capstone.Routes.V1
             public const string GetAll = Base + "/Values";
             public const string Get = Base + "/Values/{id}";
         }
+        public static class Presets
+        {
+            public const string GetAll = Base + "/Presets";
+            public const string Get = Base + "/Presets/{id}";
+        }
 
         public static class User
         {

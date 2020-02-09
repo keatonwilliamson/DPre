@@ -61,11 +61,12 @@ class Design extends Component {
       power: true,
       lfoRate: [0, 30],
       glide: false,
-      delay: false,
+      decay: false,
       pitchWheel: 50,
       modWheel: 50,
-      patchName: "",
-      patchNotes: "",
+      presetName: "",
+      presetNotes: "",
+      dateCreated: "",
     }
   }
 
@@ -92,7 +93,7 @@ class Design extends Component {
   };
 
   handleTextInputChange(event) {
-    let textInputValue = (event.target.name === "patchName") ? event.target.value.toUpperCase() : event.target.value
+    let textInputValue = (event.target.name === "presetName") ? event.target.value.toUpperCase() : event.target.value
     this.setState({
       settings: { ...this.state.settings, [event.target.name]: textInputValue }
     });
@@ -101,6 +102,15 @@ class Design extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state.settings)
+    const authHeader = createAuthHeaders();
+    fetch('/api/v1/presets', {
+      headers: authHeader
+    })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      // .then(values => {
+      //   this.setState({ values: values });
+      // });
   }
 
   modulationMixLabelFadeAmount = () => {
@@ -603,8 +613,8 @@ class Design extends Component {
             </div>
             <div className="patch-form-container">
               <form className="patch-form" onSubmit={this.handleSubmit}>
-                <textarea name="patchName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxLength="50" value={this.state.settings.patchName} onChange={this.handleTextInputChange.bind(this)} />
-                <textarea name="patchNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.patchNotes} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="presetName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" type="submit">SAVE</button>
               </form>
             </div>
