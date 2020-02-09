@@ -1,0 +1,434 @@
+
+        Id,
+        UserId,
+        MasterTuneValue,
+        MasterTuneDegrees,
+        GlideAmountValue,
+        GlideAmountDegrees,
+        ModulationMixValue,
+        ModulationMixDegrees,
+        ModulationSourceA,
+        ModulationSourceB,
+        OscillatorModulation,
+        Oscillation3Control,
+        Oscillator1RangeValue,
+        Oscillator1RangeDegrees,
+        Oscillator2RangeValue,
+        Oscillator2RangeDegrees,
+        Oscillator3RangeValue,
+        Oscillator3RangeDegrees,
+        Oscillator2FrequencyValue,
+        Oscillator2FrequencyDegrees,
+        Oscillator3FrequencyValue,
+        Oscillator3FrequencyDegrees,
+        Oscillator1WaveformValue,
+        Oscillator1WaveformDegrees,
+        Oscillator2WaveformValue,
+        Oscillator2WaveformDegrees,
+        Oscillator3WaveformValue,
+        Oscillator3WaveformDegrees,
+        Oscillator1VolumeValue,
+        Oscillator1VolumeDegrees,
+        Oscillator2VolumeValue,
+        Oscillator2VolumeDegrees,
+        Oscillator3VolumeValue,
+        Oscillator3VolumeDegrees,
+        Oscillator1,
+        Oscillator2,
+        Oscillator3,
+        ExternalInput,
+        Noise,
+        ExternalInputVolumeValue,
+        ExternalInputVolumeDegrees,
+        NoiseVolumeValue,
+        NoiseVolumeDegrees,
+        NoiseColor,
+        FilterModulation,
+        KeyboardControl1,
+        KeyboardControl2,
+        FilterCutoffValue,
+        FilterCutoffDegrees,
+        FilterEmphasisValue,
+        FilterEmphasisDegrees,
+        FilterContourValue,
+        FilterContourDegrees,
+        FilterAttackValue,
+        FilterAttackDegrees,
+        FilterDecayValue,
+        FilterDecayDegrees,
+        FilterSustainValue,
+        FilterSustainDegrees,
+        LoudnessAttackValue,
+        LoudnessAttackDegrees,
+        LoudnessDecayValue,
+        LoudnessDecayDegrees,
+        LoudnessSustainValue,
+        LoudnessSustainDegrees,
+        mainOutputVolumeValue,
+        mainOutputVolumeDegrees,
+        mainOutputVolume,
+        Tuner,
+        PhonesOutputVolumeValue,
+        PhonesOutputVolumeDegrees,
+        Power,
+        LfoRateValue,
+        LfoRateDegrees,
+        Glide,
+        Decay,
+        PitchWheel,
+        ModWheel,
+        PresetName,
+        PresetNotes,
+        DateCreated,
+
+        
+        
+        
+        
+        Id
+        UserId
+        MasterTuneValue
+        MasterTuneDegrees
+        GlideAmountValue
+        GlideAmountDegrees
+        ModulationMixValue
+        ModulationMixDegrees
+        ModulationSourceA
+        ModulationSourceB
+        OscillatorModulation
+        Oscillation3Control
+        Oscillator1RangeValue
+        Oscillator1RangeDegrees
+        Oscillator2RangeValue
+        Oscillator2RangeDegrees
+        Oscillator3RangeValue
+        Oscillator3RangeDegrees
+        Oscillator2FrequencyValue
+        Oscillator2FrequencyDegrees
+        Oscillator3FrequencyValue
+        Oscillator3FrequencyDegrees
+        Oscillator1WaveformValue
+        Oscillator1WaveformDegrees
+        Oscillator2WaveformValue
+        Oscillator2WaveformDegrees
+        Oscillator3WaveformValue
+        Oscillator3WaveformDegrees
+        Oscillator1VolumeValue
+        Oscillator1VolumeDegrees
+        Oscillator2VolumeValue
+        Oscillator2VolumeDegrees
+        Oscillator3VolumeValue
+        Oscillator3VolumeDegrees
+        Oscillator1
+        Oscillator2
+        Oscillator3
+        ExternalInput
+        Noise
+        ExternalInputVolumeValue
+        ExternalInputVolumeDegrees
+        NoiseVolumeValue
+        NoiseVolumeDegrees
+        NoiseColor
+        FilterModulation
+        KeyboardControl1
+        KeyboardControl2
+        FilterCutoffValue
+        FilterCutoffDegrees
+        FilterEmphasisValue
+        FilterEmphasisDegrees
+        FilterContourValue
+        FilterContourDegrees
+        FilterAttackValue
+        FilterAttackDegrees
+        FilterDecayValue
+        FilterDecayDegrees
+        FilterSustainValue
+        FilterSustainDegrees
+        LoudnessAttackValue
+        LoudnessAttackDegrees
+        LoudnessDecayValue
+        LoudnessDecayDegrees
+        LoudnessSustainValue
+        LoudnessSustainDegrees
+        mainOutputVolumeValue
+        mainOutputVolumeDegrees
+        mainOutputVolume
+        Tuner
+        PhonesOutputVolumeValue
+        PhonesOutputVolumeDegrees
+        Power
+        LfoRateValue
+        LfoRateDegrees
+        Glide
+        Decay
+        PitchWheel
+        ModWheel
+        PresetName
+        PresetNotes
+        DateCreated
+
+        
+        
+        
+        
+        Id: Id
+        UserId: UserId
+        MasterTuneValue: MasterTuneValue
+        MasterTuneDegrees: MasterTuneDegrees
+        GlideAmountValue: GlideAmountValue
+        GlideAmountDegrees: GlideAmountDegrees
+        ModulationMixValue: ModulationMixValue
+        ModulationMixDegrees: ModulationMixDegrees
+        ModulationSourceA: ModulationSourceA
+        ModulationSourceB: ModulationSourceB
+        OscillatorModulation: OscillatorModulation
+        Oscillation3Control: Oscillation3Control
+        Oscillator1RangeValue: Oscillator1RangeValue
+        Oscillator1RangeDegrees: Oscillator1RangeDegrees
+        Oscillator2RangeValue: Oscillator2RangeValue
+        Oscillator2RangeDegrees: Oscillator2RangeDegrees
+        Oscillator3RangeValue: Oscillator3RangeValue
+        Oscillator3RangeDegrees: Oscillator3RangeDegrees
+        Oscillator2FrequencyValue: Oscillator2FrequencyValue
+        Oscillator2FrequencyDegrees: Oscillator2FrequencyDegrees
+        Oscillator3FrequencyValue: Oscillator3FrequencyValue
+        Oscillator3FrequencyDegrees: Oscillator3FrequencyDegrees
+        Oscillator1WaveformValue: Oscillator1WaveformValue
+        Oscillator1WaveformDegrees: Oscillator1WaveformDegrees
+        Oscillator2WaveformValue: Oscillator2WaveformValue
+        Oscillator2WaveformDegrees: Oscillator2WaveformDegrees
+        Oscillator3WaveformValue: Oscillator3WaveformValue
+        Oscillator3WaveformDegrees: Oscillator3WaveformDegrees
+        Oscillator1VolumeValue: Oscillator1VolumeValue
+        Oscillator1VolumeDegrees: Oscillator1VolumeDegrees
+        Oscillator2VolumeValue: Oscillator2VolumeValue
+        Oscillator2VolumeDegrees: Oscillator2VolumeDegrees
+        Oscillator3VolumeValue: Oscillator3VolumeValue
+        Oscillator3VolumeDegrees: Oscillator3VolumeDegrees
+        Oscillator1: Oscillator1
+        Oscillator2: Oscillator2
+        Oscillator3: Oscillator3
+        ExternalInput: ExternalInput
+        Noise: Noise
+        ExternalInputVolumeValue: ExternalInputVolumeValue
+        ExternalInputVolumeDegrees: ExternalInputVolumeDegrees
+        NoiseVolumeValue: NoiseVolumeValue
+        NoiseVolumeDegrees: NoiseVolumeDegrees
+        NoiseColor: NoiseColor
+        FilterModulation: FilterModulation
+        KeyboardControl1: KeyboardControl1
+        KeyboardControl2: KeyboardControl2
+        FilterCutoffValue: FilterCutoffValue
+        FilterCutoffDegrees: FilterCutoffDegrees
+        FilterEmphasisValue: FilterEmphasisValue
+        FilterEmphasisDegrees: FilterEmphasisDegrees
+        FilterContourValue: FilterContourValue
+        FilterContourDegrees: FilterContourDegrees
+        FilterAttackValue: FilterAttackValue
+        FilterAttackDegrees: FilterAttackDegrees
+        FilterDecayValue: FilterDecayValue
+        FilterDecayDegrees: FilterDecayDegrees
+        FilterSustainValue: FilterSustainValue
+        FilterSustainDegrees: FilterSustainDegrees
+        LoudnessAttackValue: LoudnessAttackValue
+        LoudnessAttackDegrees: LoudnessAttackDegrees
+        LoudnessDecayValue: LoudnessDecayValue
+        LoudnessDecayDegrees: LoudnessDecayDegrees
+        LoudnessSustainValue: LoudnessSustainValue
+        LoudnessSustainDegrees: LoudnessSustainDegrees
+        mainOutputVolumeValue: mainOutputVolumeValue
+        mainOutputVolumeDegrees: mainOutputVolumeDegrees
+        mainOutputVolume: mainOutputVolume
+        Tuner: Tuner
+        PhonesOutputVolumeValue: PhonesOutputVolumeValue
+        PhonesOutputVolumeDegrees: PhonesOutputVolumeDegrees
+        Power: Power
+        LfoRateValue: LfoRateValue
+        LfoRateDegrees: LfoRateDegrees
+        Glide: Glide
+        Decay: Decay
+        PitchWheel: PitchWheel
+        ModWheel: ModWheel
+        PresetName: PresetName
+        PresetNotes: PresetNotes
+        DateCreated: DateCreated
+
+
+
+
+
+        UserId: settings.userId
+        MasterTuneValue: settings.masterTune[0]
+        MasterTuneDegrees: settings.masterTune[1]
+        GlideAmountValue: settings.glideAmount[0]
+        GlideAmountDegrees: settings.glideAmount[1]
+        ModulationMixValue: settings.modulationMix[0]
+        ModulationMixDegrees: settings.modulationMix[1]
+        ModulationSourceA: settings.modulationSourceA
+        ModulationSourceB: settings.modulationSourceB
+        OscillatorModulation: settings.oscillatorModulation
+        Oscillation3Control: settings.oscillation3Control
+        Oscillator1RangeValue: settings.oscillator1Range[0]
+        Oscillator1RangeDegrees: settings.oscillator1Range[1]
+        Oscillator2RangeValue: settings.oscillator2Range[0]
+        Oscillator2RangeDegrees: settings.oscillator2Range[1]
+        Oscillator3RangeValue: settings.oscillator3Range[0]
+        Oscillator3RangeDegrees: settings.oscillator3Range[1]
+        Oscillator2FrequencyValue: settings.oscillator2Frequency[0]
+        Oscillator2FrequencyDegrees: settings.oscillator2Frequency[1]
+        Oscillator3FrequencyValue: settings.oscillator3Frequency[0]
+        Oscillator3FrequencyDegrees: settings.oscillator3Frequency[1]
+        Oscillator1WaveformValue: settings.oscillator1Waveform[0]
+        Oscillator1WaveformDegrees: settings.oscillator1Waveform[1]
+        Oscillator2WaveformValue: settings.oscillator2Waveform[0]
+        Oscillator2WaveformDegrees: settings.oscillator2Waveform[1]
+        Oscillator3WaveformValue: settings.oscillator3Waveform[0]
+        Oscillator3WaveformDegrees: settings.oscillator3Waveform[1]
+        Oscillator1VolumeValue: settings.oscillator1Volume[0]
+        Oscillator1VolumeDegrees: settings.oscillator1Volume[1]
+        Oscillator2VolumeValue: settings.oscillator2Volume[0]
+        Oscillator2VolumeDegrees: settings.oscillator2Volume[1]
+        Oscillator3VolumeValue: settings.oscillator3Volume[0]
+        Oscillator3VolumeDegrees: settings.oscillator3Volume[1]
+
+        Oscillator1: settings.oscillator1
+        Oscillator2: settings.oscillator2
+        Oscillator3: settings.oscillator3
+        ExternalInput: settings.externalInput
+        Noise: settings.noise
+        ExternalInputVolumeValue: settings.externalInputVolume[0]
+        ExternalInputVolumeDegrees: settings.externalInputVolume[1]
+        NoiseVolumeValue: settings.noiseVolume[0]
+        NoiseVolumeDegrees: settings.noiseVolume[1]
+        NoiseColor: settings.noiseColor
+        FilterModulation: settings.filterModulation
+        KeyboardControl1: settings.keyboardControl1
+        KeyboardControl2: settings.keyboardControl2
+
+        FilterCutoffValue: settings.filterCutoff[0]
+        FilterCutoffDegrees: settings.filterCutoff[1]
+        FilterEmphasisValue: settings.filterEmphasis[0]
+        FilterEmphasisDegrees: settings.filterEmphasis[1]
+        FilterContourValue: settings.filterContour[0]
+        FilterContourDegrees: settings.filterContour[1]
+        FilterAttackValue: settings.filterAttack[0]
+        FilterAttackDegrees: settings.filterAttack[1]
+        FilterDecayValue: settings.filterDecay[0]
+        FilterDecayDegrees: settings.filterDecay[1]
+        FilterSustainValue: settings.filterSustain[0]
+        FilterSustainDegrees: settings.filterSustain[1]
+        LoudnessAttackValue: settings.loudnessAttack[0]
+        LoudnessAttackDegrees: settings.loudnessAttack[1]
+        LoudnessDecayValue: settings.loudnessDecay[0]
+        LoudnessDecayDegrees: settings.loudnessDecay[1]
+        LoudnessSustainValue: settings.loudnessSustain[0]
+        LoudnessSustainDegrees: settings.loudnessSustain[1]
+        MainOutputVolumeValue: settings.mainOutputVolume[0]
+        MainOutputVolumeDegrees: settings.mainOutputVolume[1]
+
+        MainOutput: settings.mainOutput
+        Tuner: settings.tuner
+        PhonesOutputVolumeValue: settings.phonesOutputVolume[0]
+        PhonesOutputVolumeDegrees: settings.phonesOutputVolume[1]
+        Power: settings.power
+        LfoRateValue: settings.lfoRate[0]
+        LfoRateDegrees: settings.lfoRate[1]
+        Glide: settings.glide
+        Decay: settings.decay
+        PitchWheel: settings.pitchWheel
+        ModWheel: settings.modWheel
+        PresetName: settings.presetName
+        PresetNotes: settings.presetNotes
+        DateCreated: settings.dateCreated
+
+
+
+
+
+DROP TABLE IF EXISTS Preset;
+
+
+CREATE TABLE Preset (
+    Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+    UserId nvarchar(450) NOT NULL,
+    MasterTuneValue INTEGER NOT NULL,
+    MasterTuneDegrees INTEGER NOT NULL,
+    GlideAmountValue INTEGER NOT NULL,
+    GlideAmountDegrees INTEGER NOT NULL,
+    ModulationMixValue INTEGER NOT NULL,
+    ModulationMixDegrees INTEGER NOT NULL,
+    ModulationSourceA BIT NOT NULL DEFAULT(0),
+    ModulationSourceB BIT NOT NULL DEFAULT(0),
+    OscillatorModulation BIT NOT NULL DEFAULT(0),
+    Oscillation3Control BIT NOT NULL DEFAULT(0),
+    Oscillator1RangeValue VARCHAR(55) NOT NULL,
+    Oscillator1RangeDegrees INTEGER NOT NULL,
+    Oscillator2RangeValue VARCHAR(55) NOT NULL,
+    Oscillator2RangeDegrees INTEGER NOT NULL,
+    Oscillator3RangeValue VARCHAR(55) NOT NULL,
+    Oscillator3RangeDegrees INTEGER NOT NULL,
+    Oscillator2FrequencyValue INTEGER NOT NULL,
+    Oscillator2FrequencyDegrees INTEGER NOT NULL,
+    Oscillator3FrequencyValue INTEGER NOT NULL,
+    Oscillator3FrequencyDegrees INTEGER NOT NULL,
+    Oscillator1WaveformValue VARCHAR(55) NOT NULL,
+    Oscillator1WaveformDegrees INTEGER NOT NULL,
+    Oscillator2WaveformValue VARCHAR(55) NOT NULL,
+    Oscillator2WaveformDegrees INTEGER NOT NULL,
+    Oscillator3WaveformValue VARCHAR(55) NOT NULL,
+    Oscillator3WaveformDegrees INTEGER NOT NULL,
+    Oscillator1VolumeValue INTEGER NOT NULL,
+    Oscillator1VolumeDegrees INTEGER NOT NULL,
+    Oscillator2VolumeValue INTEGER NOT NULL,
+    Oscillator2VolumeDegrees INTEGER NOT NULL,
+    Oscillator3VolumeValue INTEGER NOT NULL,
+    Oscillator3VolumeDegrees INTEGER NOT NULL,
+    Oscillator1 BIT NOT NULL DEFAULT(0),
+    Oscillator2 BIT NOT NULL DEFAULT(0),
+    Oscillator3 BIT NOT NULL DEFAULT(0),
+    ExternalInput BIT NOT NULL DEFAULT(0),
+    Noise BIT NOT NULL DEFAULT(0),
+    ExternalInputVolumeValue INTEGER NOT NULL,
+    ExternalInputVolumeDegrees INTEGER NOT NULL,
+    NoiseVolumeValue INTEGER NOT NULL,
+    NoiseVolumeDegrees INTEGER NOT NULL,
+    NoiseColor BIT NOT NULL DEFAULT(0),
+    FilterModulation BIT NOT NULL DEFAULT(0),
+    KeyboardControl1 BIT NOT NULL DEFAULT(0),
+    KeyboardControl2 BIT NOT NULL DEFAULT(0),
+    FilterCutoffValue INTEGER NOT NULL,
+    FilterCutoffDegrees INTEGER NOT NULL,
+    FilterEmphasisValue INTEGER NOT NULL,
+    FilterEmphasisDegrees INTEGER NOT NULL,
+    FilterContourValue INTEGER NOT NULL,
+    FilterContourDegrees INTEGER NOT NULL,
+    FilterAttackValue INTEGER NOT NULL,
+    FilterAttackDegrees INTEGER NOT NULL,
+    FilterDecayValue INTEGER NOT NULL,
+    FilterDecayDegrees INTEGER NOT NULL,
+    FilterSustainValue INTEGER NOT NULL,
+    FilterSustainDegrees INTEGER NOT NULL,
+    LoudnessAttackValue INTEGER NOT NULL,
+    LoudnessAttackDegrees INTEGER NOT NULL,
+    LoudnessDecayValue INTEGER NOT NULL,
+    LoudnessDecayDegrees INTEGER NOT NULL,
+    LoudnessSustainValue INTEGER NOT NULL,
+    LoudnessSustainDegrees INTEGER NOT NULL,
+    MainOutputVolumeValue INTEGER NOT NULL,
+    MainOutputVolumeDegrees INTEGER NOT NULL,
+    MainOutput BIT NOT NULL DEFAULT(0),
+    Tuner BIT NOT NULL DEFAULT(0),
+    PhonesOutputVolumeValue INTEGER NOT NULL,
+    PhonesOutputVolumeDegrees INTEGER NOT NULL,
+    Power BIT NOT NULL DEFAULT(0),
+    LfoRateValue INTEGER NOT NULL,
+    LfoRateDegrees INTEGER NOT NULL,
+    Glide BIT NOT NULL DEFAULT(0),
+    Decay BIT NOT NULL DEFAULT(0),
+    PitchWheel INTEGER NOT NULL,
+    ModWheel INTEGER NOT NULL,
+    PresetName VARCHAR(55) NOT NULL,
+    PresetNotes VARCHAR(55) NOT NULL,
+    DateCreated DATETIME NOT NULL,
+    CONSTRAINT FK_UserPreset FOREIGN KEY(UserId) REFERENCES AspNetUsers(Id)
+);

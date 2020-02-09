@@ -8,7 +8,7 @@ namespace Capstone.Models
     public class Preset
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         // 
         public int MasterTuneValue { get; set; }
         public int MasterTuneDegrees { get; set; }
@@ -85,9 +85,9 @@ namespace Capstone.Models
         public int LoudnessSustainValue { get; set; }
         public int LoudnessSustainDegrees { get; set; }
         // 
-        public int mainOutputVolumeValue { get; set; }
-        public int mainOutputVolumeDegrees { get; set; }
-        public bool mainOutputVolume { get; set; }
+        public int MainOutputVolumeValue { get; set; }
+        public int MainOutputVolumeDegrees { get; set; }
+        public bool MainOutput { get; set; }
         // 
         public bool Tuner { get; set; }
         public int PhonesOutputVolumeValue { get; set; }
