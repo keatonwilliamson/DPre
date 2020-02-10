@@ -8,9 +8,17 @@ class Knob extends React.Component {
         this.endAngle = this.startAngle + props.degrees;
         this.currentDeg = props.initialDegreeValue;
         this.state = {
+            loaded: false,
             deg: this.currentDeg,
             clicked: false
         };
+    }
+
+    componentWillReceiveProps({ initialDegreeValue }) {
+        if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
+            this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
+            console.log("component will reciev props on knob")
+        }
     }
 
     startDrag = e => {
@@ -78,6 +86,7 @@ class Knob extends React.Component {
             knobValueStyle.marginTop = "12px";
             knobValueStyle.fontSize = "38px"
         }
+        if(this.props.preset) console.log("hey from this knob, i've got preset", this.props)
         return (
             <div className={`${this.props.oscillatorFrequency ? "oscillator-frequency-knob" : "knob"} outer ${this.props.uniqueClass}`} onMouseDown={this.startDrag}>
                 <div className={`${this.props.oscillatorFrequency ? "oscillator-frequency-knob" : "knob"} inner`} style={iStyle}>

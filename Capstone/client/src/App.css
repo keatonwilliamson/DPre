@@ -260,12 +260,12 @@
   position: relative;
   grid-column: 3 / 4;
   height: 644px;
-  width: 980px;
+  width: 1080px;
   /* border: 3px solid pink; */
 }
 .patch-form {
   top: 0px;
-  left: 120px;
+  left: 224px;
   position: absolute;
   height: 550px;
   width: 400px;
@@ -280,7 +280,7 @@ textarea{
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  width:400px;
+  width:518px;
   cursor:default;
   font-family: 'Alata', sans-serif;
   color: white;
@@ -293,14 +293,14 @@ textarea{
   position: absolute;
   top: 32px;
   left: 0px;
-  height: 120px;
+  height: 100px;
   border-bottom: 3px solid white;
   /* font-size: 22px;
   letter-spacing: default; */
 }
 .patch-notes-text-input {
   position: absolute;
-  top: 180px;
+  top: 160px;
   left: 0px;
   height: 450px;
   font-size: 22px;
@@ -344,8 +344,8 @@ textarea{
   font-size: 32px;
   letter-spacing: 2px;
   position: absolute;
-  top: 32px;
-  left: 464px;
+  top: 540px;
+  left: 350px;
   transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
   cursor: pointer;
   display: block;

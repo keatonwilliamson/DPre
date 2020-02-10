@@ -6,6 +6,8 @@ import Landing from './components/Landing';
 import Register from './components/Register';
 import Home from './components/Home';
 import Design from './components/Design';
+import Bank from './components/Bank';
+import Edit from './components/Edit';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
 import './Knob.css';
@@ -28,21 +30,21 @@ class App extends Component {
       <div className="App">
         <Router>
           <Route exact path="/login" render={(props) => (
-            <Login user={this.state.user} onLogin={(user) => this.setState({ user })} {...props}/>
+            <Login user={this.state.user} onLogin={(user) => this.setState({ user })} {...props} />
           )} />
           <Route exact path="/register" render={(props) => (
             <Register user={this.state.user} onLogin={(user) => this.setState({ user })} {...props} />
           )} />
           <Route exact path="/" render={(props) => (
             <>
-            <Header user={this.state.user} logout={this.logout} {...props} />
-              <Landing user={this.state.user} {...props}/>
+              <Header user={this.state.user} logout={this.logout} {...props} />
+              <Landing user={this.state.user} {...props} />
               {/* <Header user={this.state.user} logout={this.logout} {...props} />
             {this.state.user ? ( <Home /> ) : <Landing />} */}
             </>
           )} />
 
-          <Route path={["/home", "/explore", "/bank", "/design"]} render={(props) => (
+          <Route path={["/home", "/explore", "/bank", "/design", "/edit"]} render={(props) => (
             <Header user={this.state.user} logout={this.logout} {...props} />
           )} />
           <Route exact path="/home" render={() => (
@@ -51,6 +53,12 @@ class App extends Component {
           <Route path="/design" render={() => (
             <Design />
           )} />
+          <Route path="/bank" render={(props) => (
+            <Bank {...props}/>
+          )} />
+          <Route path="/edit/:presetId(\d+)" render={(props) => {
+            return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
+          }} />
         </Router>
       </div>
     );

@@ -14,9 +14,11 @@ class Design extends Component {
     super(props);
     this.slidingGrid = React.createRef();
   }
+
   state = {
-    values: [],
     settings: {
+      id: null,
+      userId: null,
       masterTune: [0, 180],
       glideAmount: [0, 30],
       modulationMix: [5, 180],
@@ -67,7 +69,7 @@ class Design extends Component {
       modWheel: 50,
       presetName: "",
       presetNotes: "",
-      dateCreated: "",
+      dateCreated: null,
     }
   }
 
@@ -102,48 +104,6 @@ class Design extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.settings)
-    // const authHeader = createAuthHeaders();
-    // fetch('/api/v1/values', {
-    //   headers: authHeader
-    // })
-    //   .then(response => response.json())
-    //   .then(response => console.log(response))
-    // .then(values => {
-    //   this.setState({ values: values });
-    // });
-
-    // fetch('/api/v1/presets', {
-    //   method: "POST",
-    //   headers: {
-    //     headers: authHeader
-    //   },
-    //   body: JSON.stringify({
-    //     bro: "yeah",
-    //     dude: "cool"
-    //   })
-    // })
-    // .then(data => data.json()).then(response => console.log(response));
-
-
-    // fetch(`${baseUrl}/companies`, {
-    //             method: "POST",
-    //             headers: authHeader,
-    //             body: JSON.stringify(newCompany)
-    //         }).then(data => data.json())
-
-    // fetch('/api/v1/presets', {
-    //   method: "POST",
-    //   headers: authHeader,
-    //   body: JSON.stringify({
-    //     PokemonSpecies: "pooookemonlapras",
-    //     Nickname: "pooookemonlapras",
-    //     PokedexId: 3,
-    //     PictureUrl: "pooookemonlapras",
-    //     KeyCaught: 3
-    //   })
-    // }).then(response => response.json()).then(response => console.log(response))
-
     presetsManger.postPreset(this.state.settings).then(response => console.log(response));
   }
 
@@ -151,27 +111,18 @@ class Design extends Component {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
   };
 
+
   componentDidMount() {
-    // const authHeader = createAuthHeaders();
-    // fetch('/api/v1/values', {
-    //   headers: authHeader
-    // })
-    //   .then(response => response.json())
-    //   .then(values => {
-    //     this.setState({ values: values });
-    //   });
-
     this.slidingGrid.current.scrollLeft = 496;
-
-    // var el = document.querySelector('div');
-
-    // get scroll position in px
-    // console.log(el.scrollLeft, el.scrollTop);
-
-    // set scroll position in px
-    // el.scrollLeft = 500;
-    // el.scrollTop = 1000;
+    // if (this.props.preset) {
+    //   console.log("from component did mount on Design- presetid: ", this.props.preset)
+    // }
   }
+
+  componentWillReceiveProps({ preset }) {
+    // console.log("recieved presetid--- from component will recieve props on Design")
+    this.setState({ settings: preset });
+  };
 
   render() {
     return (
@@ -217,8 +168,9 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-                console.log("yeahhh boi", this.state.settings)
-                presetsManger.getPreset(1).then(response => console.log(response));
+                console.log("PRESET ID TO EDITTT", this.props.presetId);
+                console.log("STATE.settings", this.state)
+                // presetsManger.getPreset(1).then(response => console.log(response));
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>
@@ -381,9 +333,6 @@ class Design extends Component {
                 initialDegreeValue={this.state.settings.noiseVolume[1]}
                 onChange={this.handleKnobChange}
               />
-
-
-
               <Knob
                 zeroCentered={true}
                 uniqueClass={"filter-cutoff-knob"}
@@ -647,7 +596,7 @@ class Design extends Component {
             </div>
             <div className="patch-form-container">
               <form className="patch-form" onSubmit={this.handleSubmit}>
-                <textarea name="presetName" className="patch-name-text-input" placeholder={"PATCH NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="36" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" type="submit">SAVE</button>
               </form>

@@ -181,7 +181,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
-                            MasterTuneValue = reader.GetInt32(reader.GetOrdinal("MasterTuneValue")),
+                            MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
                             GlideAmountDegrees = reader.GetInt32(reader.GetOrdinal("GlideAmountDegrees")),
@@ -400,7 +400,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
-                            MasterTuneValue = reader.GetInt32(reader.GetOrdinal("MasterTuneValue")),
+                            MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
                             GlideAmountDegrees = reader.GetInt32(reader.GetOrdinal("GlideAmountDegrees")),

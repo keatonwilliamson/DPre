@@ -10,7 +10,7 @@ namespace Capstone.Models
         public int Id { get; set; }
         public string UserId { get; set; }
         // 
-        public int MasterTuneValue { get; set; }
+        public double MasterTuneValue { get; set; }
         public int MasterTuneDegrees { get; set; }
         public int GlideAmountValue { get; set; }
         public int GlideAmountDegrees { get; set; }

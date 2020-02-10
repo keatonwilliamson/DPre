@@ -343,15 +343,13 @@
 
 
 
-
-
 DROP TABLE IF EXISTS Preset;
 
 
 CREATE TABLE Preset (
     Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
     UserId nvarchar(450) NOT NULL,
-    MasterTuneValue INTEGER NOT NULL,
+    MasterTuneValue FLOAT NOT NULL,
     MasterTuneDegrees INTEGER NOT NULL,
     GlideAmountValue INTEGER NOT NULL,
     GlideAmountDegrees INTEGER NOT NULL,

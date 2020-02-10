@@ -10,9 +10,17 @@ class Pointer extends React.Component {
         this.waveformValues = ["triangle", "triangle-saw", "saw", "square", "pulse", "small-pulse"]
         this.currentDeg = props.initialDegreeValue;
         this.state = {
+            loaded: false,
             deg: this.currentDeg,
             clicked: false
         };
+    }
+
+    componentWillReceiveProps({ initialDegreeValue }) {
+        if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
+            this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
+            console.log("component will reciev props on pointer")
+        }
     }
 
     startDrag = e => {
