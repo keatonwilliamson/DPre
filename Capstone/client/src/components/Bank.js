@@ -27,7 +27,7 @@ class Bank extends Component {
     render() {
         return (
             <>
-
+{/* 
 
                 <Modal trigger={<Button>Basic Modal</Button>} basic size='small'>
                     <Header icon='archive' content='Archive Old Messages' />
@@ -45,10 +45,10 @@ class Bank extends Component {
                             <Icon name='checkmark' /> Yes
       </Button>
                     </Modal.Actions>
-                </Modal>
-                {/* {this.state.presets.map((preset, i) => (
+                </Modal> */}
+                {this.state.presets.map((preset, i) => (
                     <p className="preset" key={i} onClick={() => this.pushToEditView(preset.id)} >{preset.presetName}</p>
-                ))} */}
+                ))}
             </>
         )
     }

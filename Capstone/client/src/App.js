@@ -33,7 +33,6 @@ class App extends Component {
   renderSavingLoader = () => {
     console.log("rendersavingfrom app")
     this.setState({ saving: true });
-    this.closeSavingLoader();
   }
   closeSavingLoader = debounce(() => {
     this.setState({ saving: false });
@@ -70,7 +69,7 @@ class App extends Component {
             <Header user={this.state.user} logout={this.logout} {...props} />
           )} />
           <Route exact path="/home" render={() => (
-            <Home />
+            <Home handleScroll={this.handleScroll}/>
           )} />
           <Route path="/design" render={(props) => (
             <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} {...props} />
@@ -80,13 +79,13 @@ class App extends Component {
           )} />
           <Route path="/edit/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
-            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} presetId={parseInt(props.match.params.presetId)} {...props} />
+            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} closeSavingLoader={this.closeSavingLoader} presetId={parseInt(props.match.params.presetId)} {...props} />
           }} />
         </Router>
 
         {this.state.saving &&
           <Dimmer active>
-            <div style={{ fontSize: '32px'}} class="ui big text loader">Saving to Bank...</div>
+            <div style={{ fontSize: '32px'}} class="ui huge text loader">Saving to Bank...</div>
           </Dimmer>
         }
 

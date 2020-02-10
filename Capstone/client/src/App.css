@@ -285,7 +285,7 @@ textarea{
   font-family: 'Nunito Sans', sans-serif;
   color: white;
   font-size: 32px;
-  letter-spacing: 2px;
+  /* letter-spacing: 1px; */
   resize: none;
 }
 
@@ -302,7 +302,7 @@ textarea{
 }
 .patch-notes-text-input {
   position: absolute;
-  top: 160px;
+  top: 152px;
   left: 0px;
   height: 450px;
   font-size: 22px;

@@ -10,7 +10,7 @@ const SaveConfirmationModal = (props) => (
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <p style={{ fontSize: '32px', flex: '0 0 100%', textAlign: 'center' }}>Save this preset to your bank?</p>
+                <p style={{ fontSize: '36px', flex: '0 0 100%', textAlign: 'center' }}>Save this preset to your bank?</p>
                 <div >
                     <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.closeSaveModal}>BACK</button>
                     <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE</button>

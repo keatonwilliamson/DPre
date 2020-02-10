@@ -109,11 +109,11 @@ class Design extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.props.renderSavingLoader();
+    this.closeSaveModal();
     presetsManger.postPreset(this.state.settings)
       .then(response => {
         console.log(response)
-        this.props.renderSavingLoader();
-        this.closeSaveModal();
         this.props.history.push(`/edit/${response.id}`)
       });
   }
@@ -149,6 +149,7 @@ class Design extends Component {
         .then(preset => {
           console.log(preset)
           this.setState({ settings: preset });
+          this.props.closeSavingLoader();
         });
     }
   }
