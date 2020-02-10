@@ -11,6 +11,7 @@ import LabelGroup from './LabelGroup';
 import SaveConfirmationModal from './SaveConfirmationModal';
 import presetsManger from '../API/presetsManager';
 import { Loader, Dimmer, Button, Header, Icon, Modal } from 'semantic-ui-react'
+import {debounce} from 'lodash';
 class Design extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,7 @@ class Design extends Component {
   }
 
   state = {
+    loaded: false,
     saveConfirmation: false,
     settings: {
       id: null,
@@ -110,9 +112,17 @@ class Design extends Component {
     presetsManger.postPreset(this.state.settings)
       .then(response => {
         console.log(response)
+        this.props.renderSavingLoader();
+        this.closeSaveModal();
         this.props.history.push(`/edit/${response.id}`)
       });
   }
+
+
+
+  renderPageAfterSave = debounce((position) => {
+    console.log("HEYY DEBOUNCE")
+  }, 1000);
 
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
@@ -123,10 +133,14 @@ class Design extends Component {
   // }
   closeSaveModal = () => {
     this.setState({ saveConfirmation: false });
+    this.renderPageAfterSave();
   }
   openSaveModal = () => {
     this.setState({ saveConfirmation: true });
   }
+
+
+
 
   componentDidMount() {
     this.slidingGrid.current.scrollLeft = this.props.scroll;
@@ -632,7 +646,7 @@ class Design extends Component {
         // <Dimmer active>
         //   <Loader />
         // </Dimmer>
-        <SaveConfirmationModal closeSaveModal={this.closeSaveModal}/>
+        <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal}/>
         }
 
 

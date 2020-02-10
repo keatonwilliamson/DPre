@@ -28,10 +28,6 @@ class Bank extends Component {
         return (
             <>
 
-                <Dimmer active>
-                    <Loader />
-                </Dimmer>
-
 
                 <Modal trigger={<Button>Basic Modal</Button>} basic size='small'>
                     <Header icon='archive' content='Archive Old Messages' />

@@ -14,11 +14,13 @@ import './Knob.css';
 import './Rocker.css';
 import './Labels.css';
 import './RangeSlider.css';
-import {debounce} from 'lodash';
+import { debounce } from 'lodash';
+import { Loader, Dimmer, Button, Icon, Modal } from 'semantic-ui-react'
 
 class App extends Component {
 
   state = {
+    saving: false,
     scroll: 496,
     user: getUser(),
   }
@@ -28,6 +30,14 @@ class App extends Component {
     console.log(position)
   }, 40);
 
+  renderSavingLoader = () => {
+    console.log("rendersavingfrom app")
+    this.setState({ saving: true });
+    this.closeSavingLoader();
+  }
+  closeSavingLoader = debounce(() => {
+    this.setState({ saving: false });
+  }, 1200);
 
   logout = () => {
     this.setState({ user: null });
@@ -63,16 +73,23 @@ class App extends Component {
             <Home />
           )} />
           <Route path="/design" render={(props) => (
-            <Design scroll={this.state.scroll} handleScroll={this.handleScroll} {...props}/>
+            <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} {...props} />
           )} />
           <Route path="/bank" render={(props) => (
             <Bank {...props} />
           )} />
           <Route path="/edit/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
-            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} presetId={parseInt(props.match.params.presetId)} {...props} />
+            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} presetId={parseInt(props.match.params.presetId)} {...props} />
           }} />
         </Router>
+
+        {this.state.saving &&
+          <Dimmer active>
+            <div style={{ fontSize: '32px'}} class="ui big text loader">Saving to Bank...</div>
+          </Dimmer>
+        }
+
       </div>
     );
   }
