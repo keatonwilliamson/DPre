@@ -334,6 +334,21 @@ textarea{
   background-color:#FFFFFF;
 } */
 
+.large-white-outline-button {
+  padding: 4px 40px 6px;
+  background: #000;
+  font-family: 'Alata', sans-serif;
+  color: white;
+  font-size: 32px;
+  letter-spacing: 2px;
+  /* transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1); */
+  cursor: pointer;
+  /* display: block; */
+  outline: none;
+  background-color: transparent;
+  border: 1.5px solid #FFFFFF;
+}
+
 .patch-form-submit{
   padding: 4px 40px 6px;
   background: #000;

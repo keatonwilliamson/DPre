@@ -8,6 +8,7 @@ import Dial from './Dial';
 import OscillatorDial from './OscillatorDial';
 import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
+import SaveConfirmationModal from './SaveConfirmationModal';
 import presetsManger from '../API/presetsManager';
 import { Loader, Dimmer, Button, Header, Icon, Modal } from 'semantic-ui-react'
 class Design extends Component {
@@ -17,6 +18,7 @@ class Design extends Component {
   }
 
   state = {
+    saveConfirmation: false,
     settings: {
       id: null,
       userId: null,
@@ -116,6 +118,15 @@ class Design extends Component {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
   };
 
+  // renderSaveModal = () => {
+    
+  // }
+  closeSaveModal = () => {
+    this.setState({ saveConfirmation: false });
+  }
+  openSaveModal = () => {
+    this.setState({ saveConfirmation: true });
+  }
 
   componentDidMount() {
     this.slidingGrid.current.scrollLeft = this.props.scroll;
@@ -608,18 +619,21 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form className="patch-form" onSubmit={this.handleSubmit}>
+              <form className="patch-form">
                 <textarea name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="36" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
-                <button className="patch-form-submit" type="submit">SAVE</button>
+                <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
           </div>
         </div>
 
-        <Dimmer active>
-          <Loader />
-        </Dimmer>
+        { this.state.saveConfirmation && 
+        // <Dimmer active>
+        //   <Loader />
+        // </Dimmer>
+        <SaveConfirmationModal closeSaveModal={this.closeSaveModal}/>
+        }
 
 
       </>
