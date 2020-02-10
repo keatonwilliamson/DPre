@@ -51,9 +51,9 @@ class HorizontalRocker extends React.Component {
     };
 
     componentWillReceiveProps({ on }) {
-        console.log("component will reciev props on rocker")
         if (on != this.props.on && this.state.loaded === false) {
             this.setState({ ...this.state, on: on, loaded: true })
+            console.log("component will reciev props on rocker")
         }
     }
 

@@ -6,18 +6,12 @@ class Edit extends Component {
         super(props);
     }
 
-    state = {
-        preset: {},
-    }
+    // state = {
+    //     preset: {},
+    // }
 
 
-    componentDidMount() {
-        presetsManger.getPreset(this.props.presetId)
-            .then(preset => {
-                console.log(preset)
-                this.setState({ preset: preset });
-            });
-    }
+
 
     // componentWillReceiveProps(props) {
     //   if (props.presetId) {
@@ -28,7 +22,7 @@ class Edit extends Component {
 
     render() {
         return (
-            <Design preset={this.state.preset} {...this.props}/>
+            <Design {...this.props}/>
         )
     }
 }

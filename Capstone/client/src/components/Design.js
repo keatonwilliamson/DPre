@@ -113,22 +113,30 @@ class Design extends Component {
 
 
   componentDidMount() {
-    this.slidingGrid.current.scrollLeft = 496;
-    // if (this.props.preset) {
-    //   console.log("from component did mount on Design- presetid: ", this.props.preset)
-    // }
+    this.slidingGrid.current.scrollLeft = this.props.scroll;
+    if (this.props.presetId) {
+      presetsManger.getPreset(this.props.presetId)
+        .then(preset => {
+          console.log(preset)
+          this.setState({ settings: preset });
+        });
+    }
   }
 
-  componentWillReceiveProps({ preset }) {
-    // console.log("recieved presetid--- from component will recieve props on Design")
-    this.setState({ settings: preset });
-  };
+  componentWillUnmount() {
+    console.log("unmounting");
+  }
+
+  // componentWillReceiveProps({ preset }) {
+  //   // console.log("recieved presetid--- from component will recieve props on Design")
+  //   this.setState({ settings: preset });
+  // };
 
   render() {
     return (
       <>
         <div className="design-background"></div>
-        <div ref={this.slidingGrid} className="design-view">
+        <div ref={this.slidingGrid} onScroll={() => this.props.handleScroll(this.slidingGrid.current.scrollLeft)} className="design-view">
           <div className="sliding-grid">
             <div className="modulation-panel-container">
               <div className="modulation-panel">
