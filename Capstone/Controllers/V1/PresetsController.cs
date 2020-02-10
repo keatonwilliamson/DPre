@@ -100,7 +100,7 @@ namespace Capstone.Controllers.V1
                         ModulationSourceA,
                         ModulationSourceB,
                         OscillatorModulation,
-                        Oscillation3Control,
+                        Oscillator3Control,
                         Oscillator1RangeValue,
                         Oscillator1RangeDegrees,
                         Oscillator2RangeValue,
@@ -191,7 +191,7 @@ namespace Capstone.Controllers.V1
                             ModulationSourceA = reader.GetBoolean(reader.GetOrdinal("ModulationSourceA")),
                             ModulationSourceB = reader.GetBoolean(reader.GetOrdinal("ModulationSourceB")),
                             OscillatorModulation = reader.GetBoolean(reader.GetOrdinal("OscillatorModulation")),
-                            Oscillation3Control = reader.GetBoolean(reader.GetOrdinal("Oscillation3Control")),
+                            Oscillator3Control = reader.GetBoolean(reader.GetOrdinal("Oscillator3Control")),
 
                             Oscillator1RangeValue = reader.GetString(reader.GetOrdinal("Oscillator1RangeValue")),
                             Oscillator1RangeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator1RangeDegrees")),
@@ -235,7 +235,7 @@ namespace Capstone.Controllers.V1
                             KeyboardControl1 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl1")),
                             KeyboardControl2 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl2")),
 
-                            FilterCutoffValue = reader.GetInt32(reader.GetOrdinal("FilterCutoffValue")),
+                            FilterCutoffValue = reader.GetDouble(reader.GetOrdinal("FilterCutoffValue")),
                             FilterCutoffDegrees = reader.GetInt32(reader.GetOrdinal("FilterCutoffDegrees")),
                             FilterEmphasisValue = reader.GetInt32(reader.GetOrdinal("FilterEmphasisValue")),
                             FilterEmphasisDegrees = reader.GetInt32(reader.GetOrdinal("FilterEmphasisDegrees")),
@@ -316,7 +316,7 @@ namespace Capstone.Controllers.V1
                         ModulationSourceA,
                         ModulationSourceB,
                         OscillatorModulation,
-                        Oscillation3Control,
+                        Oscillator3Control,
                         Oscillator1RangeValue,
                         Oscillator1RangeDegrees,
                         Oscillator2RangeValue,
@@ -410,7 +410,7 @@ namespace Capstone.Controllers.V1
                             ModulationSourceA = reader.GetBoolean(reader.GetOrdinal("ModulationSourceA")),
                             ModulationSourceB = reader.GetBoolean(reader.GetOrdinal("ModulationSourceB")),
                             OscillatorModulation = reader.GetBoolean(reader.GetOrdinal("OscillatorModulation")),
-                            Oscillation3Control = reader.GetBoolean(reader.GetOrdinal("Oscillation3Control")),
+                            Oscillator3Control = reader.GetBoolean(reader.GetOrdinal("Oscillator3Control")),
 
                             Oscillator1RangeValue = reader.GetString(reader.GetOrdinal("Oscillator1RangeValue")),
                             Oscillator1RangeDegrees = reader.GetInt32(reader.GetOrdinal("Oscillator1RangeDegrees")),
@@ -454,7 +454,7 @@ namespace Capstone.Controllers.V1
                             KeyboardControl1 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl1")),
                             KeyboardControl2 = reader.GetBoolean(reader.GetOrdinal("KeyboardControl2")),
 
-                            FilterCutoffValue = reader.GetInt32(reader.GetOrdinal("FilterCutoffValue")),
+                            FilterCutoffValue = reader.GetDouble(reader.GetOrdinal("FilterCutoffValue")),
                             FilterCutoffDegrees = reader.GetInt32(reader.GetOrdinal("FilterCutoffDegrees")),
                             FilterEmphasisValue = reader.GetInt32(reader.GetOrdinal("FilterEmphasisValue")),
                             FilterEmphasisDegrees = reader.GetInt32(reader.GetOrdinal("FilterEmphasisDegrees")),
@@ -553,7 +553,7 @@ namespace Capstone.Controllers.V1
                         ModulationSourceA,
                         ModulationSourceB,
                         OscillatorModulation,
-                        Oscillation3Control,
+                        Oscillator3Control,
                         Oscillator1RangeValue,
                         Oscillator1RangeDegrees,
                         Oscillator2RangeValue,
@@ -636,7 +636,7 @@ namespace Capstone.Controllers.V1
                         @modulationSourceA,
                         @modulationSourceB,
                         @oscillatorModulation,
-                        @oscillation3Control,
+                        @oscillator3Control,
                         @oscillator1RangeValue,
                         @oscillator1RangeDegrees,
                         @oscillator2RangeValue,
@@ -726,7 +726,7 @@ namespace Capstone.Controllers.V1
                     cmd.Parameters.Add(new SqlParameter("@modulationSourceA", preset.ModulationSourceA));
                     cmd.Parameters.Add(new SqlParameter("@modulationSourceB", preset.ModulationSourceB));
                     cmd.Parameters.Add(new SqlParameter("@oscillatorModulation", preset.OscillatorModulation));
-                    cmd.Parameters.Add(new SqlParameter("@oscillation3Control", preset.Oscillation3Control));
+                    cmd.Parameters.Add(new SqlParameter("@oscillator3Control", preset.Oscillator3Control));
                     cmd.Parameters.Add(new SqlParameter("@oscillator1RangeValue", preset.Oscillator1RangeValue));
                     cmd.Parameters.Add(new SqlParameter("@oscillator1RangeDegrees", preset.Oscillator1RangeDegrees));
                     cmd.Parameters.Add(new SqlParameter("@oscillator2RangeValue", preset.Oscillator2RangeValue));

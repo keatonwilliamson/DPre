@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 class HorizontalRocker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loaded: false,
             on: props.on
         };
         this.colors = {
@@ -48,6 +49,13 @@ class HorizontalRocker extends React.Component {
     dcpy = o => {
         return JSON.parse(JSON.stringify(o));
     };
+
+    componentWillReceiveProps({ on }) {
+        console.log("component will reciev props on rocker")
+        if (on != this.props.on && this.state.loaded === false) {
+            this.setState({ ...this.state, on: on, loaded: true })
+        }
+    }
 
     render() {
         // rounds

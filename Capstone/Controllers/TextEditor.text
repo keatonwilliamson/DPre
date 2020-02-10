@@ -342,7 +342,6 @@
         DateCreated: settings.dateCreated
 
 
-
 DROP TABLE IF EXISTS Preset;
 
 
@@ -358,7 +357,7 @@ CREATE TABLE Preset (
     ModulationSourceA BIT NOT NULL DEFAULT(0),
     ModulationSourceB BIT NOT NULL DEFAULT(0),
     OscillatorModulation BIT NOT NULL DEFAULT(0),
-    Oscillation3Control BIT NOT NULL DEFAULT(0),
+    Oscillator3Control BIT NOT NULL DEFAULT(0),
     Oscillator1RangeValue VARCHAR(55) NOT NULL,
     Oscillator1RangeDegrees INTEGER NOT NULL,
     Oscillator2RangeValue VARCHAR(55) NOT NULL,
@@ -394,7 +393,7 @@ CREATE TABLE Preset (
     FilterModulation BIT NOT NULL DEFAULT(0),
     KeyboardControl1 BIT NOT NULL DEFAULT(0),
     KeyboardControl2 BIT NOT NULL DEFAULT(0),
-    FilterCutoffValue INTEGER NOT NULL,
+    FilterCutoffValue FLOAT NOT NULL,
     FilterCutoffDegrees INTEGER NOT NULL,
     FilterEmphasisValue INTEGER NOT NULL,
     FilterEmphasisDegrees INTEGER NOT NULL,

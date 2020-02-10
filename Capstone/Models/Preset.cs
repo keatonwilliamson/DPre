@@ -20,7 +20,7 @@ namespace Capstone.Models
         public bool ModulationSourceA { get; set; }
         public bool ModulationSourceB { get; set; }
         public bool OscillatorModulation { get; set; }
-        public bool Oscillation3Control { get; set; }
+        public bool Oscillator3Control { get; set; }
         // 
         public string Oscillator1RangeValue { get; set; }
         public int Oscillator1RangeDegrees { get; set; }
@@ -64,7 +64,7 @@ namespace Capstone.Models
         public bool KeyboardControl1 { get; set; }
         public bool KeyboardControl2 { get; set; }
         // 
-        public int FilterCutoffValue { get; set; }
+        public double FilterCutoffValue { get; set; }
         public int FilterCutoffDegrees { get; set; }
         public int FilterEmphasisValue { get; set; }
         public int FilterEmphasisDegrees { get; set; }

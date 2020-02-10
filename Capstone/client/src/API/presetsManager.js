@@ -37,7 +37,7 @@ export default {
             ModulationSourceA: settings.modulationSourceA,
             ModulationSourceB: settings.modulationSourceB,
             OscillatorModulation: settings.oscillatorModulation,
-            Oscillation3Control: settings.oscillation3Control,
+            Oscillator3Control: settings.oscillator3Control,
             Oscillator1RangeValue: settings.oscillator1Range[0],
             Oscillator1RangeDegrees: settings.oscillator1Range[1],
             Oscillator2RangeValue: settings.oscillator2Range[0],
@@ -122,7 +122,7 @@ export default {
             modulationSourceA: settings.modulationSourceA,
             modulationSourceB: settings.modulationSourceB,
             oscillatorModulation: settings.oscillatorModulation,
-            oscillator3Control: settings.oscillation3Control,
+            oscillator3Control: settings.oscillator3Control,
 
             oscillator1Range: [settings.oscillator1RangeValue, settings.oscillator1RangeDegrees],
             oscillator2Range: [settings.oscillator2RangeValue, settings.oscillator2RangeDegrees],
