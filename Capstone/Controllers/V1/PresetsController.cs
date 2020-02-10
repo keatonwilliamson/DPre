@@ -809,15 +809,17 @@ namespace Capstone.Controllers.V1
                     var message = "yeahh! no exceptions were thrown";
                     try
                     {
-                        var newId = await cmd.ExecuteScalarAsync();
+                        int newId = (int)await cmd.ExecuteScalarAsync();
+                        preset.Id = newId;
                     }
                     catch (Exception ex)
                     {
                         message = ex.Message;
                     }
 
+
                     // preset.Id = newId;
-                    return Ok(new { message = message });
+                    return Ok(new { id = preset.Id, message = message });
                     // return CreatedAtRoute("Post", new { id = newId }, preset);
                 }
             }

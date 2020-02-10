@@ -9,6 +9,7 @@ import OscillatorDial from './OscillatorDial';
 import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 import presetsManger from '../API/presetsManager';
+import { Loader, Dimmer, Button, Header, Icon, Modal } from 'semantic-ui-react'
 class Design extends Component {
   constructor(props) {
     super(props);
@@ -104,7 +105,11 @@ class Design extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    presetsManger.postPreset(this.state.settings).then(response => console.log(response));
+    presetsManger.postPreset(this.state.settings)
+      .then(response => {
+        console.log(response)
+        this.props.history.push(`/edit/${response.id}`)
+      });
   }
 
   modulationMixLabelFadeAmount = () => {
@@ -611,6 +616,12 @@ class Design extends Component {
             </div>
           </div>
         </div>
+
+        <Dimmer active>
+          <Loader />
+        </Dimmer>
+
+
       </>
     )
   }

@@ -25,7 +25,7 @@ class App extends Component {
 
   handleScroll = debounce((position) => {
     this.setState({ scroll: position });
-    // console.log(position)
+    console.log(position)
   }, 40);
 
 
@@ -62,8 +62,8 @@ class App extends Component {
           <Route exact path="/home" render={() => (
             <Home />
           )} />
-          <Route path="/design" render={() => (
-            <Design scroll={this.state.scroll} handleScroll={this.handleScroll} />
+          <Route path="/design" render={(props) => (
+            <Design scroll={this.state.scroll} handleScroll={this.handleScroll} {...props}/>
           )} />
           <Route path="/bank" render={(props) => (
             <Bank {...props} />
