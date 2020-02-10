@@ -14,26 +14,28 @@ import './Knob.css';
 import './Rocker.css';
 import './Labels.css';
 import './RangeSlider.css';
-import { throttle } from 'lodash';
+import {debounce} from 'lodash';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scroll: 496,
-      user: getUser(),
-    }
-    this.handleScrollThrottled = throttle(this.handleScroll, 10000)
+
+  state = {
+    scroll: 496,
+    user: getUser(),
   }
+
+  handleScroll = debounce((position) => {
+    this.setState({ scroll: position });
+    // console.log(position)
+  }, 40);
 
 
   logout = () => {
     this.setState({ user: null });
     removeUser();
   }
-  handleScroll = (position) => {
-    console.log(position)
-  }
+  // handleScroll = (position) => {
+  //   console.log(position)
+  // }
 
   render() {
     return (
@@ -68,7 +70,7 @@ class App extends Component {
           )} />
           <Route path="/edit/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
-            return <Design scroll={this.state.scroll} handleScroll={this.handleScrollThrottled} presetId={parseInt(props.match.params.presetId)} {...props} />
+            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} presetId={parseInt(props.match.params.presetId)} {...props} />
           }} />
         </Router>
       </div>
