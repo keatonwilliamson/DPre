@@ -425,7 +425,7 @@ CREATE TABLE Preset (
     PitchWheel INTEGER NOT NULL,
     ModWheel INTEGER NOT NULL,
     PresetName VARCHAR(55) NOT NULL,
-    PresetNotes VARCHAR(55) NOT NULL,
+    PresetNotes VARCHAR(500) NOT NULL,
     DateCreated DATETIME NOT NULL,
     CONSTRAINT FK_UserPreset FOREIGN KEY(UserId) REFERENCES AspNetUsers(Id)
 );

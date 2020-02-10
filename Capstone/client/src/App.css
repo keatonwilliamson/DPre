@@ -134,6 +134,11 @@
   text-decoration: none;
 }
 
+.d-patch:visited { text-decoration: none; color: white; }
+.d-patch:hover { text-decoration: none; color: white; }
+.d-patch:focus { text-decoration: none;  }
+.d-patch:hover, .d-patch:active { text-decoration: none; color: white; }
+
 .jumbotron-wrapper {
   position: absolute;
   top: 0px;
@@ -290,6 +295,23 @@ textarea{
 }
 
 .patch-name-text-input {
+
+
+  background-color: transparent;
+  border: 0px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width:518px;
+  cursor:default;
+  font-family: 'Nunito Sans', sans-serif;
+  color: white;
+  font-size: 32px;
+  /* letter-spacing: 1px; */
+  resize: none;
+
+
   position: absolute;
   top: 32px;
   left: 0px;
@@ -297,17 +319,31 @@ textarea{
   border-bottom: 3px solid white;
   font-family: 'Alata', sans-serif;
   font-family: 'Nunito Sans', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   /* font-size: 22px;
   letter-spacing: default; */
+
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
 }
 .patch-notes-text-input {
   position: absolute;
-  top: 152px;
+  top: 148px;
   left: 0px;
-  height: 450px;
+  height: 365px;
   font-size: 22px;
   letter-spacing: default;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap;
+  overflow: hidden; */
 }
 
 /* FORM SUBMIT BUTTON */

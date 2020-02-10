@@ -9,9 +9,10 @@ import OscillatorDial from './OscillatorDial';
 import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 import SaveConfirmationModal from './SaveConfirmationModal';
+import UpdateConfirmationModal from './UpdateConfirmationModal';
 import presetsManger from '../API/presetsManager';
 import { Loader, Dimmer, Button, Header, Icon, Modal } from 'semantic-ui-react'
-import {debounce} from 'lodash';
+import { debounce } from 'lodash';
 class Design extends Component {
   constructor(props) {
     super(props);
@@ -114,7 +115,8 @@ class Design extends Component {
     presetsManger.postPreset(this.state.settings)
       .then(response => {
         console.log(response)
-        this.props.history.push(`/edit/${response.id}`)
+        this.props.history.push(`/preset/${response.id}`)
+        this.renderPreset();
       });
   }
 
@@ -129,7 +131,7 @@ class Design extends Component {
   };
 
   // renderSaveModal = () => {
-    
+
   // }
   closeSaveModal = () => {
     this.setState({ saveConfirmation: false });
@@ -140,18 +142,23 @@ class Design extends Component {
   }
 
 
-
-
-  componentDidMount() {
-    this.slidingGrid.current.scrollLeft = this.props.scroll;
+  renderPreset = () => {
     if (this.props.presetId) {
       presetsManger.getPreset(this.props.presetId)
         .then(preset => {
           console.log(preset)
+          console.log("COMPONENT DID MOUNT")
           this.setState({ settings: preset });
           this.props.closeSavingLoader();
         });
     }
+  }
+
+
+
+  componentDidMount() {
+    this.slidingGrid.current.scrollLeft = this.props.scroll;
+    this.renderPreset();
   }
 
   componentWillUnmount() {
@@ -635,19 +642,21 @@ class Design extends Component {
             </div>
             <div className="patch-form-container">
               <form className="patch-form">
-                <textarea name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="36" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
-                <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="255" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
+                <input type="text" name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
+                <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="500" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
           </div>
         </div>
 
-        { this.state.saveConfirmation && 
-        // <Dimmer active>
-        //   <Loader />
-        // </Dimmer>
-        <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal}/>
+        {this.state.saveConfirmation &&
+          (this.props.presetId ? (
+            <UpdateConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
+          ) : (
+              <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
+            )
+          )
         }
 
 

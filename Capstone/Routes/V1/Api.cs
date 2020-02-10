@@ -19,6 +19,7 @@ namespace Capstone.Routes.V1
         public static class Presets
         {
             public const string GetAll = Base + "/Presets";
+            public const string GetBank = Base + "/Presets/Bank";
             public const string Get = Base + "/Presets/{id}";
             public const string Post = Base + "/Presets";
         }

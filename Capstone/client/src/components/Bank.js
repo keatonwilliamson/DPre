@@ -13,15 +13,15 @@ class Bank extends Component {
     }
 
     componentDidMount() {
-        presetsManger.getAllPresets()
+        presetsManger.getBank()
             .then(presets => {
                 console.log("from bank component did mount", presets)
                 this.setState({ presets: presets });
             });
     }
 
-    pushToEditView(id) {
-        this.props.history.push(`/edit/${id}`)
+    pushToPresetView(id) {
+        this.props.history.push(`/preset/${id}`)
     }
 
     render() {
@@ -47,7 +47,7 @@ class Bank extends Component {
                     </Modal.Actions>
                 </Modal> */}
                 {this.state.presets.map((preset, i) => (
-                    <p className="preset" key={i} onClick={() => this.pushToEditView(preset.id)} >{preset.presetName}</p>
+                    <p className="preset" key={i} onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
                 ))}
             </>
         )

@@ -1,18 +1,28 @@
 import { createAuthHeaders } from '../API/userManager';
 import { getUser } from './userManager';
 
-const authHeader = createAuthHeaders();
+
 var userId = getUser();
 
 export default {
     getAllPresets() {
+        const authHeader = createAuthHeaders();
         return fetch('/api/v1/presets', {
             headers: authHeader
         })
             .then(result => result.json())
             .then(settings => settings.map(settings => this.compressSettings(settings)));
     },
+    getBank() {
+        const authHeader = createAuthHeaders();
+        return fetch('/api/v1/presets/bank', {
+            headers: authHeader
+        })
+            .then(result => result.json())
+            .then(settings => settings.map(settings => this.compressSettings(settings)));
+    },
     getPreset(id) {
+        const authHeader = createAuthHeaders();
         return fetch(`/api/v1/presets/${id}`, {
             headers: authHeader
         })
@@ -20,6 +30,7 @@ export default {
             .then(settings => this.compressSettings(settings))
     },
     postPreset(settings) {
+        const authHeader = createAuthHeaders();
         return fetch('/api/v1/presets', {
             method: "POST",
             headers: authHeader,
