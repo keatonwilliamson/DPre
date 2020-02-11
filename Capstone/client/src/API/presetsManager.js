@@ -34,11 +34,20 @@ export default {
         return fetch('/api/v1/presets', {
             method: "POST",
             headers: authHeader,
-            body: JSON.stringify(this.expandSettings(settings))
+            body: JSON.stringify(this.expandSettings(settings, false))
         }).then(result => result.json())
     },
-    expandSettings(settings) {
+    editPreset(settings) {
+        const authHeader = createAuthHeaders();
+        return fetch(`/api/v1/presets/${settings.id}`, {
+            method: "PUT",
+            headers: authHeader,
+            body: JSON.stringify(this.expandSettings(settings, true))
+        }).then(result => console.log(result))
+    },
+    expandSettings(settings, addProps) {
         return {
+            ...(addProps) && {Id: settings.id, UserId: settings.userId, DateCreated: settings.dateCreated },
             MasterTuneValue: settings.masterTune[0],
             MasterTuneDegrees: settings.masterTune[1],
             GlideAmountValue: settings.glideAmount[0],
@@ -106,7 +115,6 @@ export default {
             LoudnessSustainDegrees: settings.loudnessSustain[1],
             MainOutputVolumeValue: settings.mainOutputVolume[0],
             MainOutputVolumeDegrees: settings.mainOutputVolume[1],
-
             MainOutput: settings.mainOutput,
             Tuner: settings.tuner,
             PhonesOutputVolumeValue: settings.phonesOutputVolume[0],

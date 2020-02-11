@@ -34,9 +34,9 @@ class App extends Component {
     console.log("rendersavingfrom app")
     this.setState({ saving: true });
   }
-  closeSavingLoader = debounce(() => {
+  closeSavingLoader = () => {
     this.setState({ saving: false });
-  }, 1000);
+  };
 
   logout = () => {
     this.setState({ user: null });
@@ -85,7 +85,7 @@ class App extends Component {
 
         {this.state.saving &&
           <Dimmer active>
-            <div style={{ fontSize: '32px'}} class="ui huge text loader">saving to bank...</div>
+            <div style={{ fontSize: '32px'}} className="ui huge text loader">saving to bank...</div>
           </Dimmer>
         }
 

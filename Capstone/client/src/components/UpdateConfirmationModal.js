@@ -19,8 +19,17 @@ const UpdateConfirmationModal = (props) => (
           alignItems: 'center'
         }}>
           <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.closeSaveModal}>BACK</button>
-          <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE</button>
+          <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleUpdate}>SAVE</button>
         </div>
+        <p style={{
+          flex: '0 0 100%',
+          textAlign: 'center',
+          fontSize: '36px'
+          // display: 'flex',
+          // flexWrap: 'wrap',
+          // justifyContent: 'center',
+          // alignItems: 'center'
+        }}>-or-</p>
         <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE AS NEW PRESET</button>
       </div>
     </Modal.Content>

@@ -22,6 +22,7 @@ class Design extends Component {
   state = {
     loaded: false,
     saveConfirmation: false,
+    savingLoader: false,
     settings: {
       id: null,
       userId: null,
@@ -120,11 +121,22 @@ class Design extends Component {
       });
   }
 
+  handleUpdate = (event) => {
+    event.preventDefault();
+    this.props.renderSavingLoader();
+    this.closeSaveModal();
+    presetsManger.editPreset(this.state.settings)
+      .then(response => {
+        this.props.history.push(`/preset/${this.state.settings.id}`)
+        this.renderPreset();
+      });
+  }
 
 
-  renderPageAfterSave = debounce((position) => {
-    console.log("HEYY DEBOUNCE")
-  }, 1000);
+
+  // renderPageAfterSave = debounce((position) => {
+  //   console.log("HEYY DEBOUNCE")
+  // }, 1000);
 
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
@@ -134,8 +146,8 @@ class Design extends Component {
 
   // }
   closeSaveModal = () => {
-    this.setState({ saveConfirmation: false });
-    this.renderPageAfterSave();
+    this.setState({ saveConfirmation: false, savingLoader: true });
+    // this.renderPageAfterSave();
   }
   openSaveModal = () => {
     this.setState({ saveConfirmation: true });
@@ -149,12 +161,15 @@ class Design extends Component {
           console.log(preset)
           console.log("COMPONENT DID MOUNT")
           this.setState({ settings: preset });
-          this.props.closeSavingLoader();
+          this.closeSavingLoader();
         });
     }
   }
 
-
+  closeSavingLoader = debounce(() => {
+    this.props.closeSavingLoader();
+    this.setState({ savingLoader: false });
+  }, 1000);
 
   componentDidMount() {
     this.slidingGrid.current.scrollLeft = this.props.scroll;
@@ -641,7 +656,7 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form className="patch-form">
+              <form style={{visibility: ((this.state.saveConfirmation || this.setState.savingLoader) ? "hidden" : "visible")}}className="patch-form">
                 <input type="text" name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="500" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
@@ -652,7 +667,7 @@ class Design extends Component {
 
         {this.state.saveConfirmation &&
           (this.props.presetId ? (
-            <UpdateConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
+            <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
           ) : (
               <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
             )
