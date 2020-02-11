@@ -222,7 +222,7 @@
   position: relative;
   grid-column: 2 / 3;
   height: 638px;
-  width: 2544px;
+  width: 2550px;
   border: 3px solid white;
   border-radius: 8px;
   /* margin: 0px 40px; */
@@ -476,13 +476,13 @@ textarea{
   left: 912px;
 }
 .mixer-divider {
-  left: 1620px;
+  left: 1572px;
 }
 .modifiers-divider {
-  left: 2137px;
+  left: 2134px;
 }
 .output-divider {
-  left: 2449px;
+  left: 2446px;
 }
 
 .measuring-tape {
@@ -512,7 +512,7 @@ textarea{
   word-spacing: 30px;
 }
 .mixer-label {
-  left: 1204px;
+  left: 1182px;
 }
 .modifiers-label {
   left: 1764px;

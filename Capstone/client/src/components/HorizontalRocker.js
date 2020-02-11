@@ -80,7 +80,7 @@ class HorizontalRocker extends React.Component {
             height: "33px",
             width: `${this.state.on ? 24 : 31}px`,
             backgroundColor: `${this.state.on ? this.colors[this.props.color].on.leftFlat : this.colors[this.props.color].off.leftFlat}`,
-            left: `${this.state.on ? 29 : 5}px`,
+            left: `${this.state.on ? 29 : 6}px`,
             borderLeft: this.colors[this.props.color].leftFlatBorderLeft,
             position: "absolute",
             transition: "all 0.3s ease-out"

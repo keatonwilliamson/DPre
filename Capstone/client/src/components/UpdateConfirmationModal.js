@@ -34,7 +34,7 @@ const UpdateConfirmationModal = (props) => (
           // justifyContent: 'center',
           // alignItems: 'center'
         }}>-or-</p>
-        <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE AS NEW PRESET</button>
+        <button style={{ margin: 20, fontSize: '26px'}} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE AS NEW PRESET</button>
       </div>
     </Modal.Content>
     {/* <Modal.Actions>

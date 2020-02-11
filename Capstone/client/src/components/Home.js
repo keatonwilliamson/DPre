@@ -9,7 +9,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.handleScroll(496);
     const authHeader = createAuthHeaders();
     fetch('/api/v1/values', {
       headers: authHeader

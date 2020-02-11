@@ -59,44 +59,44 @@
 
 /* MIXER SECTION */
 .oscillator-1-rocker {
-  top: 100px;
-  left: 1100px;
+  top: 108px;
+  left: 1116px;
 }
 .oscillator-2-rocker {
-  top: 300px;
-  left: 1100px;
+  top: 276px;
+  left: 1116px;
 }
 .oscillator-3-rocker {
-  top: 500px;
-  left: 1100px;
+  top: 444px;
+  left: 1116px;
 }
 
 .external-input-rocker {
-  top: 200px;
-  left: 1100px;
+  top: 192px;
+  left: 1116px;
 }
 .noise-rocker {
-  top: 400px;
-  left: 1100px;
+  top: 360px;
+  left: 1116px;
 }
 
 .filter-modulation-rocker {
   top: 100px;
-  left: 1500px;
+  left: 1524px;
 }
 .keyboard-control-1-rocker {
   top: 160px;
-  left: 1500px;
+  left: 1524px;
 }
 .keyboard-control-2-rocker {
   top: 220px;
-  left: 1500px;
+  left: 1524px;
 }
 
 
 .noise-color-rocker {
-  top: 400px;
-  left: 1400px;
+  top: 359px;
+  left: 1402px;
   transform: rotate(-90deg);
 }
 
@@ -139,7 +139,7 @@
 
 .main-output-rocker {
   top: 20px;
-  left: 2300px;
+  left: 2316px;
 }
 .main-output-on-label {
   top: 20px;
@@ -147,7 +147,7 @@
 }
 .tuner-rocker {
   top: 320px;
-  left: 2200px;
+  left: 2173px;
 }
 .tuner-on-label {
   top: 320px;
@@ -156,7 +156,7 @@
 
 .power-rocker {
   top: 320px;
-  left: 2300px;
+  left: 2457px;
   transform: rotate(-90deg);
 }
 
