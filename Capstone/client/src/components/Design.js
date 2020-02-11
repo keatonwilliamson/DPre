@@ -11,7 +11,7 @@ import LabelGroup from './LabelGroup';
 import SaveConfirmationModal from './SaveConfirmationModal';
 import UpdateConfirmationModal from './UpdateConfirmationModal';
 import presetsManger from '../API/presetsManager';
-import { Loader, Dimmer, Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import { debounce } from 'lodash';
 class Design extends Component {
   constructor(props) {
@@ -184,7 +184,7 @@ class Design extends Component {
   // };
 
   render() {
-    console.log("savinig?????",this.props.saving)
+    console.log("savinig?????", this.props.saving)
     return (
       <>
         <div className="design-background"></div>
@@ -655,18 +655,57 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form style={{visibility: ((this.state.formVisibility && !this.props.saving) ? "visible" : "hidden")}}className="patch-form">
+              <form style={{ visibility: ((this.state.formVisibility && !this.props.saving) ? "visible" : "hidden") }} className="patch-form">
                 <input type="text" name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="500" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
+            <Sidebar.Pushable style={{border: 'none', backgroundColor: 'transparent', width: 300, margin: 0 }} as={Segment}>
+              <Sidebar
+                style={{width: 300, backgroundColor: 'rgba(0,0,0,.57)' }}
+                as={Menu}
+                animation='overlay'
+                direction='right'
+                inverted
+                vertical
+                visible={this.state.settings.power}
+              >
+                <Menu.Item as='a' header>
+                  PRESETS
+        </Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                <Menu.Item as='a'>Share on Social</Menu.Item>
+                <Menu.Item as='a'>Share by E-mail</Menu.Item>
+                <Menu.Item as='a'>Edit Permissions</Menu.Item>
+                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+              </Sidebar>
+            </Sidebar.Pushable>
           </div>
         </div>
 
         {this.state.saveConfirmation &&
           (this.props.presetId ? (
-            <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm}/>
+            <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />
           ) : (
               <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />
             )

@@ -1028,10 +1028,10 @@ namespace Capstone.Controllers.V1
                     // int newId = (int)await cmd.ExecuteScalarAsync();
                     // preset.Id = newId;
 
-                    // Response.Headers.Add("X-Requested-With", "*");
-                    // Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
-                    // Response.Headers.Add("Access-Control-Allow-Origin", "*");
-                    // Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+                    Response.Headers.Add("X-Requested-With", "*");
+                    Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
+                    Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                    Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
                     // var values = new[] { "value yum", "value yum", "value 3asfasdfasd33" };
                     // return CreatedAtRoute("GetPokemon", new { id = newId }, pokemon);
                     var message = "yeahh! no exceptions were thrown";
@@ -1274,7 +1274,7 @@ namespace Capstone.Controllers.V1
 
 
 
-        [HttpPut(Api.Presets.Post)]
+        [HttpPut(Api.Presets.Edit)]
         public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] Preset preset)
         {
             try
@@ -1451,6 +1451,11 @@ namespace Capstone.Controllers.V1
                         cmd.Parameters.Add(new SqlParameter("@presetNotes", preset.PresetNotes));
                         cmd.Parameters.Add(new SqlParameter("@dateCreated", preset.DateCreated));
 
+                        Response.Headers.Add("X-Requested-With", "*");
+                        Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
+                        Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                        Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+                        
                         int rowsAffected = await cmd.ExecuteNonQueryAsync();
                         if (rowsAffected > 0)
                         {
@@ -1495,7 +1500,7 @@ namespace Capstone.Controllers.V1
             }
             catch (Exception)
             {
-                    throw;
+                throw;
             }
         }
 
