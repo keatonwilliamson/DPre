@@ -11,18 +11,22 @@ import LabelGroup from './LabelGroup';
 import SaveConfirmationModal from './SaveConfirmationModal';
 import UpdateConfirmationModal from './UpdateConfirmationModal';
 import presetsManger from '../API/presetsManager';
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import SidebarItems from './SidebarItems';
+import { Header, Icon, Image, Menu, Segment, Sidebar, Loader, Dimmer } from 'semantic-ui-react'
 import { debounce } from 'lodash';
 class Design extends Component {
   constructor(props) {
     super(props);
     this.slidingGrid = React.createRef();
+    this.sidebar = React.createRef();
   }
 
   state = {
     loaded: false,
     saveConfirmation: false,
-    formVisibility: true,
+    formIsVisible: true,
+    sidebarLoaded: false,
+    bank: [],
     settings: {
       id: null,
       userId: null,
@@ -118,6 +122,7 @@ class Design extends Component {
         console.log(response)
         this.props.history.push(`/preset/${response.id}`)
         this.renderPreset();
+        this.getBank();
       });
   }
 
@@ -129,6 +134,7 @@ class Design extends Component {
       .then(response => {
         this.props.history.push(`/preset/${this.state.settings.id}`)
         this.renderPreset();
+        this.getBank();
       });
   }
 
@@ -145,10 +151,10 @@ class Design extends Component {
   }
 
   hideForm = () => {
-    this.setState({ formVisibility: false });
+    this.setState({ formIsVisible: false });
   }
   showForm = () => {
-    this.setState({ formVisibility: true });
+    this.setState({ formIsVisible: true });
   }
 
 
@@ -164,6 +170,17 @@ class Design extends Component {
     }
   }
 
+  getBank = () => {
+    presetsManger.getBank()
+      .then(bank => {
+        this.setState({ bank: bank });
+      })
+  }
+
+  closeSidebarLoader = debounce(() => {
+    this.setState({ sidebarLoaded: true });
+  }, 1000);
+
   closeSavingLoader = debounce(() => {
     this.props.closeSavingLoader();
     this.showForm();
@@ -172,19 +189,26 @@ class Design extends Component {
   componentDidMount() {
     this.slidingGrid.current.scrollLeft = this.props.scroll;
     this.renderPreset();
+    this.getBank();
+    this.closeSidebarLoader();
   }
 
   componentWillUnmount() {
     console.log("unmounting");
   }
 
-  // componentWillReceiveProps({ preset }) {
-  //   // console.log("recieved presetid--- from component will recieve props on Design")
-  //   this.setState({ settings: preset });
+  setSidebarScroll() {
+    console.log("SET SIDEBAR SCROLL FROM DESING")
+    this.sidebar.current.ref.current.scrollTop = this.props.sidebarScroll;
+  }
+  // componentWillReceiveProps({ saving }) {
+  //       
+  //   console.log("recieved saving from component will recieve props on Design")
+  //   // this.setState({ settings: preset });
   // };
 
+
   render() {
-    console.log("savinig?????", this.props.saving)
     return (
       <>
         <div className="design-background"></div>
@@ -228,9 +252,8 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-                console.log("PRESET ID TO EDITTT", this.props.presetId);
-                console.log("STATE.settings", this.state)
-                // presetsManger.getPreset(1).then(response => console.log(response));
+                this.sidebar.current.ref.current.scrollTop = 100;
+                // console.log("STATE", this.state)
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>
@@ -655,15 +678,30 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form style={{ visibility: ((this.state.formVisibility && !this.props.saving) ? "visible" : "hidden") }} className="patch-form">
+              <form style={{ visibility: ((this.state.formIsVisible && !this.props.saving) ? "visible" : "hidden") }} autoComplete='off' className="patch-form">
                 <input type="text" name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="500" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
-                <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
+                <button
+                  style={{ ...(!this.state.formIsVisible) && { transition: 'all 0s linear' } }}
+                  className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
-            <Sidebar.Pushable style={{border: 'none', backgroundColor: 'transparent', width: 300, margin: 0 }} as={Segment}>
+            <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} {...this.props}/>
+            {/* <Sidebar.Pushable
+              style={{
+                border: 'none',
+                backgroundColor: 'transparent',
+                width: 300,
+                margin: 0
+              }}
+              as={Segment}>
               <Sidebar
-                style={{width: 300, backgroundColor: 'rgba(0,0,0,.57)' }}
+                ref={this.sidebar} onScroll={() => this.props.handleSidebarScroll(this.sidebar.current.ref.current.scrollTop)}
+                style={{
+                  width: 300,
+                  backgroundColor: 'rgba(0,0,0,.57)',
+                  visibility: ((this.props.saving) ? "hidden" : "visible")
+                }}
                 as={Menu}
                 animation='overlay'
                 direction='right'
@@ -671,35 +709,16 @@ class Design extends Component {
                 vertical
                 visible={this.state.settings.power}
               >
-                <Menu.Item as='a' header>
-                  PRESETS
-        </Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
-                <Menu.Item as='a'>Share on Social</Menu.Item>
-                <Menu.Item as='a'>Share by E-mail</Menu.Item>
-                <Menu.Item as='a'>Edit Permissions</Menu.Item>
-                <Menu.Item as='a'>Delete Permanently</Menu.Item>
+                {(this.state.sidebarLoaded) ? (
+                  <SidebarItems bank={this.state.bank} setSidebarScroll={this.setSidebarScroll} {...this.props} />
+                ) : (
+                    <Dimmer active>
+                      <Loader
+                        style={{ visibility: (this.props.saving ? "hidden" : "visible") }}>Loading</Loader>
+                    </Dimmer>
+                  )}
               </Sidebar>
-            </Sidebar.Pushable>
+            </Sidebar.Pushable> */}
           </div>
         </div>
 

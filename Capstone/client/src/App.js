@@ -22,11 +22,17 @@ class App extends Component {
   state = {
     saving: false,
     scroll: 496,
+    sidebarScroll: 0,
     user: getUser(),
   }
 
   handleScroll = debounce((position) => {
     this.setState({ scroll: position });
+    console.log(position)
+  }, 40);
+
+  handleSidebarScroll = debounce((position) => {
+    this.setState({ sidebarScroll: position });
     console.log(position)
   }, 40);
 
@@ -72,14 +78,29 @@ class App extends Component {
             <Home handleScroll={this.handleScroll}/>
           )} />
           <Route path="/design" render={(props) => (
-            <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} {...props} />
+            <Design 
+                scroll={this.state.scroll}
+                handleScroll={this.handleScroll}
+                sidebarScroll={this.state.sidebarScroll}
+                handleSidebarScroll={this.handleSidebarScroll}
+                renderSavingLoader={this.renderSavingLoader}
+                saving={this.state.saving}
+                {...props} />
           )} />
           <Route path="/bank" render={(props) => (
             <Bank {...props} />
           )} />
           <Route path="/preset/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
-            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} closeSavingLoader={this.closeSavingLoader} saving={this.state.saving} presetId={parseInt(props.match.params.presetId)} {...props} />
+            return <Design 
+                      scroll={this.state.scroll}
+                      handleScroll={this.handleScroll}
+                      sidebarScroll={this.state.sidebarScroll}
+                      handleSidebarScroll={this.handleSidebarScroll}
+                      renderSavingLoader={this.renderSavingLoader}
+                      closeSavingLoader={this.closeSavingLoader}
+                      saving={this.state.saving}
+                      presetId={parseInt(props.match.params.presetId)} {...props} />
           }} />
         </Router>
 
