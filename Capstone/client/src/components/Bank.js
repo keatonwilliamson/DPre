@@ -13,9 +13,12 @@ class Bank extends Component {
     }
 
     componentDidMount() {
+        this.renderBank();
+    }
+
+    renderBank() {
         presetsManger.getBank()
             .then(presets => {
-                console.log("from bank component did mount", presets)
                 this.setState({ presets: presets });
             });
     }
@@ -24,30 +27,19 @@ class Bank extends Component {
         this.props.history.push(`/preset/${id}`)
     }
 
+    deletePreset (id) {
+        presetsManger.deletePreset(id)
+        .then(() => this.renderBank())
+    }
+
     render() {
         return (
             <>
-{/* 
-
-                <Modal trigger={<Button>Basic Modal</Button>} basic size='small'>
-                    <Header icon='archive' content='Archive Old Messages' />
-                    <Modal.Content>
-                        <p>
-                            Your inbox is getting full, would you like us to enable automatic
-                            archiving of old messages?
-      </p>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button basic color='red' inverted>
-                            <Icon name='remove' /> No
-      </Button>
-                        <Button color='green' inverted>
-                            <Icon name='checkmark' /> Yes
-      </Button>
-                    </Modal.Actions>
-                </Modal> */}
                 {this.state.presets.map((preset, i) => (
-                    <p className="preset" key={i} onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
+                    <div className="preset" key={i}>
+                        <p onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
+                        <p onClick={() => this.deletePreset(preset.id)}>DELETE</p>
+                    </div>
                 ))}
             </>
         )

@@ -18,7 +18,11 @@ const UpdateConfirmationModal = (props) => (
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.closeSaveModal}>BACK</button>
+          <button style={{ margin: 20 }} className="large-white-outline-button" type="button"
+            onClick={() => {
+              props.closeSaveModal();
+              props.showForm();
+            }}>BACK</button>
           <button style={{ margin: 20 }} className="large-white-outline-button" type="button" onClick={props.handleUpdate}>SAVE</button>
         </div>
         <p style={{

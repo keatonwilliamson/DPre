@@ -22,7 +22,7 @@ class Design extends Component {
   state = {
     loaded: false,
     saveConfirmation: false,
-    savingLoader: false,
+    formVisibility: true,
     settings: {
       id: null,
       userId: null,
@@ -132,25 +132,23 @@ class Design extends Component {
       });
   }
 
-
-
-  // renderPageAfterSave = debounce((position) => {
-  //   console.log("HEYY DEBOUNCE")
-  // }, 1000);
-
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
   };
 
-  // renderSaveModal = () => {
-
-  // }
   closeSaveModal = () => {
-    this.setState({ saveConfirmation: false, savingLoader: true });
-    // this.renderPageAfterSave();
+    this.setState({ saveConfirmation: false });
   }
   openSaveModal = () => {
     this.setState({ saveConfirmation: true });
+    this.hideForm();
+  }
+
+  hideForm = () => {
+    this.setState({ formVisibility: false });
+  }
+  showForm = () => {
+    this.setState({ formVisibility: true });
   }
 
 
@@ -168,7 +166,7 @@ class Design extends Component {
 
   closeSavingLoader = debounce(() => {
     this.props.closeSavingLoader();
-    this.setState({ savingLoader: false });
+    this.showForm();
   }, 1000);
 
   componentDidMount() {
@@ -186,6 +184,7 @@ class Design extends Component {
   // };
 
   render() {
+    console.log("savinig?????",this.props.saving)
     return (
       <>
         <div className="design-background"></div>
@@ -656,7 +655,7 @@ class Design extends Component {
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
-              <form style={{visibility: ((this.state.saveConfirmation || this.setState.savingLoader) ? "hidden" : "visible")}}className="patch-form">
+              <form style={{visibility: ((this.state.formVisibility && !this.props.saving) ? "visible" : "hidden")}}className="patch-form">
                 <input type="text" name="presetName" className="patch-name-text-input" placeholder={"NEW PRESET NAME"} maxLength="50" value={this.state.settings.presetName} onChange={this.handleTextInputChange.bind(this)} />
                 <textarea name="presetNotes" className="patch-notes-text-input" placeholder={"NOTES"} maxLength="500" value={this.state.settings.presetNotes} onChange={this.handleTextInputChange.bind(this)} />
                 <button className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
@@ -667,9 +666,9 @@ class Design extends Component {
 
         {this.state.saveConfirmation &&
           (this.props.presetId ? (
-            <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
+            <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm}/>
           ) : (
-              <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} />
+              <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />
             )
           )
         }

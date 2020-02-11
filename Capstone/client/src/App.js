@@ -79,7 +79,7 @@ class App extends Component {
           )} />
           <Route path="/preset/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
-            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} closeSavingLoader={this.closeSavingLoader} presetId={parseInt(props.match.params.presetId)} {...props} />
+            return <Design scroll={this.state.scroll} handleScroll={this.handleScroll} renderSavingLoader={this.renderSavingLoader} closeSavingLoader={this.closeSavingLoader} saving={this.state.saving} presetId={parseInt(props.match.params.presetId)} {...props} />
           }} />
         </Router>
 

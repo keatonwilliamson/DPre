@@ -45,9 +45,16 @@ export default {
             body: JSON.stringify(this.expandSettings(settings, true))
         }).then(result => console.log(result))
     },
-    expandSettings(settings, addProps) {
+    deletePreset(id) {
+        const authHeader = createAuthHeaders();
+        return fetch(`/api/v1/presets/${id}`, {
+            method: "DELETE",
+            headers: authHeader
+        }).then(response => console.log(response))
+    },
+    expandSettings(settings, putRequest) {
         return {
-            ...(addProps) && {Id: settings.id, UserId: settings.userId, DateCreated: settings.dateCreated },
+            ...(putRequest) && {Id: settings.id, UserId: settings.userId, DateCreated: settings.dateCreated },
             MasterTuneValue: settings.masterTune[0],
             MasterTuneDegrees: settings.masterTune[1],
             GlideAmountValue: settings.glideAmount[0],
