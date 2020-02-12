@@ -27,6 +27,7 @@ class Design extends Component {
     loaded: false,
     saveConfirmation: false,
     formIsVisible: true,
+    sidebarIsVisible: true,
     sidebarLoaded: false,
     reloadControls: false,
     bank: [],
@@ -160,6 +161,13 @@ class Design extends Component {
     this.setState({ formIsVisible: true });
   }
 
+  hideSidebar = () => {
+    this.setState({ sidebarIsVisible: false });
+  }
+  showSidebar = () => {
+    this.setState({ sidebarIsVisible: true });
+  }
+
 
   renderPreset = () => {
     if (this.props.presetId) {
@@ -220,6 +228,11 @@ class Design extends Component {
     return (
       <>
         <div className="design-background"></div>
+        <div style={{ zIndex: 5, position: 'fixed', right: 0 }}>
+          <SidebarItems sidebarIsVisible={this.state.sidebarIsVisible} showSidebar={this.showSidebar} hideSidebar={this.hideSidebar} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} />
+          {/* <div style={{position: 'absolute', height: 50, width: '100%', top: 0}} onClick={this.showSidebar}>SHOW</div> */}
+        </div>
+        {/* <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
         <div ref={this.slidingGrid} onScroll={() => this.props.handleScroll(this.slidingGrid.current.scrollLeft)} className="design-view">
           <div className="sliding-grid">
             <div className="modulation-panel-container">
@@ -261,8 +274,8 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-                 this.setState({ reloadControls: !this.state.reloadControls });
-                 console.log(this.state.reloadControls)
+                this.setState({ reloadControls: !this.state.reloadControls });
+                console.log(this.state.reloadControls)
 
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
@@ -644,55 +657,55 @@ class Design extends Component {
 
 
               {/* Rockers */}
-              <HorizontalRocker on={this.state.settings.modulationSourceA} parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleRockerChange} />
-              <HorizontalRocker on={this.state.settings.modulationSourceB} parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.modulationSourceA} parameter="modulationSourceA" uniqueClass={"modulation-source-a-rocker"} color={"black"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.modulationSourceB} parameter="modulationSourceB" uniqueClass={"modulation-source-b-rocker"} color={"black"} onChange={this.handleRockerChange} />
 
-              <HorizontalRocker on={this.state.settings.oscillatorModulation} parameter="oscillatorModulation" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillatorModulation} parameter="oscillatorModulation" uniqueClass={"oscillator-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillatorModulation} uniqueClass={"oscillator-modulation-on-label"} />
 
 
-              <HorizontalRocker on={this.state.settings.oscillator3Control} parameter="oscillator3Control" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator3Control} parameter="oscillator3Control" uniqueClass={"oscillator-3-control-rocker"} color={"orange"} onChange={this.handleRockerChange} />
 
 
 
-              <HorizontalRocker on={this.state.settings.oscillator1} parameter="oscillator1" uniqueClass={"oscillator-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator1} parameter="oscillator1" uniqueClass={"oscillator-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator1} uniqueClass={"oscillator-1-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.oscillator2} parameter="oscillator2" uniqueClass={"oscillator-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator2} parameter="oscillator2" uniqueClass={"oscillator-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator2} uniqueClass={"oscillator-2-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.oscillator3} parameter="oscillator3" uniqueClass={"oscillator-3-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator3} parameter="oscillator3" uniqueClass={"oscillator-3-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator3} uniqueClass={"oscillator-3-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.externalInput} parameter="externalInput" uniqueClass={"external-input-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.externalInput} parameter="externalInput" uniqueClass={"external-input-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.externalInput} uniqueClass={"external-input-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.noise} parameter="noise" uniqueClass={"noise-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noise} parameter="noise" uniqueClass={"noise-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.noise} uniqueClass={"noise-on-label"} />
 
 
 
 
-              <HorizontalRocker on={this.state.settings.noiseColor} parameter="noiseColor" uniqueClass={"noise-color-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noiseColor} parameter="noiseColor" uniqueClass={"noise-color-rocker"} color={"orange"} onChange={this.handleRockerChange} />
 
 
 
 
-              <HorizontalRocker on={this.state.settings.filterModulation} parameter="filterModulation" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.filterModulation} parameter="filterModulation" uniqueClass={"filter-modulation-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.filterModulation} uniqueClass={"filter-modulation-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.keyboardControl1} parameter="keyboardControl1" uniqueClass={"keyboard-control-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.keyboardControl1} parameter="keyboardControl1" uniqueClass={"keyboard-control-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.keyboardControl1} uniqueClass={"keyboard-control-1-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.keyboardControl2} parameter="keyboardControl2" uniqueClass={"keyboard-control-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.keyboardControl2} parameter="keyboardControl2" uniqueClass={"keyboard-control-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.keyboardControl2} uniqueClass={"keyboard-control-2-on-label"} />
 
 
 
-              <HorizontalRocker on={this.state.settings.mainOutput} parameter="mainOutput" uniqueClass={"main-output-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.mainOutput} parameter="mainOutput" uniqueClass={"main-output-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.mainOutput} uniqueClass={"main-output-on-label"} />
 
-              <HorizontalRocker on={this.state.settings.tuner} parameter="tuner" uniqueClass={"tuner-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.tuner} parameter="tuner" uniqueClass={"tuner-rocker"} color={"orange"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.tuner} uniqueClass={"tuner-on-label"} />
 
 
@@ -733,7 +746,7 @@ class Design extends Component {
                   className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
-            <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} />
+            {/* <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
             {/* <Sidebar.Pushable
               style={{
                 border: 'none',
@@ -767,7 +780,10 @@ class Design extends Component {
               </Sidebar>
             </Sidebar.Pushable> */}
           </div>
+
         </div>
+        {/* <SidebarItems style={{ zIndex: 5, posiiton: 'fixed', right: 0, top: 0 }} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
+
 
         {this.state.saveConfirmation &&
           (this.props.presetId ? (
@@ -777,8 +793,6 @@ class Design extends Component {
             )
           )
         }
-
-
       </>
     )
   }
