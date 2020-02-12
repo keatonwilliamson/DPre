@@ -50,12 +50,21 @@ class HorizontalRocker extends React.Component {
         return JSON.parse(JSON.stringify(o));
     };
 
-    componentWillReceiveProps({ on }) {
-        if (on != this.props.on && this.state.loaded === false) {
+    componentWillReceiveProps({ on, reloadControls }) {
+        if ((reloadControls != this.props.reloadControls) || (on != this.props.on && this.state.loaded === false)) {
             this.setState({ ...this.state, on: on, loaded: true })
-            console.log("component will reciev props on rocker")
         }
     }
+
+    // componentWillReceiveProps({ initialDegreeValue, reloadControls }) {
+    //     if (reloadControls != this.props.reloadControls) {
+    //         this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
+    //     }
+    //     else if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
+    //         this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
+    //     }
+    // }
+
 
     render() {
         // rounds

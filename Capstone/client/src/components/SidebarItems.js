@@ -9,10 +9,6 @@ function SidebarItems(props) {
         sidebar.current.ref.current.scrollTop = props.sidebarScroll;
     }, [props.sidebarLoaded]);
 
-    const scrollMe = () => {
-        sidebar.current.ref.current.scrollTop = 300
-    }
-
     return (<>
         <Sidebar.Pushable
             style={{
@@ -37,10 +33,10 @@ function SidebarItems(props) {
                 visible={true}
             >
                 {(props.sidebarLoaded) ? (<>
-                    <Menu.Item as='a' onClick={scrollMe} header>YOUR BANK</Menu.Item>
+                    <Menu.Item as='a' header>BANK PRESETS</Menu.Item>
                     {props.bank.map(preset => {
                         return (
-                            <Menu.Item as='a'>{preset.presetName}</Menu.Item>
+                            <Menu.Item value={preset.id} onClick={()=> props.renderPresetFromSideBar(preset)} as='a'>{preset.presetName}</Menu.Item>
                         )
                     })}
                 </>

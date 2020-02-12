@@ -67,12 +67,12 @@
   left: 1116px;
 }
 .oscillator-3-rocker {
-  top: 444px;
+  top: 446px;
   left: 1116px;
 }
 
 .external-input-rocker {
-  top: 192px;
+  top: 191px;
   left: 1116px;
 }
 .noise-rocker {
@@ -81,81 +81,81 @@
 }
 
 .filter-modulation-rocker {
-  top: 100px;
+  top: 108px;
   left: 1524px;
 }
 .keyboard-control-1-rocker {
-  top: 160px;
+  top: 186px;
   left: 1524px;
 }
 .keyboard-control-2-rocker {
-  top: 220px;
+  top: 264px;
   left: 1524px;
 }
 
 
 .noise-color-rocker {
-  top: 359px;
+  top: 362px;
   left: 1402px;
   transform: rotate(-90deg);
 }
 
 /* MIXER SECTION ON LABELS */
 .oscillator-1-on-label {
-  top: 100px;
-  left: 1100px;
+  top: 147px;
+  left: 1195px;
 }
 .oscillator-2-on-label {
-  top: 300px;
-  left: 1100px;
+  top: 315px;
+  left: 1195px;
 }
 .oscillator-3-on-label {
-  top: 500px;
-  left: 1100px;
+  top: 485px;
+  left: 1195px;
 }
 
 .external-input-on-label {
-  top: 200px;
-  left: 1100px;
+  top: 230px;
+  left: 1195px;
 }
 .noise-on-label {
-  top: 400px;
-  left: 1100px;
+  top: 399px;
+  left: 1195px;
 }
 
 .filter-modulation-on-label {
-  top: 100px;
-  left: 1500px;
+  top: 147px;
+  left: 1603px;
 }
 .keyboard-control-1-on-label {
-  top: 160px;
-  left: 1500px;
+  top: 168px;
+  left: 1603px;
 }
 .keyboard-control-2-on-label {
-  top: 220px;
-  left: 1500px;
+  top: 303px;
+  left: 1603px;
 }
 
 
 .main-output-rocker {
-  top: 20px;
+  top: 108px;
   left: 2316px;
 }
 .main-output-on-label {
-  top: 20px;
-  left: 2300px;
+  top: 147px;
+  left: 2395px;
 }
 .tuner-rocker {
-  top: 320px;
+  top: 277px;
   left: 2173px;
 }
 .tuner-on-label {
-  top: 320px;
-  left: 2200px;
+  top: 316px;
+  left: 2252px;
 }
 
 .power-rocker {
-  top: 320px;
+  top: 448px;
   left: 2457px;
   transform: rotate(-90deg);
 }

@@ -34,12 +34,12 @@ function Dial(props) {
                     <p style={{ top: 113, left: 144 }} className="dial-number-label">{2 * props.multiplier}</p>
                 </>
                 ) : (<>
-                    <p style={{ top: 139, left: 44 }} className="dial-number-label">{props.modulationMix ? "" : 0}</p>
+                    <p style={{ top: 137, left: 46 }} className="dial-number-label">{props.modulationMix ? "" : 0}</p>
                     <p style={{ top: 74, left: 10 }} className="dial-number-label">{2}</p>
-                    <p style={{ top: 9, left: 44 }} className="dial-number-label">{4}</p>
-                    <p style={{ top: 9, left: 118 }} className="dial-number-label">{6}</p>
+                    <p style={{ top: 11, left: 46 }} className="dial-number-label">{4}</p>
+                    <p style={{ top: 11, left: 117 }} className="dial-number-label">{6}</p>
                     <p style={{ top: 74, left: 153 }} className="dial-number-label">{8}</p>
-                    <p style={{ top: 139, left: 118 }} className="dial-number-label">{props.modulationMix ? "" : 10}</p>
+                    <p style={{ top: 137, left: 116 }} className="dial-number-label">{props.modulationMix ? "" : 10}</p>
                 </>
                 )
             }

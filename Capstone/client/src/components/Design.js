@@ -10,6 +10,8 @@ import PointerDial from './PointerDial';
 import LabelGroup from './LabelGroup';
 import SaveConfirmationModal from './SaveConfirmationModal';
 import UpdateConfirmationModal from './UpdateConfirmationModal';
+import InputJack from './InputJack';
+import PowerLight from './PowerLight';
 import presetsManger from '../API/presetsManager';
 import SidebarItems from './SidebarItems';
 import { Header, Icon, Image, Menu, Segment, Sidebar, Loader, Dimmer } from 'semantic-ui-react'
@@ -26,6 +28,7 @@ class Design extends Component {
     saveConfirmation: false,
     formIsVisible: true,
     sidebarLoaded: false,
+    reloadControls: false,
     bank: [],
     settings: {
       id: null,
@@ -72,7 +75,7 @@ class Design extends Component {
       mainOutput: false,
       tuner: false,
       phonesOutputVolume: [0, 30],
-      power: true,
+      power: false,
       lfoRate: [0, 30],
       glide: false,
       decay: false,
@@ -170,6 +173,11 @@ class Design extends Component {
     }
   }
 
+  renderPresetFromSideBar = (preset) => {
+    this.props.history.push(`/preset/${preset.id}`)
+    this.setState({ settings: preset, reloadControls: !this.state.reloadControls });
+  }
+
   getBank = () => {
     presetsManger.getBank()
       .then(bank => {
@@ -226,6 +234,7 @@ class Design extends Component {
                   max={10}
                   initialDegreeValue={this.state.settings.lfoRate[1]}
                   onChange={this.handleKnobChange}
+                  reloadControls={this.state.reloadControls}
                 />
 
                 <HorizontalRocker on={this.state.settings.glide} parameter="glide" uniqueClass={"glide-rocker"} color={"orange"} onChange={this.handleRockerChange} />
@@ -252,8 +261,9 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-                this.sidebar.current.ref.current.scrollTop = 100;
-                // console.log("STATE", this.state)
+                 this.setState({ reloadControls: !this.state.reloadControls });
+                 console.log(this.state.reloadControls)
+
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>
@@ -266,6 +276,9 @@ class Design extends Component {
 
               <p className="section-label modifiers-label">MODIFIERS</p>
               <div className="divider modifiers-divider"></div>
+
+              <div className="horizontal-modifiers-divider"></div>
+
 
               <p className="section-label output-label">OUTPUT</p>
               <div className="divider output-divider"></div>
@@ -292,7 +305,7 @@ class Design extends Component {
               <Dial uniqueClass={"external-input-volume-dial"} />
               <Dial uniqueClass={"noise-volume-dial"} />
 
-              <Dial uniqueClass={"filter-cutoff-dial"} />
+              <Dial zeroCentered={true} multiplier={2} uniqueClass={"filter-cutoff-dial"} />
               <Dial uniqueClass={"filter-emphasis-dial"} />
               <Dial uniqueClass={"filter-contour-dial"} />
               <Dial uniqueClass={"filter-attack-dial"} />
@@ -318,6 +331,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.masterTune[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"glide-amount-knob"}
@@ -328,6 +342,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.glideAmount[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"modulation-mix-knob"}
@@ -338,6 +353,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.modulationMix[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
               <Knob
@@ -350,6 +366,7 @@ class Design extends Component {
                 max={16}
                 initialDegreeValue={this.state.settings.oscillator2Frequency[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
               <Knob
@@ -362,6 +379,7 @@ class Design extends Component {
                 max={16}
                 initialDegreeValue={this.state.settings.oscillator3Frequency[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
               {/* oscillator volume knobs */}
@@ -374,6 +392,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.oscillator1Volume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"oscillator-2-volume-knob"}
@@ -384,6 +403,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.oscillator2Volume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"oscillator-3-volume-knob"}
@@ -394,6 +414,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.oscillator3Volume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
               <Knob
@@ -405,6 +426,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.externalInputVolume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"noise-volume-knob"}
@@ -415,6 +437,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.noiseVolume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 zeroCentered={true}
@@ -426,6 +449,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterCutoff[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"filter-emphasis-knob"}
@@ -436,6 +460,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterEmphasis[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"filter-contour-knob"}
@@ -446,6 +471,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterContour[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"filter-attack-knob"}
@@ -456,6 +482,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterAttack[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"filter-decay-knob"}
@@ -466,6 +493,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterDecay[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"filter-sustain-knob"}
@@ -476,6 +504,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.filterSustain[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
 
@@ -488,6 +517,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.loudnessAttack[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"loudness-decay-knob"}
@@ -498,6 +528,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.loudnessDecay[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"loudness-sustain-knob"}
@@ -508,6 +539,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.loudnessSustain[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
 
@@ -520,6 +552,8 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.mainOutputVolume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
+                reloadControls={this.state.reloadControls}
               />
               <Knob
                 uniqueClass={"phones-output-volume-knob"}
@@ -530,6 +564,7 @@ class Design extends Component {
                 max={10}
                 initialDegreeValue={this.state.settings.phonesOutputVolume[1]}
                 onChange={this.handleKnobChange}
+                reloadControls={this.state.reloadControls}
               />
 
 
@@ -545,6 +580,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator1Range[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
               <Pointer
                 waveforms={true}
@@ -556,6 +592,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator1Waveform[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
               <Pointer
                 uniqueClass={"oscillator-2-range-pointer"}
@@ -566,6 +603,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator2Range[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
               <Pointer
                 waveforms={true}
@@ -577,6 +615,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator2Waveform[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
               <Pointer
                 uniqueClass={"oscillator-3-range-pointer"}
@@ -587,6 +626,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator3Range[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
               <Pointer
                 waveforms={true}
@@ -598,6 +638,7 @@ class Design extends Component {
                 max={5}
                 initialDegreeValue={this.state.settings.oscillator3Waveform[1]}
                 onChange={this.handlePointerChange}
+                reloadControls={this.state.reloadControls}
               />
 
 
@@ -655,7 +696,7 @@ class Design extends Component {
               <OnLabel on={this.state.settings.tuner} uniqueClass={"tuner-on-label"} />
 
 
-              <HorizontalRocker on={this.state.settings.power} parameter="power" uniqueClass={"power-rocker"} color={"black"} power={true} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.power} parameter="power" uniqueClass={"power-rocker"} color={"black"} power={true} onChange={this.handleRockerChange} />
 
 
 
@@ -675,6 +716,12 @@ class Design extends Component {
               <p style={{ filter: `opacity(${this.state.settings.oscillator3Control ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label">OSC. 3</p>
               <p style={{ filter: `opacity(${this.state.settings.oscillator3Control ? 1 : 0.2})` }} className="modulation-mix-sub-label oscillator-3-control-rocker-label-control">CONTROL</p>
 
+              <InputJack />
+              <PowerLight power={this.state.settings.power} />
+
+
+
+
               <div className="measuring-tape"></div>
             </div>
             <div className="patch-form-container">
@@ -686,7 +733,7 @@ class Design extends Component {
                   className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
-            <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} {...this.props}/>
+            <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} />
             {/* <Sidebar.Pushable
               style={{
                 border: 'none',

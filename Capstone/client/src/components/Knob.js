@@ -14,10 +14,12 @@ class Knob extends React.Component {
         };
     }
 
-    componentWillReceiveProps({ initialDegreeValue }) {
-        if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
+    componentWillReceiveProps({ initialDegreeValue, reloadControls }) {
+        if (reloadControls != this.props.reloadControls) {
             this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
-            console.log("component will reciev props on knob")
+        }
+        else if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
+            this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
         }
     }
 

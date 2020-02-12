@@ -210,7 +210,7 @@
   border-radius: 8px;
   display: grid;
   grid-gap: 24px;
-  grid-template-columns: 500px 2550px 1000px 200px;
+  grid-template-columns: 600px 2550px 1000px 200px;
   align-items: center;
   /* margin: 0px 40px; */
   /* position: absolute; 
@@ -231,12 +231,13 @@
   transform: translate(0px, calc(-50%));  */
 }
 
+
 .modulation-panel {
-  top: 190px;
-  left: 118px;
+  top: 100px;
+  left: 216px;
   position: absolute;
-  height: 400px;
-  width: 254px;
+  height: 516px;
+  width: 270px;
   border: 3px solid white;
   border-radius: 8px;
   /* margin: 0px 40px; */
@@ -303,7 +304,7 @@ textarea{
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  width:518px;
+  width:560px;
   cursor:default;
   font-family: 'Nunito Sans', sans-serif;
   color: white;
@@ -456,7 +457,7 @@ textarea{
 
 .divider {
   position: absolute;
-  height: 638px;
+  height: 636px;
   border-left: 2px solid white;
 }
 
@@ -480,6 +481,13 @@ textarea{
 }
 .modifiers-divider {
   left: 2134px;
+}
+.horizontal-modifiers-divider {
+  position: absolute;
+  width: 562px;
+  border-bottom: 2px solid white;
+  top: 356px;
+  left: 1573px;
 }
 .output-divider {
   left: 2446px;

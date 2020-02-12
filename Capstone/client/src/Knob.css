@@ -311,7 +311,7 @@
 
 .oscillator-3-volume-knob {
   left: 950px;
-  top: 411px;
+  top: 417px;
 }
 
 .external-input-volume-knob {
@@ -320,7 +320,7 @@
 }
 .noise-volume-knob {
   left: 1283px;
-  top: 327px;
+  top: 330px;
 }
 
 /* OSC VOLUME DIALS */
@@ -346,106 +346,106 @@
 }
 .noise-volume-dial {
   left: 1246px;
-  top: 292px;
+  top: 295px;
 }
 
 /* MODIFIERS SECTION DIALS */
 .filter-cutoff-dial {
   left: 1630px;
-  top: 0px;
+  top: 43px;
 }
 .filter-emphasis-dial {
   left: 1798px;
-  top: 0px;
+  top: 43px;
 }
 .filter-contour-dial {
   left: 1968px;
-  top: 0px;
+  top: 43px;
 }
 .filter-attack-dial {
   left: 1630px;
-  top: 200px;
+  top: 202px;
 }
 .filter-decay-dial {
   left: 1798px;
-  top: 200px;
+  top: 202px;
 }
 .filter-sustain-dial {
   left: 1968px;
-  top: 200px;
+  top: 202px;
 }
 
 .loudness-attack-dial {
   left: 1630px;
-  top: 430px;
+  top: 388px;
 }
 .loudness-decay-dial {
   left: 1798px;
-  top: 430px;
+  top: 388px;
 }
 .loudness-sustain-dial {
   left: 1968px;
-  top: 430px;
+  top: 388px;
 }
 
 /* output */
 .main-output-volume-dial {
   left: 2137px;
-  top: 0px;
+  top: 43px;
 }
 .phones-output-volume-dial {
   left: 2137px;
-  top: 430px;
+  top: 388px;
 }
 
 
 /* MODIFIERS SECTION KNOBS */
 .filter-cutoff-knob {
-  left: 1600px;
-  top: 0px;
+  left: 1667px;
+  top: 78px;
 }
 .filter-emphasis-knob {
-  left: 1800px;
-  top: 0px;
+  left: 1835px;
+  top: 78px;
 }
 .filter-contour-knob {
-  left: 2000px;
-  top: 0px;
+  left: 2005px;
+  top: 78px;
 }
 .filter-attack-knob {
-  left: 1600px;
-  top: 200px;
+  left: 1667px;
+  top: 237px;
 }
 .filter-decay-knob {
-  left: 1800px;
-  top: 200px;
+  left: 1835px;
+  top: 237px;
 }
 .filter-sustain-knob {
-  left: 2000px;
-  top: 200px;
+  left: 2005px;
+  top: 237px;
 }
 
 .loudness-attack-knob {
-  left: 1600px;
-  top: 430px;
+  left: 1667px;
+  top: 423px;
 }
 .loudness-decay-knob {
-  left: 1800px;
-  top: 430px;
+  left: 1835px;
+  top: 423px;
 }
 .loudness-sustain-knob {
-  left: 2000px;
-  top: 430px;
+  left: 2005px;
+  top: 423px;
 }
 
 /* output */
 .main-output-volume-knob {
-  left: 2150px;
-  top: 0px;
+  left: 2174px;
+  top: 78px;
 }
 .phones-output-volume-knob {
-  left: 2150px;
-  top: 430px;
+  left: 2174px;
+  top: 423px;
 }
 
 
