@@ -27,9 +27,10 @@ class Design extends Component {
     loaded: false,
     saveConfirmation: false,
     formIsVisible: true,
-    sidebarIsVisible: true,
     sidebarLoaded: false,
     reloadControls: false,
+    pageEnd: false,
+    sidebarIsPinned: true,
     bank: [],
     settings: {
       id: null,
@@ -142,6 +143,28 @@ class Design extends Component {
       });
   }
 
+  handleScrollLocally = debounce(() => {
+    console.log(this.slidingGrid.current.scrollLeft)
+    if(Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) > 3080) && (this.state.pageEnd == false) ) {
+      if(this.props.sidebarIsVisible) this.setState({sidebarIsPinned: true})
+      this.props.showSidebar();
+      this.setState({ pageEnd: true });
+    }
+    if(Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) < 3080) && (this.state.pageEnd == true) && !this.state.sidebarIsPinned ) {
+      this.props.hideSidebar();
+      this.setState({ pageEnd: false });
+    }
+    // if(this.props.formIsVisible)
+    // console.log(this.slidingGrid.current.scrollLeft)
+  }, 20)
+
+  pinSidebar = () => {
+    this.setState({sidebarIsPinned: true})
+  }
+  unpinSidebar = () => {
+    this.setState({sidebarIsPinned: false})
+  }
+
   modulationMixLabelFadeAmount = () => {
     return ((this.state.settings.modulationMix[1] - 180) / 188)
   };
@@ -161,12 +184,20 @@ class Design extends Component {
     this.setState({ formIsVisible: true });
   }
 
-  hideSidebar = () => {
-    this.setState({ sidebarIsVisible: false });
-  }
-  showSidebar = () => {
-    this.setState({ sidebarIsVisible: true });
-  }
+
+  // hideSidebar = () => {
+  //   this.setState({ sidebarIsVisible: false });
+  // }
+  // showSidebar = () => {
+  //   this.setState({ sidebarIsVisible: true });
+  // }
+
+  // cleanupSidebar = () => {
+  //   this.setState({ sidebarIsVisible: false });
+  // }
+  // displaySidebar = () => {
+  //   this.setState({ sidebarIsVisible: true });
+  // }
 
 
   renderPreset = () => {
@@ -229,11 +260,19 @@ class Design extends Component {
       <>
         <div className="design-background"></div>
         <div style={{ zIndex: 5, position: 'fixed', right: 0 }}>
-          <SidebarItems sidebarIsVisible={this.state.sidebarIsVisible} showSidebar={this.showSidebar} hideSidebar={this.hideSidebar} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} />
+          <Icon style={{ position: 'absolute', right: 16, top: 16, backgroundColor: 'rgb(16, 16, 16,.9)' }} circular inverted name='ellipsis horizontal' size='large'
+            onClick={() => {
+              this.setState({sidebarIsPinned: true})
+              this.props.showSidebar()
+            }} />
+          <SidebarItems displayScroll={5} sidebarIsVisible={this.props.sidebarIsVisible} sidebarIsDisplayed={this.props.sidebarIsDisplayed} hideSidebar={this.props.hideSidebar} cleanupSidebar={this.props.cleanupSidebar} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} unpinSidebar={this.unpinSidebar} pinSidebar={this.pinSidebar} sidebarIsPinned={this.state.sidebarIsPinned} pageEnd={this.state.pageEnd} {...this.props} />
           {/* <div style={{position: 'absolute', height: 50, width: '100%', top: 0}} onClick={this.showSidebar}>SHOW</div> */}
         </div>
         {/* <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
-        <div ref={this.slidingGrid} onScroll={() => this.props.handleScroll(this.slidingGrid.current.scrollLeft)} className="design-view">
+        <div ref={this.slidingGrid} onScroll={() => {
+          this.props.handleScroll(this.slidingGrid.current.scrollLeft)
+          this.handleScrollLocally()
+        }} className="design-view">
           <div className="sliding-grid">
             <div className="modulation-panel-container">
               <div className="modulation-panel">
@@ -668,25 +707,25 @@ class Design extends Component {
 
 
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator1} parameter="oscillator1" uniqueClass={"oscillator-1-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator1} parameter="oscillator1" uniqueClass={"oscillator-1-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator1} uniqueClass={"oscillator-1-on-label"} />
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator2} parameter="oscillator2" uniqueClass={"oscillator-2-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator2} parameter="oscillator2" uniqueClass={"oscillator-2-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator2} uniqueClass={"oscillator-2-on-label"} />
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator3} parameter="oscillator3" uniqueClass={"oscillator-3-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.oscillator3} parameter="oscillator3" uniqueClass={"oscillator-3-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.oscillator3} uniqueClass={"oscillator-3-on-label"} />
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.externalInput} parameter="externalInput" uniqueClass={"external-input-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.externalInput} parameter="externalInput" uniqueClass={"external-input-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.externalInput} uniqueClass={"external-input-on-label"} />
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noise} parameter="noise" uniqueClass={"noise-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noise} parameter="noise" uniqueClass={"noise-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.noise} uniqueClass={"noise-on-label"} />
 
 
 
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noiseColor} parameter="noiseColor" uniqueClass={"noise-color-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.noiseColor} parameter="noiseColor" uniqueClass={"noise-color-rocker"} color={"blue"} onChange={this.handleRockerChange} />
 
 
 
@@ -702,10 +741,10 @@ class Design extends Component {
 
 
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.mainOutput} parameter="mainOutput" uniqueClass={"main-output-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.mainOutput} parameter="mainOutput" uniqueClass={"main-output-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.mainOutput} uniqueClass={"main-output-on-label"} />
 
-              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.tuner} parameter="tuner" uniqueClass={"tuner-rocker"} color={"orange"} onChange={this.handleRockerChange} />
+              <HorizontalRocker reloadControls={this.state.reloadControls} on={this.state.settings.tuner} parameter="tuner" uniqueClass={"tuner-rocker"} color={"blue"} onChange={this.handleRockerChange} />
               <OnLabel on={this.state.settings.tuner} uniqueClass={"tuner-on-label"} />
 
 

@@ -199,6 +199,7 @@
   width: 100%;
   /* border: 7px solid pink; */
   box-sizing: border-box;
+  overscroll-behavior-x: contain;
 }
 
 .sliding-grid {
@@ -212,6 +213,7 @@
   grid-gap: 24px;
   grid-template-columns: 600px 2550px 1000px 200px;
   align-items: center;
+
   /* margin: 0px 40px; */
   /* position: absolute; 
   top: 50%;
@@ -266,12 +268,12 @@
   position: relative;
   grid-column: 3 / 4;
   height: 644px;
-  width: 1280px;
+  width: 1170px;
   /* border: 3px solid pink; */
 }
 .patch-form {
   top: 0px;
-  left: 224px;
+  left: 140px;
   position: absolute;
   height: 550px;
   width: 400px;
@@ -400,7 +402,7 @@ textarea{
   letter-spacing: 2px;
   position: absolute;
   top: 540px;
-  left: 350px;
+  left: 219px;
   transition: all .4s cubic-bezier(0.645, 0.045, 0.355, 1);
   cursor: pointer;
   display: block;
@@ -547,4 +549,17 @@ textarea{
 html, body {
   overflow-x:hidden;
   overflow-y:hidden;
+  overscroll-behavior-x: 'contain'
+}
+
+i.inverted.circular.icon {
+  background-color: #000000!important;
+  color: #fff!important;
+  cursor: pointer;
+}
+
+.ui.input>input {
+  border-radius: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }

@@ -14,8 +14,8 @@ function InputJack(props) {
             <img style={{ position: 'absolute', height: 40 }} src={require('../Assets/metal-ring.png')} alt="img" />
             {/* <div style={{ position: 'absolute', backgroundColor: 'black', borderRadius: '50%', height: 45, width: 45, top: 11, left: 17  }}></div> */}
 
-            <img style={{ visibility: (props.power ? 'visible' : 'hidden'), pointerEvents: 'none', position: 'absolute', height: 179, top: -70, left: -139, transform: 'rotate(-70deg)' }} src={require('../Assets/red-flare-transparent.png')} alt="img" />
-            <img style={{ position: 'absolute', height: 41, top: 1, left: -9, filter: (props.power ? 'brightness(1.5)' : 'brightness(0.4)') }} src={require('../Assets/red-glass.png')} alt="img" />
+            <img style={{ filter: (props.power ? 'opacity(0.9)' : 'opacity(0)'), transition: 'all 0.05s linear', pointerEvents: 'none', position: 'absolute', height: 179, top: -70, left: -139, transform: 'rotate(-70deg)' }} src={require('../Assets/red-flare-transparent.png')} alt="img" />
+            <img style={{ position: 'absolute', height: 41, top: 1, left: -9, filter: (props.power ? 'brightness(1.5)' : 'brightness(0.4)'), transition: 'all 0.05s linear' }} src={require('../Assets/red-glass.png')} alt="img" />
         </div>
     </>
     )

@@ -62,8 +62,8 @@ function Header(props) {
         {
           props.user ? (
             <>
-              <li className="nav-item">Hello {props.user.username}</li>
-              <li className="nav-item" onClick={() => {
+              <li style={{paddingLeft: 8, paddingRight: 8}} className="nav-item">Hello {props.user.username}!</li>
+              <li style={{paddingLeft: 8, paddingRight: 8}} className="nav-item" onClick={() => {
                 props.logout()
                 props.history.push('/')
               }}>Log out</li>

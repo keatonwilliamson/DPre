@@ -24,11 +24,13 @@ class App extends Component {
     scroll: 496,
     sidebarScroll: 0,
     user: getUser(),
+    sidebarIsVisible: true,
+    sidebarIsDisplayed: true,
   }
 
   handleScroll = debounce((position) => {
     this.setState({ scroll: position });
-    console.log(position)
+    // console.log(position)
   }, 40);
 
   handleSidebarScroll = debounce((position) => {
@@ -43,6 +45,24 @@ class App extends Component {
   closeSavingLoader = () => {
     this.setState({ saving: false });
   };
+
+
+  showSidebar = () => {
+    this.setState({ sidebarIsDisplayed: true });
+    this.viewSidebar()
+  }
+  viewSidebar = debounce(() => {
+    this.setState({ sidebarIsVisible: true,  });
+  }, 40);
+
+  hideSidebar = () => {
+    this.setState({ sidebarIsVisible: false });
+    this.cleanupSidebar()
+  }
+  cleanupSidebar = debounce(() => {
+    this.setState({ sidebarIsDisplayed: false });
+  }, 480);
+
 
   logout = () => {
     this.setState({ user: null });
@@ -85,6 +105,11 @@ class App extends Component {
                 handleSidebarScroll={this.handleSidebarScroll}
                 renderSavingLoader={this.renderSavingLoader}
                 saving={this.state.saving}
+                showSidebar={this.showSidebar}
+                hideSidebar={this.hideSidebar}
+                cleanupSidebar={this.cleanupSidebar}
+                sidebarIsVisible={this.state.sidebarIsVisible}
+                sidebarIsDisplayed={this.state.sidebarIsDisplayed}
                 {...props} />
           )} />
           <Route path="/bank" render={(props) => (
@@ -100,7 +125,13 @@ class App extends Component {
                       renderSavingLoader={this.renderSavingLoader}
                       closeSavingLoader={this.closeSavingLoader}
                       saving={this.state.saving}
-                      presetId={parseInt(props.match.params.presetId)} {...props} />
+                      presetId={parseInt(props.match.params.presetId)}
+                      showSidebar={this.showSidebar}
+                      hideSidebar={this.hideSidebar}
+                      cleanupSidebar={this.cleanupSidebar}
+                      sidebarIsVisible={this.state.sidebarIsVisible}
+                      sidebarIsDisplayed={this.state.sidebarIsDisplayed}
+                      {...props} />
           }} />
         </Router>
 

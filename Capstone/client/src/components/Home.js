@@ -23,7 +23,7 @@ class Home extends Component {
     return (
       <>
         <div className="home-wrapper">
-          <Video style={{filter: "invert(1) hue-rotate(100deg)"}}width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
+          <Video style={{}}width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
           </Video>
         </div>
       </>
