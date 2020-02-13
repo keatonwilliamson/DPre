@@ -10,7 +10,7 @@ function BankCard(props) {
     // }, [props.sidebarLoaded]);
 
     return (<>
-        <div style={{display: 'flex', justifyContent: 'space-around', width: 700, height: 50, border: "1px solid grey"}}>
+        <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', height: 50, border: "1px solid grey"}}>
             <p id={props.preset.id} style={{fontSize: 18}} onClick={props.pushToPresetView} >{props.preset.presetName}</p>
             <p id={props.preset.id} style={{fontSize: 18}} onClick={props.deletePreset}>DELETE</p>
         </div>

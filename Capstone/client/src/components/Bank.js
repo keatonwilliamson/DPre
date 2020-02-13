@@ -36,7 +36,7 @@ class Bank extends Component {
     render() {
         return (
             <>
-            <div style={{height: 'calc(100vh - 62px)', width: '100%', overflow: 'scroll', border: '7px solid red', display: 'flex', justifyContent: 'center' }}>
+            <div style={{height: 'calc(100vh - 62px)', width: '100%', overflow: 'scroll' }}>
 
             {/* <p ={{}}> BANK </p> */}
             {/* <BankCard pushToPresetView={this.pushToPresetView} deletePreset={this.deletePreset}/> */}

@@ -784,7 +784,7 @@ class Design extends Component {
 
 
 
-              <div className="measuring-tape"></div>
+              {/* <div className="measuring-tape"></div> */}
             </div>
             <div className="patch-form-container">
               <form style={{ visibility: ((this.state.formIsVisible && !this.props.saving) ? "visible" : "hidden") }} autoComplete='off' className="patch-form">
