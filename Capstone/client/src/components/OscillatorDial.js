@@ -7,7 +7,7 @@ function OscillatorDial(props) {
                 tickStyle: {
                     transform: `rotate(${i * 20}deg)`,
                     transformOrigin: "top",
-                    height: `${(i === 9 ? 78 : 67)}px`
+                    height: `${(i === 9 ? 80 : 67)}px`
                 }
             };
             ticks.push(tick);
