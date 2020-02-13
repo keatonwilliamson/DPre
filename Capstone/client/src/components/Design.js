@@ -321,6 +321,7 @@ class Design extends Component {
               <p onMouseDown={() => {
 
                 // this.setState({ reloadControls: !this.state.reloadControls });
+                console.log("heyyy", getUser())
                 console.log(this.state.settings)
 
               }} className="section-label controllers-label">CONTROLLERS</p>
@@ -834,7 +835,7 @@ class Design extends Component {
 
 
         {this.state.saveConfirmation &&
-          ((this.props.presetId && this.state.settings.userId === getUser().id) ? (
+          ((this.props.presetId && this.state.settings.userName === getUser().username) ? (
             <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />
           ) : (
               <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />

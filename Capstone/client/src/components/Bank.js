@@ -37,6 +37,8 @@ class Bank extends Component {
         return (
             <>
             <div style={{height: 'calc(100vh - 62px)', width: '100%', overflow: 'scroll', border: '7px solid red', display: 'flex', justifyContent: 'center' }}>
+
+            {/* <p ={{}}> BANK </p> */}
             {/* <BankCard pushToPresetView={this.pushToPresetView} deletePreset={this.deletePreset}/> */}
                 {this.state.presets.map((preset, i) => (
                     // <div className="preset" key={i}>
