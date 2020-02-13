@@ -295,16 +295,19 @@ class Design extends Component {
                 <HorizontalRocker on={this.state.settings.decay} parameter="decay" uniqueClass={"decay-rocker"} color={"orange"} onChange={this.handleRockerChange} />
                 <OnLabel on={this.state.settings.decay} uniqueClass={"decay-on-label"} />
 
-                <div className="pitch-wheel-container">
+                <div className="pitch-wheel-container" style={{top: 292, left: 0}}>
                   <input type="range" min="1" max="100" value="50" id="pitchWheel" className="pitch-wheel"
                     value={this.state.settings.pitchWheel}
-                    onChange={this.handleSliderChange} />
+                    onChange={this.handleSliderChange} 
+                    style={{width:228, height: 24}}/>
                 </div>
 
-                <div className="mod-wheel-container">
+                <div className="mod-wheel-container" style={{top: 292, left: 130}}>
                   <input type="range" min="1" max="100" value="50" id="modWheel" className="mod-wheel"
                     value={this.state.settings.modWheel}
-                    onChange={this.handleSliderChange} />
+                    onChange={this.handleSliderChange} 
+                    style={{width:228, height: 24}}
+                    />
                 </div>
 
               </div>

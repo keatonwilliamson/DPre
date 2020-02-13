@@ -21,11 +21,11 @@ class App extends Component {
 
   state = {
     saving: false,
-    scroll: 496,
+    scroll: 600,
     sidebarScroll: 0,
     user: getUser(),
-    sidebarIsVisible: true,
-    sidebarIsDisplayed: true,
+    sidebarIsVisible: false,
+    sidebarIsDisplayed: false,
   }
 
   handleScroll = debounce((position) => {

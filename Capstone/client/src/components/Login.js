@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { login } from '../API/userManager';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 
 class Login extends Component {
   state = {
@@ -36,8 +37,12 @@ class Login extends Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.submit}>
+    return (<>
+     <div className="home-wrapper">
+          <Video style={{}}width="600" cloudName="cloudinarykeaton" publicId="Waveforms" crop="scale" controls={false} autoPlay={true} loop={true} fluid="true" id="example-player">
+          </Video>
+        </div>
+      <form style={{position: 'absolute'}}onSubmit={this.submit}>
         <h1>Login</h1>
         <ul>
           {
@@ -72,7 +77,7 @@ class Login extends Component {
           Not yet a user? <Link to="/register">Sign up</Link>
         </p>
       </form>
-    );
+    </>);
   }
 }
 

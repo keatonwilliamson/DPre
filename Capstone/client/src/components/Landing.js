@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { createAuthHeaders } from '../API/userManager';
 
 class Landing extends Component {
-  state = {
-    values: [],
-  }
 
   componentDidMount() {
     if (this.props.user) this.props.history.push('/home');
