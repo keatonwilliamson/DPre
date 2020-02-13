@@ -2,7 +2,7 @@ import { createAuthHeaders } from '../API/userManager';
 import { getUser } from './userManager';
 
 
-var userId = getUser();
+// var userId = getUser();
 
 export default {
     getAllPresets() {
@@ -21,9 +21,9 @@ export default {
             .then(result => result.json())
             .then(settings => settings.map(settings => this.compressSettings(settings)));
     },
-    searchAll() {
+    searchAll(q) {
         const authHeader = createAuthHeaders();
-        return fetch('/api/v1/presets/search?q=hey', {
+        return fetch(`/api/v1/presets/search?q=${q}`, {
             headers: authHeader
         })
             .then(result => result.json())
@@ -63,6 +63,7 @@ export default {
     expandSettings(settings, putRequest) {
         return {
             ...(putRequest) && {Id: settings.id, UserId: settings.userId, DateCreated: settings.dateCreated },
+            UserName: getUser().username,
             MasterTuneValue: settings.masterTune[0],
             MasterTuneDegrees: settings.masterTune[1],
             GlideAmountValue: settings.glideAmount[0],
@@ -150,6 +151,7 @@ export default {
 
             id: settings.id,
             userId: settings.userId,
+            userName: settings.userName,
             masterTune: [settings.masterTuneValue, settings.masterTuneDegrees],
             glideAmount: [settings.glideAmountValue, settings.glideAmountDegrees],
             modulationMix: [settings.modulationMixValue, settings.modulationMixDegrees],

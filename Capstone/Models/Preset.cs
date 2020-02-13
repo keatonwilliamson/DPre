@@ -9,6 +9,7 @@ namespace Capstone.Models
     {
         public int Id { get; set; }
         public string UserId { get; set; }
+        public string UserName { get; set; }
         // 
         public double MasterTuneValue { get; set; }
         public int MasterTuneDegrees { get; set; }

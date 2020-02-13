@@ -17,16 +17,10 @@ class Bank extends Component {
     }
 
     renderBank() {
-        // presetsManger.getBank()
-        //     .then(presets => {
-        //         this.setState({ presets: presets });
-        //     });
-        presetsManger.searchAll()
+        presetsManger.getBank()
             .then(presets => {
                 this.setState({ presets: presets });
             });
-
-
     }
 
     pushToPresetView(id) {
@@ -45,6 +39,10 @@ class Bank extends Component {
                     <div className="preset" key={i}>
                         <p onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
                         <p onClick={() => this.deletePreset(preset.id)}>DELETE</p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
                     </div>
                 ))}
             </>

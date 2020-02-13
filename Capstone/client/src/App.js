@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import Design from './components/Design';
 import Bank from './components/Bank';
+import Explore from './components/Explore';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
 import './Knob.css';
@@ -113,6 +114,9 @@ class App extends Component {
           )} />
           <Route path="/bank" render={(props) => (
             <Bank {...props} />
+          )} />
+          <Route path="/explore" render={(props) => (
+            <Explore {...props} />
           )} />
           <Route path="/preset/:presetId(\d+)" render={(props) => {
             // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>

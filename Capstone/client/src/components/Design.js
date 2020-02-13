@@ -13,6 +13,7 @@ import UpdateConfirmationModal from './UpdateConfirmationModal';
 import InputJack from './InputJack';
 import PowerLight from './PowerLight';
 import presetsManger from '../API/presetsManager';
+import { getUser, removeUser } from '../API/userManager';
 import SidebarItems from './SidebarItems';
 import { Header, Icon, Image, Menu, Segment, Sidebar, Loader, Dimmer } from 'semantic-ui-react'
 import { debounce } from 'lodash';
@@ -35,6 +36,7 @@ class Design extends Component {
     settings: {
       id: null,
       userId: null,
+      userName: "",
       masterTune: [0, 180],
       glideAmount: [0, 30],
       modulationMix: [5, 180],
@@ -145,12 +147,12 @@ class Design extends Component {
 
   handleScrollLocally = debounce(() => {
     console.log(this.slidingGrid.current.scrollLeft)
-    if(Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) > 3080) && (this.state.pageEnd == false) ) {
-      if(this.props.sidebarIsVisible) this.setState({sidebarIsPinned: true})
+    if (Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) > 3080) && (this.state.pageEnd == false)) {
+      if (this.props.sidebarIsVisible) this.setState({ sidebarIsPinned: true })
       this.props.showSidebar();
       this.setState({ pageEnd: true });
     }
-    if(Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) < 3080) && (this.state.pageEnd == true) && !this.state.sidebarIsPinned ) {
+    if (Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) < 3080) && (this.state.pageEnd == true) && !this.state.sidebarIsPinned) {
       this.props.hideSidebar();
       this.setState({ pageEnd: false });
     }
@@ -159,10 +161,10 @@ class Design extends Component {
   }, 20)
 
   pinSidebar = () => {
-    this.setState({sidebarIsPinned: true})
+    this.setState({ sidebarIsPinned: true })
   }
   unpinSidebar = () => {
-    this.setState({sidebarIsPinned: false})
+    this.setState({ sidebarIsPinned: false })
   }
 
   modulationMixLabelFadeAmount = () => {
@@ -238,6 +240,7 @@ class Design extends Component {
     this.renderPreset();
     this.getBank();
     this.closeSidebarLoader();
+    console.log(getUser())
   }
 
   componentWillUnmount() {
@@ -262,7 +265,7 @@ class Design extends Component {
         <div style={{ zIndex: 5, position: 'fixed', right: 0 }}>
           <Icon style={{ position: 'absolute', right: 16, top: 16, backgroundColor: 'rgb(16, 16, 16,.9)' }} circular inverted name='ellipsis horizontal' size='large'
             onClick={() => {
-              this.setState({sidebarIsPinned: true})
+              this.setState({ sidebarIsPinned: true })
               this.props.showSidebar()
             }} />
           <SidebarItems displayScroll={5} sidebarIsVisible={this.props.sidebarIsVisible} sidebarIsDisplayed={this.props.sidebarIsDisplayed} hideSidebar={this.props.hideSidebar} cleanupSidebar={this.props.cleanupSidebar} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} unpinSidebar={this.unpinSidebar} pinSidebar={this.pinSidebar} sidebarIsPinned={this.state.sidebarIsPinned} pageEnd={this.state.pageEnd} {...this.props} />
@@ -295,19 +298,19 @@ class Design extends Component {
                 <HorizontalRocker on={this.state.settings.decay} parameter="decay" uniqueClass={"decay-rocker"} color={"orange"} onChange={this.handleRockerChange} />
                 <OnLabel on={this.state.settings.decay} uniqueClass={"decay-on-label"} />
 
-                <div className="pitch-wheel-container" style={{top: 310, left: 0}}>
+                <div className="pitch-wheel-container" style={{ top: 310, left: 0 }}>
                   <input type="range" min="1" max="100" value="50" id="pitchWheel" className="pitch-wheel"
                     value={this.state.settings.pitchWheel}
-                    onChange={this.handleSliderChange} 
-                    style={{width:228, height: 24}}/>
+                    onChange={this.handleSliderChange}
+                    style={{ width: 228, height: 24 }} />
                 </div>
 
-                <div className="mod-wheel-container" style={{top: 310, left: 130}}>
+                <div className="mod-wheel-container" style={{ top: 310, left: 130 }}>
                   <input type="range" min="1" max="100" value="50" id="modWheel" className="mod-wheel"
                     value={this.state.settings.modWheel}
-                    onChange={this.handleSliderChange} 
-                    style={{width:228, height: 24}}
-                    />
+                    onChange={this.handleSliderChange}
+                    style={{ width: 228, height: 24 }}
+                  />
                 </div>
 
               </div>
@@ -316,8 +319,9 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-                this.setState({ reloadControls: !this.state.reloadControls });
-                console.log(this.state.reloadControls)
+
+                // this.setState({ reloadControls: !this.state.reloadControls });
+                console.log(this.state.settings)
 
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
@@ -327,9 +331,9 @@ class Design extends Component {
               <div className="divider oscillator-divider"></div>
 
               <p className="section-label mixer-label">MIXER</p>
-              <div style={{height: 67, top: 0}} className="divider mixer-divider"></div>
-              <div style={{height: 50, top: 140}} className="divider mixer-divider"></div>
-              <div style={{height: 333, top: 300}} className="divider mixer-divider"></div>
+              <div style={{ height: 67, top: 0 }} className="divider mixer-divider"></div>
+              <div style={{ height: 50, top: 140 }} className="divider mixer-divider"></div>
+              <div style={{ height: 333, top: 300 }} className="divider mixer-divider"></div>
 
               <p className="section-label modifiers-label">MODIFIERS</p>
               <div className="divider modifiers-divider"></div>
@@ -830,7 +834,7 @@ class Design extends Component {
 
 
         {this.state.saveConfirmation &&
-          (this.props.presetId ? (
+          ((this.props.presetId && this.state.settings.userId === getUser().id) ? (
             <UpdateConfirmationModal handleUpdate={this.handleUpdate} handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />
           ) : (
               <SaveConfirmationModal handleSubmit={this.handleSubmit} closeSaveModal={this.closeSaveModal} showForm={this.showForm} />

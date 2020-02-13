@@ -91,6 +91,7 @@ namespace Capstone.Controllers.V1
                         SELECT 
                         Id,
                         UserId,
+                        UserName,
                         MasterTuneValue,
                         MasterTuneDegrees,
                         GlideAmountValue,
@@ -181,6 +182,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
@@ -307,6 +309,7 @@ namespace Capstone.Controllers.V1
                         SELECT
                         Id,
                         UserId,
+                        UserName,
                         MasterTuneValue,
                         MasterTuneDegrees,
                         GlideAmountValue,
@@ -400,6 +403,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
@@ -529,6 +533,7 @@ namespace Capstone.Controllers.V1
                         SELECT 
                         p.Id,
                         p.UserId,
+                        p.UserName,
                         p.MasterTuneValue,
                         p.MasterTuneDegrees,
                         p.GlideAmountValue,
@@ -620,6 +625,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
@@ -759,6 +765,7 @@ namespace Capstone.Controllers.V1
                         SELECT 
                         p.Id,
                         p.UserId,
+                        p.UserName,
                         p.MasterTuneValue,
                         p.MasterTuneDegrees,
                         p.GlideAmountValue,
@@ -857,6 +864,7 @@ namespace Capstone.Controllers.V1
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             UserId = reader.GetString(reader.GetOrdinal("UserId")),
+                            UserName = reader.GetString(reader.GetOrdinal("UserName")),
                             MasterTuneValue = reader.GetDouble(reader.GetOrdinal("MasterTuneValue")),
                             MasterTuneDegrees = reader.GetInt32(reader.GetOrdinal("MasterTuneDegrees")),
                             GlideAmountValue = reader.GetInt32(reader.GetOrdinal("GlideAmountValue")),
@@ -1027,6 +1035,7 @@ namespace Capstone.Controllers.V1
                     cmd.CommandText = @"
                         INSERT INTO Preset (
                         UserId,
+                        UserName,
                         MasterTuneValue,
                         MasterTuneDegrees,
                         GlideAmountValue,
@@ -1110,6 +1119,7 @@ namespace Capstone.Controllers.V1
                         OUTPUT INSERTED.Id
                         VALUES (
                         @userId,
+                        @userName,
                         @masterTuneValue,
                         @masterTuneDegrees,
                         @glideAmountValue,
@@ -1200,6 +1210,7 @@ namespace Capstone.Controllers.V1
 
                     // cmd.Parameters.Add(new SqlParameter("@id", preset.Id));
                     cmd.Parameters.Add(new SqlParameter("@userId", userId));
+                    cmd.Parameters.Add(new SqlParameter("@userName", preset.UserName));
                     cmd.Parameters.Add(new SqlParameter("@masterTuneValue", preset.MasterTuneValue));
                     cmd.Parameters.Add(new SqlParameter("@masterTuneDegrees", preset.MasterTuneDegrees));
                     cmd.Parameters.Add(new SqlParameter("@glideAmountValue", preset.GlideAmountValue));
@@ -1542,6 +1553,7 @@ namespace Capstone.Controllers.V1
                         var userId = HttpContext.GetUserId();
                         cmd.CommandText = @"UPDATE Preset
                                         SET UserId = @userId,
+                                            UserName = @userName,
                                             MasterTuneValue = @masterTuneValue,
                                             MasterTuneDegrees = @masterTuneDegrees,
                                             GlideAmountValue = @glideAmountValue,
@@ -1626,6 +1638,7 @@ namespace Capstone.Controllers.V1
 
                         cmd.Parameters.Add(new SqlParameter("@id", id));
                         cmd.Parameters.Add(new SqlParameter("@userId", userId));
+                        cmd.Parameters.Add(new SqlParameter("@userName", preset.UserName));
                         cmd.Parameters.Add(new SqlParameter("@masterTuneValue", preset.MasterTuneValue));
                         cmd.Parameters.Add(new SqlParameter("@masterTuneDegrees", preset.MasterTuneDegrees));
                         cmd.Parameters.Add(new SqlParameter("@glideAmountValue", preset.GlideAmountValue));
