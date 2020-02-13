@@ -21,6 +21,14 @@ export default {
             .then(result => result.json())
             .then(settings => settings.map(settings => this.compressSettings(settings)));
     },
+    searchAll() {
+        const authHeader = createAuthHeaders();
+        return fetch('/api/v1/presets/search?q=hey', {
+            headers: authHeader
+        })
+            .then(result => result.json())
+            .then(settings => settings.map(settings => this.compressSettings(settings)));
+    },
     getPreset(id) {
         const authHeader = createAuthHeaders();
         return fetch(`/api/v1/presets/${id}`, {

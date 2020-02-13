@@ -7,7 +7,6 @@ import Register from './components/Register';
 import Home from './components/Home';
 import Design from './components/Design';
 import Bank from './components/Bank';
-import Edit from './components/Edit';
 import { getUser, removeUser } from './API/userManager';
 import './App.css';
 import './Knob.css';

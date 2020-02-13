@@ -20,6 +20,7 @@ namespace Capstone.Routes.V1
         {
             public const string GetAll = Base + "/Presets";
             public const string GetBank = Base + "/Presets/Bank";
+            public const string SearchAll = Base + "/Presets/Search";
             public const string Get = Base + "/Presets/{id}";
             public const string Post = Base + "/Presets";
             public const string Edit = Base + "/Presets/{id}";

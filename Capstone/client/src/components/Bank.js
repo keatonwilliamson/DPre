@@ -17,10 +17,16 @@ class Bank extends Component {
     }
 
     renderBank() {
-        presetsManger.getBank()
+        // presetsManger.getBank()
+        //     .then(presets => {
+        //         this.setState({ presets: presets });
+        //     });
+        presetsManger.searchAll()
             .then(presets => {
                 this.setState({ presets: presets });
             });
+
+
     }
 
     pushToPresetView(id) {

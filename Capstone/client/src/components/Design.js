@@ -327,7 +327,9 @@ class Design extends Component {
               <div className="divider oscillator-divider"></div>
 
               <p className="section-label mixer-label">MIXER</p>
-              <div className="divider mixer-divider"></div>
+              <div style={{height: 67, top: 0}} className="divider mixer-divider"></div>
+              <div style={{height: 50, top: 140}} className="divider mixer-divider"></div>
+              <div style={{height: 333, top: 300}} className="divider mixer-divider"></div>
 
               <p className="section-label modifiers-label">MODIFIERS</p>
               <div className="divider modifiers-divider"></div>
