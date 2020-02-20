@@ -29,22 +29,10 @@ const UpdateConfirmationModal = (props) => (
           flex: '0 0 100%',
           textAlign: 'center',
           fontSize: '36px'
-          // display: 'flex',
-          // flexWrap: 'wrap',
-          // justifyContent: 'center',
-          // alignItems: 'center'
         }}>-or-</p>
         <button style={{ margin: 20, fontSize: '26px'}} className="large-white-outline-button" type="button" onClick={props.handleSubmit}>SAVE AS NEW PRESET</button>
       </div>
     </Modal.Content>
-    {/* <Modal.Actions>
-      <Button basic color='red' inverted>
-        <Icon name='remove' /> No
-      </Button>
-      <Button color='green' inverted>
-        <Icon name='checkmark' /> Yes
-      </Button>
-    </Modal.Actions> */}
   </Modal>
 )
 

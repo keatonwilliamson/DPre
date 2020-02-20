@@ -14,20 +14,13 @@ function SidebarItems(props) {
 
     const sidebar = useRef();
     useEffect(() => {
-        console.log("useEffect ran", sidebar.current.ref.current.scrollTop)
         sidebar.current.ref.current.scrollTop = props.sidebarScroll;
     }, [props.sidebarLoaded]);
 
-    useEffect(() => {
-        console.log("scroll from props")
-    }, [props.displayScroll]);
-
     return (<>
         <div style={{ posiiton: 'fixed' }}>
-            {/* <div style={{position: 'absolute', left: 0}} onClick={props.showSidebar}>SHOW</div>  */}
             <Sidebar.Pushable
                 style={{
-                    // border: '2px solid blue',
                     backgroundColor: 'transparent',
                     width: 300,
                     height: 'calc(100vh - 62px)',
@@ -39,11 +32,8 @@ function SidebarItems(props) {
                     overflow: 'hidden',
 
                 }}
-            // as={Segment}
             >
                 <Sidebar
-                    // ref={sidebar} onScroll={() => props.handleSidebarScroll(sidebar.current.ref.current.scrollTop)}
-                    onScroll={() => console.log(props.scroll)}
                     style={{
                         width: 300,
                         backgroundColor: 'rgba(0,0,0,0.7)',
@@ -51,21 +41,12 @@ function SidebarItems(props) {
                         overflow: 'hidden',
                         overscrollBehaviorX: 'contain'
                     }}
-                    // as={Menu}
                     animation='overlay'
                     direction='right'
                     inverted
                     vertical
                     visible={(props.sidebarIsVisible)}
                 >
-
-
-
-
-
-
-
-
                     <div style={{ height: 50, backgroundColor: 'black' }}>
                         <Input style={{ position: 'absolute', left: 68, top: 8 }} icon='search' placeholder='Search...' onChange={handleInputChange} />
                     </div>
@@ -83,22 +64,9 @@ function SidebarItems(props) {
                                     }} />
                             )
                     }
-
-
-
-
-
-
-
-
-
-
-
-
                     <Sidebar.Pushable
                         style={{
                             border: 'none',
-                            // backgroundColor: 'white',
                             width: 300,
                             height: 'calc(100% - 50px)',
                             margin: 0,
@@ -106,13 +74,11 @@ function SidebarItems(props) {
                             top: 0,
                             posiiton: 'absolute'
                         }}
-                    // as={Segment}
                     >
 
                         <Sidebar
                             ref={sidebar}
                             onScroll={() => props.handleSidebarScroll(sidebar.current.ref.current.scrollTop)}
-                            // onScroll={() => console.log("littel sidebar")}
                             style={{
                                 width: 300,
                                 backgroundColor: 'rgba(0,0,0,.8)',
@@ -126,20 +92,7 @@ function SidebarItems(props) {
                             vertical
                             visible={true}
                         >
-
-
-
-
-
-
-
-
-
-
-
                             {(props.sidebarLoaded) ? (<>
-
-                                {/* <Menu.Item as='a' header>BANK PRESETS</Menu.Item> */}
                                 {props.bank.filter(preset => preset.presetName.toLowerCase().includes(queryString.toLowerCase())).map(preset => {
                                     return (
                                         <Menu.Item style={{ textOverflow: 'ellipsis' }} value={preset.id} onClick={() => props.renderPresetFromSideBar(preset)} as='a'>{preset.presetName}</Menu.Item>
@@ -152,12 +105,6 @@ function SidebarItems(props) {
                                             style={{ visibility: (props.saving ? "hidden" : "visible") }}>Loading</Loader>
                                     </Dimmer>
                                 )}
-
-
-
-
-
-
                         </Sidebar>
                     </Sidebar.Pushable>
 

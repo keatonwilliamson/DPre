@@ -10,46 +10,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Authorization;
 using Capstone.Routes.V1;
 using Capstone.Helpers;
-
-/*
-namespace AWSServerless1.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class PokemonController : ControllerBase
-    {
-        // GET: api/Pokemon
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-        // GET: api/Pokemon/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        // POST: api/Pokemon
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-        // PUT: api/Pokemon/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-    }
-}
-*/
-
-
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -64,12 +24,6 @@ namespace Capstone.Controllers.V1
         public PresetsController()
         {
         }
-        // private readonly IConfiguration _config;
-
-        // public PresetsController(IConfiguration config)
-        // {
-        //     _config = config;
-        // }
 
         public SqlConnection Connection
         {
@@ -516,10 +470,6 @@ namespace Capstone.Controllers.V1
             }
         }
 
-
-
-
-
         [HttpGet(Api.Presets.GetBank)]
         public async Task<IActionResult> GetBank()
         {
@@ -737,19 +687,6 @@ namespace Capstone.Controllers.V1
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         [HttpGet(Api.Presets.SearchAll)]
@@ -979,51 +916,7 @@ namespace Capstone.Controllers.V1
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [HttpPost(Api.Presets.Post)]
-        // public IActionResult Post([FromBody] Preset preset)
-        // {
-        //     var userId = HttpContext.GetUserId();
-        //     var values = new[] { "value yum", "value yum", "value 3asfasdfasd33", $"{preset.Oscillator2WaveformValue}"};
-        //     return Ok(values);
-        // }
-        // public async Task<IActionResult> Post([FromBody] Pokemon pokemon)
-        // {
-        //     // var userId = HttpContext.GetUserId();
-        //     // var values =  new[] { "charmonder", "squirtle", "pikachu", $"{userId}", $"{pokemon.PokemonSpecies}"};
-        //     // Response.Headers.Add("X-Requested-With", "*");
-        //     // Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
-        //     // Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //     // Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
-        //     // return Ok(values);
-        // }
-
         public async Task<IActionResult> Post([FromBody] Preset preset)
         {
             using (SqlConnection conn = Connection)
@@ -1200,15 +1093,7 @@ namespace Capstone.Controllers.V1
                         @presetNotes,
                         @dateCreated
                         )";
-                    // cmd.Parameters.Add(new SqlParameter("@pokemonSpecies", pokemon.PokemonSpecies));
-                    // cmd.Parameters.Add(new SqlParameter("@nickname", pokemon.Nickname));
-                    // cmd.Parameters.Add(new SqlParameter("@pokedexId", pokemon.PokedexId));
-                    // cmd.Parameters.Add(new SqlParameter("@pictureUrl", pokemon.PictureUrl));
-                    // cmd.Parameters.Add(new SqlParameter("@keyCaught", pokemon.KeyCaught));
 
-
-
-                    // cmd.Parameters.Add(new SqlParameter("@id", preset.Id));
                     cmd.Parameters.Add(new SqlParameter("@userId", userId));
                     cmd.Parameters.Add(new SqlParameter("@userName", preset.UserName));
                     cmd.Parameters.Add(new SqlParameter("@masterTuneValue", preset.MasterTuneValue));
@@ -1298,8 +1183,6 @@ namespace Capstone.Controllers.V1
                     Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
                     Response.Headers.Add("Access-Control-Allow-Origin", "*");
                     Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
-                    // var values = new[] { "value yum", "value yum", "value 3asfasdfasd33" };
-                    // return CreatedAtRoute("GetPokemon", new { id = newId }, pokemon);
                     var message = "yeahh! no exceptions were thrown";
                     try
                     {
@@ -1311,233 +1194,10 @@ namespace Capstone.Controllers.V1
                         message = ex.Message;
                     }
 
-
-                    // preset.Id = newId;
                     return Ok(new { id = preset.Id, message = message });
-                    // return CreatedAtRoute("Post", new { id = newId }, preset);
                 }
             }
         }
-
-
-        // [HttpPut(Api.Presets.Edit)]
-        // public async Task<IActionResult> Edit(int id, Preset preset)
-        // {
-
-        //     using (SqlConnection conn = Connection)
-        //     {
-        //         conn.Open();
-        //         using (SqlCommand cmd = conn.CreateCommand())
-        //         {
-        //             cmd.CommandText = @"
-        //                     UPDATE Preset
-        //                     SET 
-        //                         MasterTuneValue = @masterTuneValue,
-        //                         MasterTuneDegrees = @masterTuneDegrees,
-        //                         GlideAmountValue = @glideAmountValue,
-        //                         GlideAmountDegrees = @glideAmountDegrees,
-        //                         ModulationMixValue = @modulationMixValue,
-        //                         ModulationMixDegrees = @modulationMixDegrees,
-        //                         ModulationSourceA = @modulationSourceA,
-        //                         ModulationSourceB = @modulationSourceB,
-        //                         OscillatorModulation = @oscillatorModulation,
-        //                         Oscillator3Control = @oscillator3Control,
-        //                         Oscillator1RangeValue = @oscillator1RangeValue,
-        //                         Oscillator1RangeDegrees = @oscillator1RangeDegrees,
-        //                         Oscillator2RangeValue = @oscillator2RangeValue,
-        //                         Oscillator2RangeDegrees = @oscillator2RangeDegrees,
-        //                         Oscillator3RangeValue = @oscillator3RangeValue,
-        //                         Oscillator3RangeDegrees = @oscillator3RangeDegrees,
-        //                         Oscillator2FrequencyValue = @oscillator2FrequencyValue,
-        //                         Oscillator2FrequencyDegrees = @oscillator2FrequencyDegrees,
-        //                         Oscillator3FrequencyValue = @oscillator3FrequencyValue,
-        //                         Oscillator3FrequencyDegrees = @oscillator3FrequencyDegrees,
-        //                         Oscillator1WaveformValue = @oscillator1WaveformValue,
-        //                         Oscillator1WaveformDegrees = @oscillator1WaveformDegrees,
-        //                         Oscillator2WaveformValue = @oscillator2WaveformValue,
-        //                         Oscillator2WaveformDegrees = @oscillator2WaveformDegrees,
-        //                         Oscillator3WaveformValue = @oscillator3WaveformValue,
-        //                         Oscillator3WaveformDegrees = @oscillator3WaveformDegrees,
-        //                         Oscillator1VolumeValue = @oscillator1VolumeValue,
-        //                         Oscillator1VolumeDegrees = @oscillator1VolumeDegrees,
-        //                         Oscillator2VolumeValue = @oscillator2VolumeValue,
-        //                         Oscillator2VolumeDegrees = @oscillator2VolumeDegrees,
-        //                         Oscillator3VolumeValue = @oscillator3VolumeValue,
-        //                         Oscillator3VolumeDegrees = @oscillator3VolumeDegrees,
-        //                         Oscillator1 = @oscillator1,
-        //                         Oscillator2 = @oscillator2,
-        //                         Oscillator3 = @oscillator3,
-        //                         ExternalInput = @externalInput,
-        //                         Noise = @noise,
-        //                         ExternalInputVolumeValue = @externalInputVolumeValue,
-        //                         ExternalInputVolumeDegrees = @externalInputVolumeDegrees,
-        //                         NoiseVolumeValue = @noiseVolumeValue,
-        //                         NoiseVolumeDegrees = @noiseVolumeDegrees,
-        //                         NoiseColor = @noiseColor,
-        //                         FilterModulation = @filterModulation,
-        //                         KeyboardControl1 = @keyboardControl1,
-        //                         KeyboardControl2 = @keyboardControl2,
-        //                         FilterCutoffValue = @filterCutoffValue,
-        //                         FilterCutoffDegrees = @filterCutoffDegrees,
-        //                         FilterEmphasisValue = @filterEmphasisValue,
-        //                         FilterEmphasisDegrees = @filterEmphasisDegrees,
-        //                         FilterContourValue = @filterContourValue,
-        //                         FilterContourDegrees = @filterContourDegrees,
-        //                         FilterAttackValue = @filterAttackValue,
-        //                         FilterAttackDegrees = @filterAttackDegrees,
-        //                         FilterDecayValue = @filterDecayValue,
-        //                         FilterDecayDegrees = @filterDecayDegrees,
-        //                         FilterSustainValue = @filterSustainValue,
-        //                         FilterSustainDegrees = @filterSustainDegrees,
-        //                         LoudnessAttackValue = @loudnessAttackValue,
-        //                         LoudnessAttackDegrees = @loudnessAttackDegrees,
-        //                         LoudnessDecayValue = @loudnessDecayValue,
-        //                         LoudnessDecayDegrees = @loudnessDecayDegrees,
-        //                         LoudnessSustainValue = @loudnessSustainValue,
-        //                         LoudnessSustainDegrees = @loudnessSustainDegrees,
-        //                         MainOutputVolumeValue = @mainOutputVolumeValue,
-        //                         MainOutputVolumeDegrees = @mainOutputVolumeDegrees,
-        //                         MainOutput = @mainOutput,
-        //                         Tuner = @tuner,
-        //                         PhonesOutputVolumeValue = @phonesOutputVolumeValue,
-        //                         PhonesOutputVolumeDegrees = @phonesOutputVolumeDegrees,
-        //                         Power = @power,
-        //                         LfoRateValue = @lfoRateValue,
-        //                         LfoRateDegrees = @lfoRateDegrees,
-        //                         Glide = @glide,
-        //                         Decay = @decay,
-        //                         PitchWheel = @pitchWheel,
-        //                         ModWheel = @modWheel,
-        //                         PresetName = @presetName,
-        //                         PresetNotes = @presetNotes                  
-        //                     WHERE Id = @id";
-
-
-
-
-        //             cmd.Parameters.Add(new SqlParameter("@id", id));
-        //             cmd.Parameters.Add(new SqlParameter("@masterTuneValue", preset.MasterTuneValue));
-        //             cmd.Parameters.Add(new SqlParameter("@masterTuneDegrees", preset.MasterTuneDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@glideAmountValue", preset.GlideAmountValue));
-        //             cmd.Parameters.Add(new SqlParameter("@glideAmountDegrees", preset.GlideAmountDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@modulationMixValue", preset.ModulationMixValue));
-        //             cmd.Parameters.Add(new SqlParameter("@modulationMixDegrees", preset.ModulationMixDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@modulationSourceA", preset.ModulationSourceA));
-        //             cmd.Parameters.Add(new SqlParameter("@modulationSourceB", preset.ModulationSourceB));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillatorModulation", preset.OscillatorModulation));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3Control", preset.Oscillator3Control));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1RangeValue", preset.Oscillator1RangeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1RangeDegrees", preset.Oscillator1RangeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2RangeValue", preset.Oscillator2RangeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2RangeDegrees", preset.Oscillator2RangeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3RangeValue", preset.Oscillator3RangeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3RangeDegrees", preset.Oscillator3RangeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2FrequencyValue", preset.Oscillator2FrequencyValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2FrequencyDegrees", preset.Oscillator2FrequencyDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3FrequencyValue", preset.Oscillator3FrequencyValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3FrequencyDegrees", preset.Oscillator3FrequencyDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1WaveformValue", preset.Oscillator1WaveformValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1WaveformDegrees", preset.Oscillator1WaveformDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2WaveformValue", preset.Oscillator2WaveformValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2WaveformDegrees", preset.Oscillator2WaveformDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3WaveformValue", preset.Oscillator3WaveformValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3WaveformDegrees", preset.Oscillator3WaveformDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1VolumeValue", preset.Oscillator1VolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1VolumeDegrees", preset.Oscillator1VolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2VolumeValue", preset.Oscillator2VolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2VolumeDegrees", preset.Oscillator2VolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3VolumeValue", preset.Oscillator3VolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3VolumeDegrees", preset.Oscillator3VolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator1", preset.Oscillator1));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator2", preset.Oscillator2));
-        //             cmd.Parameters.Add(new SqlParameter("@oscillator3", preset.Oscillator3));
-        //             cmd.Parameters.Add(new SqlParameter("@externalInput", preset.ExternalInput));
-        //             cmd.Parameters.Add(new SqlParameter("@noise", preset.Noise));
-        //             cmd.Parameters.Add(new SqlParameter("@externalInputVolumeValue", preset.ExternalInputVolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@externalInputVolumeDegrees", preset.ExternalInputVolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@noiseVolumeValue", preset.NoiseVolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@noiseVolumeDegrees", preset.NoiseVolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@noiseColor", preset.NoiseColor));
-        //             cmd.Parameters.Add(new SqlParameter("@filterModulation", preset.FilterModulation));
-        //             cmd.Parameters.Add(new SqlParameter("@keyboardControl1", preset.KeyboardControl1));
-        //             cmd.Parameters.Add(new SqlParameter("@keyboardControl2", preset.KeyboardControl2));
-        //             cmd.Parameters.Add(new SqlParameter("@filterCutoffValue", preset.FilterCutoffValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterCutoffDegrees", preset.FilterCutoffDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@filterEmphasisValue", preset.FilterEmphasisValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterEmphasisDegrees", preset.FilterEmphasisDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@filterContourValue", preset.FilterContourValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterContourDegrees", preset.FilterContourDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@filterAttackValue", preset.FilterAttackValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterAttackDegrees", preset.FilterAttackDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@filterDecayValue", preset.FilterDecayValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterDecayDegrees", preset.FilterDecayDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@filterSustainValue", preset.FilterSustainValue));
-        //             cmd.Parameters.Add(new SqlParameter("@filterSustainDegrees", preset.FilterSustainDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessAttackValue", preset.LoudnessAttackValue));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessAttackDegrees", preset.LoudnessAttackDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessDecayValue", preset.LoudnessDecayValue));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessDecayDegrees", preset.LoudnessDecayDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessSustainValue", preset.LoudnessSustainValue));
-        //             cmd.Parameters.Add(new SqlParameter("@loudnessSustainDegrees", preset.LoudnessSustainDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@mainOutputVolumeValue", preset.MainOutputVolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@mainOutputVolumeDegrees", preset.MainOutputVolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@mainOutput", preset.MainOutput));
-        //             cmd.Parameters.Add(new SqlParameter("@tuner", preset.Tuner));
-        //             cmd.Parameters.Add(new SqlParameter("@phonesOutputVolumeValue", preset.PhonesOutputVolumeValue));
-        //             cmd.Parameters.Add(new SqlParameter("@phonesOutputVolumeDegrees", preset.PhonesOutputVolumeDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@power", preset.Power));
-        //             cmd.Parameters.Add(new SqlParameter("@lfoRateValue", preset.LfoRateValue));
-        //             cmd.Parameters.Add(new SqlParameter("@lfoRateDegrees", preset.LfoRateDegrees));
-        //             cmd.Parameters.Add(new SqlParameter("@glide", preset.Glide));
-        //             cmd.Parameters.Add(new SqlParameter("@decay", preset.Decay));
-        //             cmd.Parameters.Add(new SqlParameter("@pitchWheel", preset.PitchWheel));
-        //             cmd.Parameters.Add(new SqlParameter("@modWheel", preset.ModWheel));
-        //             cmd.Parameters.Add(new SqlParameter("@presetName", preset.PresetName));
-        //             cmd.Parameters.Add(new SqlParameter("@presetNotes", preset.PresetNotes));
-        //             cmd.Parameters.Add(new SqlParameter("@dateCreated", DateTime.Now));
-
-
-
-        //             // int rowsAffected = await cmd.ExecuteNonQueryAsync();
-
-        //             // Response.Headers.Add("X-Requested-With", "*");
-        //             // Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with");
-        //             // Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //             // Response.Headers.Add("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
-
-
-        //             // var message = "yeahh! no exceptions were thrown";
-        //             var message = "yeahh! no exceptions were thrown";
-        //             try
-        //             {
-        //                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
-        //             }
-        //             catch (Exception ex)
-        //             {
-        //                 message = ex.Message;
-        //             }
-
-
-        //             // preset.Id = newId;
-        //             return Ok(new { message = message });
-
-        //             // preset.Id = newId;
-        //             // return Ok(new { id = preset.Id, message = message });
-
-
-
-
-
-        //             // if (rowsAffected > 0)
-        //             // {
-        //             //     return new StatusCodeResult(StatusCodes.Status204NoContent);
-        //             // }
-        //             // throw new Exception("No rows affected");
-        //         }
-        //     }
-        // }
-
-
 
 
         [HttpPut(Api.Presets.Edit)]
@@ -1771,26 +1431,6 @@ namespace Capstone.Controllers.V1
                 throw;
             }
         }
-
-        /*
-        private bool CoffeeExists(int id)
-        {
-            using (SqlConnection conn = Connection)
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        SELECT Id, Title, BeanType
-                        FROM Coffee
-                        WHERE Id = @id";
-                    cmd.Parameters.Add(new SqlParameter("@id", id));
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    return reader.Read();
-                }
-            }
-        }
-    */
 
     }
 }

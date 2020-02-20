@@ -16,8 +16,6 @@ class Explore extends Component {
         presets: [],
     }
 
-
-
     componentDidMount() {
         this.renderBank();
     }
@@ -34,26 +32,15 @@ class Explore extends Component {
     }, 80);
 
     renderBank() {
-        // presetsManger.getBank()
-        //     .then(presets => {
-        //         this.setState({ presets: presets });
-        //     });
         presetsManger.searchAll()
             .then(presets => {
                 this.setState({ presets: presets });
             });
-
-
     }
 
     pushToPresetView = (evt) => {
         this.props.history.push(`/preset/${evt.target.id}`)
     }
-
-    // deletePreset(id) {
-    //     presetsManger.deletePreset(id)
-    //         .then(() => this.renderBank())
-    // }
 
     render() {
         return (
@@ -63,11 +50,6 @@ class Explore extends Component {
                 </div>
                 <div style={{height: 'calc(100vh - 62px)', width: '100%', overflow: 'scroll' }}>
                 {this.state.presets.map((preset, i) => (
-                    // <div className="preset" key={i}>
-                    //     <p onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
-                    //     {/* <p onClick={() => this.deletePreset(preset.id)}>DELETE</p> */}
-                    // </div>
-
                     <ExploreCard preset={preset} pushToPresetView={this.pushToPresetView}/>
                 ))}
                 </div>

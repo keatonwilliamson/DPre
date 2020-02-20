@@ -126,7 +126,6 @@ class Design extends Component {
     this.closeSaveModal();
     presetsManger.postPreset(this.state.settings)
       .then(response => {
-        console.log(response)
         this.props.history.push(`/preset/${response.id}`)
         this.renderPreset();
         this.getBank();
@@ -146,7 +145,6 @@ class Design extends Component {
   }
 
   handleScrollLocally = debounce(() => {
-    // console.log(this.slidingGrid.current.scrollLeft)
     if (Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) > 3080) && (this.state.pageEnd == false)) {
       if (this.props.sidebarIsVisible) this.setState({ sidebarIsPinned: true })
       this.props.showSidebar();
@@ -156,8 +154,6 @@ class Design extends Component {
       this.props.hideSidebar();
       this.setState({ pageEnd: false });
     }
-    // if(this.props.formIsVisible)
-    // console.log(this.slidingGrid.current.scrollLeft)
   }, 20)
 
   pinSidebar = () => {
@@ -186,28 +182,10 @@ class Design extends Component {
     this.setState({ formIsVisible: true });
   }
 
-
-  // hideSidebar = () => {
-  //   this.setState({ sidebarIsVisible: false });
-  // }
-  // showSidebar = () => {
-  //   this.setState({ sidebarIsVisible: true });
-  // }
-
-  // cleanupSidebar = () => {
-  //   this.setState({ sidebarIsVisible: false });
-  // }
-  // displaySidebar = () => {
-  //   this.setState({ sidebarIsVisible: true });
-  // }
-
-
   renderPreset = () => {
     if (this.props.presetId) {
       presetsManger.getPreset(this.props.presetId)
         .then(preset => {
-          console.log(preset)
-          console.log("COMPONENT DID MOUNT")
           this.setState({ settings: preset });
           this.closeSavingLoader();
         });
@@ -240,23 +218,11 @@ class Design extends Component {
     this.renderPreset();
     this.getBank();
     this.closeSidebarLoader();
-    console.log(getUser())
-  }
-
-  componentWillUnmount() {
-    console.log("unmounting");
   }
 
   setSidebarScroll() {
-    console.log("SET SIDEBAR SCROLL FROM DESING")
     this.sidebar.current.ref.current.scrollTop = this.props.sidebarScroll;
   }
-  // componentWillReceiveProps({ saving }) {
-  //       
-  //   console.log("recieved saving from component will recieve props on Design")
-  //   // this.setState({ settings: preset });
-  // };
-
 
   render() {
     return (
@@ -269,9 +235,7 @@ class Design extends Component {
               this.props.showSidebar()
             }} />
           <SidebarItems displayScroll={5} sidebarIsVisible={this.props.sidebarIsVisible} sidebarIsDisplayed={this.props.sidebarIsDisplayed} hideSidebar={this.props.hideSidebar} cleanupSidebar={this.props.cleanupSidebar} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} unpinSidebar={this.unpinSidebar} pinSidebar={this.pinSidebar} sidebarIsPinned={this.state.sidebarIsPinned} pageEnd={this.state.pageEnd} {...this.props} />
-          {/* <div style={{position: 'absolute', height: 50, width: '100%', top: 0}} onClick={this.showSidebar}>SHOW</div> */}
         </div>
-        {/* <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
         <div ref={this.slidingGrid} onScroll={() => {
           this.props.handleScroll(this.slidingGrid.current.scrollLeft)
           this.handleScrollLocally()
@@ -319,9 +283,6 @@ class Design extends Component {
 
               {/* SECTIONS */}
               <p onMouseDown={() => {
-
-                // this.setState({ reloadControls: !this.state.reloadControls });
-
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
               <div className="divider controllers-divider-bottom"></div>
@@ -779,9 +740,6 @@ class Design extends Component {
               <InputJack />
               <PowerLight power={this.state.settings.power} />
 
-
-
-
               {/* <div className="measuring-tape"></div> */}
             </div>
             <div className="patch-form-container">
@@ -793,44 +751,8 @@ class Design extends Component {
                   className="patch-form-submit" onClick={this.openSaveModal} type="button">SAVE</button>
               </form>
             </div>
-            {/* <SidebarItems bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
-            {/* <Sidebar.Pushable
-              style={{
-                border: 'none',
-                backgroundColor: 'transparent',
-                width: 300,
-                margin: 0
-              }}
-              as={Segment}>
-              <Sidebar
-                ref={this.sidebar} onScroll={() => this.props.handleSidebarScroll(this.sidebar.current.ref.current.scrollTop)}
-                style={{
-                  width: 300,
-                  backgroundColor: 'rgba(0,0,0,.57)',
-                  visibility: ((this.props.saving) ? "hidden" : "visible")
-                }}
-                as={Menu}
-                animation='overlay'
-                direction='right'
-                inverted
-                vertical
-                visible={this.state.settings.power}
-              >
-                {(this.state.sidebarLoaded) ? (
-                  <SidebarItems bank={this.state.bank} setSidebarScroll={this.setSidebarScroll} {...this.props} />
-                ) : (
-                    <Dimmer active>
-                      <Loader
-                        style={{ visibility: (this.props.saving ? "hidden" : "visible") }}>Loading</Loader>
-                    </Dimmer>
-                  )}
-              </Sidebar>
-            </Sidebar.Pushable> */}
           </div>
-
         </div>
-        {/* <SidebarItems style={{ zIndex: 5, posiiton: 'fixed', right: 0, top: 0 }} bank={this.state.bank} sidebarLoaded={this.state.sidebarLoaded} renderPresetFromSideBar={this.renderPresetFromSideBar} {...this.props} /> */}
-
 
         {this.state.saveConfirmation &&
           ((this.props.presetId && this.state.settings.userName === getUser().username) ? (

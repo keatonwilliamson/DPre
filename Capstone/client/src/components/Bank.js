@@ -37,18 +37,7 @@ class Bank extends Component {
         return (
             <>
             <div style={{height: 'calc(100vh - 62px)', width: '100%', overflow: 'scroll' }}>
-
-            {/* <p ={{}}> BANK </p> */}
-            {/* <BankCard pushToPresetView={this.pushToPresetView} deletePreset={this.deletePreset}/> */}
                 {this.state.presets.map((preset, i) => (
-                    // <div className="preset" key={i}>
-                    //     <p onClick={() => this.pushToPresetView(preset.id)} >{preset.presetName}</p>
-                    //     <p onClick={() => this.deletePreset(preset.id)}>DELETE</p>
-                    //     <p></p>
-                    //     <p></p>
-                    //     <p></p>
-                    //     <p></p>
-                    // </div>
                     <BankCard preset={preset} pushToPresetView={this.pushToPresetView} deletePreset={this.deletePreset} {...this.props}/>
                 ))}
                 </div>

@@ -30,16 +30,13 @@ class App extends Component {
 
   handleScroll = debounce((position) => {
     this.setState({ scroll: position });
-    // console.log(position)
   }, 40);
 
   handleSidebarScroll = debounce((position) => {
     this.setState({ sidebarScroll: position });
-    console.log(position)
   }, 40);
 
   renderSavingLoader = () => {
-    console.log("rendersavingfrom app")
     this.setState({ saving: true });
   }
   closeSavingLoader = () => {
@@ -63,14 +60,10 @@ class App extends Component {
     this.setState({ sidebarIsDisplayed: false });
   }, 480);
 
-
   logout = () => {
     this.setState({ user: null });
     removeUser();
   }
-  // handleScroll = (position) => {
-  //   console.log(position)
-  // }
 
   render() {
     return (
@@ -86,8 +79,6 @@ class App extends Component {
             <>
               <Header user={this.state.user} logout={this.logout} {...props} />
               <Landing user={this.state.user} {...props} />
-              {/* <Header user={this.state.user} logout={this.logout} {...props} />
-            {this.state.user ? ( <Home /> ) : <Landing />} */}
             </>
           )} />
 
@@ -119,7 +110,6 @@ class App extends Component {
             <Explore {...props} />
           )} />
           <Route path="/preset/:presetId(\d+)" render={(props) => {
-            // return <Edit presetId={parseInt(props.match.params.presetId)} {...props}/>
             return <Design 
                       scroll={this.state.scroll}
                       handleScroll={this.handleScroll}

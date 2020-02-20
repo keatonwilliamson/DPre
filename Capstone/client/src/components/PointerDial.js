@@ -18,9 +18,6 @@ function PointerDial(props) {
             {renderTicks().map((tick, i) => (
                 <div className="pointer-dial-tick"
                     key={i}
-                    // className={
-                    //     "tick" + (tick.deg <= this.currentDeg ? " active" : "")
-                    // }
                     style={tick.tickStyle}
                 />
             ))

@@ -21,12 +21,6 @@ function LabelGroup() {
 
         <p className="knob-label" style={{top: 68, left: 1547}}>FILTER</p>
         <p className="knob-label" style={{top: 85, left: 1515}}>MODULATION</p>
-
-
-
-
-
-
         </>
     )
 }

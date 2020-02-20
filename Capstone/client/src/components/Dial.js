@@ -18,9 +18,6 @@ function Dial(props) {
             {renderTicks().map((tick, i) => (
                 <div className="tick"
                     key={i}
-                    // className={
-                    //     "tick" + (tick.deg <= this.currentDeg ? " active" : "")
-                    // }
                     style={tick.tickStyle}
                 />
             ))

@@ -19,9 +19,6 @@ function OscillatorDial(props) {
             {renderTicks().map((tick, i) => (
                 <div className="oscillator-dial-tick"
                     key={i}
-                    // className={
-                    //     "tick" + (tick.deg <= this.currentDeg ? " active" : "")
-                    // }
                     style={tick.tickStyle}
                 />
             ))

@@ -3,11 +3,6 @@ import { Header, Icon, Image, Menu, Segment, Sidebar, Loader, Dimmer } from 'sem
 
 
 function InputJack(props) {
-    // const sidebar = useRef();
-    // useEffect(() => {
-    //     console.log("useEffect ran", sidebar.current.ref.current.scrollTop)
-    //     sidebar.current.ref.current.scrollTop = props.sidebarScroll;
-    // }, [props.sidebarLoaded]);
 
     return (<>
         <div style={{ position: 'absolute', top: 440, left: 2323 }} >

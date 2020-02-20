@@ -111,18 +111,6 @@
     background: white;
     box-shadow: 0 0 3px 1px black;
   }
-    /* .pointer.inner .outer-grip {
-    width: 7%;
-    height: 7%;
-    transform: translateX(-70%);
-    border-radius: 50%;
-    background: white;
-    transform: translateX(-50%);
-    bottom: 10%;
-    left: 50%; 
-    bottom: 1px;
-  
-  } */
   
   .pointer-metal {
     border-radius: 100%;

@@ -71,16 +71,6 @@ class HorizontalRocker extends React.Component {
         }
     }
 
-    // componentWillReceiveProps({ initialDegreeValue, reloadControls }) {
-    //     if (reloadControls != this.props.reloadControls) {
-    //         this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
-    //     }
-    //     else if (initialDegreeValue != this.props.initialDegreeValue && this.state.loaded === false) {
-    //         this.setState({ ...this.state, deg: initialDegreeValue, loaded: true })
-    //     }
-    // }
-
-
     render() {
         // rounds
         let leftRoundStyle = this.dcpy({

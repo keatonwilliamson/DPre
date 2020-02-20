@@ -23,14 +23,6 @@ const SaveConfirmationModal = (props) => (
         </div>
       </div>
     </Modal.Content>
-    {/* <Modal.Actions>
-      <Button basic color='red' inverted>
-        <Icon name='remove' /> No
-      </Button>
-      <Button color='green' inverted>
-        <Icon name='checkmark' /> Yes
-      </Button>
-    </Modal.Actions> */}
   </Modal>
 )
 

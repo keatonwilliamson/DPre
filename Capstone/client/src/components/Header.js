@@ -27,14 +27,11 @@ function Header(props) {
       <div className="left-nav-items">
         <img className="moog-header-logo" src={require('../Assets/moog-logo.png')} alt="img" />
         <Link className="d-patch" to="/home">DPatch</Link>
-        {/* <p className="d-patch">DPatch</p> */}
         {
           props.user ? (
             <>
               <ul className="center-nav-items">
                 <li className="nav-item center-nav-item"
-                // onMouseEnter={() => styleWaveVideo(280)}
-                // onMouseLeave={resetStyleWaveVideo}
                 >
                   <Link to="/Explore">Explore</Link>
                 </li>
