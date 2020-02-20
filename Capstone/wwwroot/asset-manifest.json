@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.392eb90b.chunk.css",
+    "main.js": "/static/js/main.f0f007bc.chunk.js",
+    "main.js.map": "/static/js/main.f0f007bc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e077b804.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e077b804.js.map",
+    "static/js/2.6683f89c.chunk.js": "/static/js/2.6683f89c.chunk.js",
+    "static/js/2.6683f89c.chunk.js.map": "/static/js/2.6683f89c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.23b435daf4441e21f7bf5e8cc296cc00.js": "/precache-manifest.23b435daf4441e21f7bf5e8cc296cc00.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.392eb90b.chunk.css.map": "/static/css/main.392eb90b.chunk.css.map",
+    "static/media/Knob.css": "/static/media/pointer-circle.3a2f9dc1.png",
+    "static/media/metal-ring.png": "/static/media/metal-ring.cae59c1c.png",
+    "static/media/minimoog-transparent-landing.png": "/static/media/minimoog-transparent-landing.0331ad4d.png",
+    "static/media/moog-logo.png": "/static/media/moog-logo.64237cc2.png",
+    "static/media/red-flare-transparent.png": "/static/media/red-flare-transparent.57380d4b.png",
+    "static/media/red-glass.png": "/static/media/red-glass.77be5034.png",
+    "static/media/saw.png": "/static/media/saw.e3a8f393.png",
+    "static/media/App.css": "/static/media/vinyl-sepia.65e7149c.jpg",
+    "static/media/transparent-hex.png": "/static/media/transparent-hex.3f254ab4.png",
+    "static/media/triangle-saw.png": "/static/media/triangle-saw.36e75c44.png",
+    "static/media/triangle.png": "/static/media/triangle.cb45a514.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e077b804.js",
+    "static/js/2.6683f89c.chunk.js",
+    "static/css/main.392eb90b.chunk.css",
+    "static/js/main.f0f007bc.chunk.js"
+  ]
+}

@@ -146,7 +146,7 @@ class Design extends Component {
   }
 
   handleScrollLocally = debounce(() => {
-    console.log(this.slidingGrid.current.scrollLeft)
+    // console.log(this.slidingGrid.current.scrollLeft)
     if (Math.max((this.props.scroll, this.slidingGrid.current.scrollLeft) > 3080) && (this.state.pageEnd == false)) {
       if (this.props.sidebarIsVisible) this.setState({ sidebarIsPinned: true })
       this.props.showSidebar();
@@ -321,8 +321,6 @@ class Design extends Component {
               <p onMouseDown={() => {
 
                 // this.setState({ reloadControls: !this.state.reloadControls });
-                console.log("heyyy", getUser())
-                console.log(this.state.settings)
 
               }} className="section-label controllers-label">CONTROLLERS</p>
               <div className="divider controllers-divider-top"></div>
